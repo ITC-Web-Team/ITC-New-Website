@@ -1,0 +1,10 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  allowedDevOrigins: ['192.168.56.1'],
+
+  turbopack: {
+    root: process.cwd(),
+  },
+};
+
+export default nextConfig;
