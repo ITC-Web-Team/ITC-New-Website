@@ -1,0 +1,472 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="{% static 'img/logo.jpeg' %}" type="image/png" />
+
+    <!-- Dynamic Meta Tags -->
+    <meta
+      name="description"
+      content="{% block description %}IITB Tech Council: Driving innovation and technical excellence at IIT Bombay. Explore our clubs, tech teams, and groundbreaking projects.{% endblock %}"
+    />
+    <meta
+      name="keywords"
+      content="{% block keywords %}IITB, Tech Council, IIT Bombay, Clubs, Tech Teams, Innovation, Student Projects, Technical Achievements{% endblock %}"
+    />
+    <meta name="author" content="IITB Tech Council" />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="{% block og_title %}IITB Tech Council{% endblock %}"
+    />
+    <meta
+      property="og:description"
+      content="{% block og_description %}Driving innovation and technical excellence at IIT Bombay{% endblock %}"
+    />
+    <meta
+      property="og:image"
+      content="{% static 'img/ITClogoWhite.png' %}"
+    />
+    <meta property="og:url" content="https://tech-iitb.org" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="{% block twitter_title %}IITB Tech Council{% endblock %}"
+    />
+    <meta
+      name="twitter:description"
+      content="{% block twitter_description %}Explore the IITB Tech Council's activities{% endblock %}"
+    />
+    <meta
+      name="twitter:image"
+      content="{% block twitter_image %}{% static 'img/ITClogoWhite.png' %}{% endblock %}"
+    />
+    <meta name="twitter:site" content="@tech_iitb" />
+    <meta name="twitter:creator" content="@tech_iitb" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{% block canonical_url %}https://tech-iitb.org{% endblock %}" />
+
+    <!-- Robots Meta Tag -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="IN-MH" />
+    <meta name="geo.placename" content="Mumbai" />
+    <meta name="geo.position" content="19.075984;72.877656" />
+    <meta name="ICBM" content="19.075984, 72.877656" />
+
+    <title>{% block title %}IITB Tech Council{% endblock %}</title>
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="{% static 'src/output.css' %}" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      body {
+        background-color: #0F172A;
+        color: #F3F4F6;
+      }
+
+      .nav-link button {
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link button::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: #3B82F6;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .nav-link button:hover::after {
+        width: 80%;
+      }
+
+      /* Custom Scrollbar Styles */
+      /* For Webkit browsers (Chrome, Safari) */
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: rgba(15, 23, 42, 0.6);  /* slate-900 with opacity */
+        backdrop-filter: blur(8px);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: rgba(51, 65, 85, 0.8);  /* slate-700 with opacity */
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: rgba(71, 85, 105, 0.9);  /* slate-600 with opacity */
+      }
+
+      /* For Firefox */
+      * {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(51, 65, 85, 0.8) rgba(15, 23, 42, 0.6);
+      }
+
+      /* For tables and other elements with potential horizontal scroll */
+      .overflow-auto::-webkit-scrollbar,
+      .overflow-x-auto::-webkit-scrollbar,
+      .overflow-y-auto::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      /* Hide scrollbar while maintaining functionality */
+      .scrollbar-hide {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;  /* Chrome, Safari and Opera */
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="fixed top-4 left-4 right-4 z-50">
+      <div class="max-w-7xl mx-auto bg-slate-800/70 backdrop-blur-lg border border-slate-700/50 rounded-2xl shadow-lg">
+        <div class="flex items-center justify-between px-6 py-4">
+          <!-- Logo Section -->
+          <a href="{% url 'home' %}" class="flex items-center">
+            <img
+              src="{% static 'img/ITClogoWhite.png' %}"
+              alt="IITB Tech Council Logo"
+              class="h-10 transition-transform duration-300 hover:scale-105"
+              loading="lazy"
+            />
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="hidden lg:flex items-center space-x-1">
+            <a href="{% url 'home' %}" class="nav-link">
+              <button
+                class="px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300"
+              >
+                Home
+              </button>
+            </a>
+            <a href="{% url 'club_list' %}" class="nav-link">
+              <button
+                class="px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300"
+              >
+                Clubs
+              </button>
+            </a>
+            <a href="{% url 'techteam_list' %}" class="nav-link">
+              <button
+                class="px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300"
+              >
+                Tech Teams
+              </button>
+            </a>
+            <a href="{% url 'otherbodies_list' %}" class="nav-link">
+              <button
+                class="px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300"
+              >
+                Communities
+              </button>
+            </a>
+            <a href="{% url 'portal_list' %}" class="nav-link">
+              <button
+                class="px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300"
+              >
+                Portals
+              </button>
+            </a>
+            <a href="{% url 'achievement_list' %}" class="nav-link">
+              <button
+                class="px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300"
+              >
+                Achievements
+              </button>
+            </a>
+            <a href="{% url 'halloffame_list' %}" class="nav-link">
+              <button
+                class="px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300"
+              >
+                Hall Of Fame
+              </button>
+            </a>
+            <a href="{% url 'contact' %}" class="nav-link">
+              <button
+                class="px-4 py-2 rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300"
+              >
+                Contact
+              </button>
+            </a>
+          </div>
+
+          <!-- Right Side Controls -->
+          <div class="flex items-center gap-4">
+            <!-- Mobile Menu Button -->
+            <button class="lg:hidden p-2 rounded-lg hover:bg-slate-700/50 transition-all duration-300" id="hamburger">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 hamburger-icon block"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16m-7 6h7"
+                />
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6 cross-icon hidden"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="lg:hidden">
+          <div id="mobileMenu" class="hidden px-4 pb-4">
+            <div class="flex flex-col space-y-2">
+              <a href="{% url 'home' %}" class="nav-link">
+                <button class="w-full px-4 py-2 text-left rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">
+                  Home
+                </button>
+              </a>
+              <a href="{% url 'club_list' %}" class="nav-link">
+                <button class="w-full px-4 py-2 text-left rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">
+                  Clubs
+                </button>
+              </a>
+              <a href="{% url 'techteam_list' %}" class="nav-link">
+                <button class="w-full px-4 py-2 text-left rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">
+                  Tech Teams
+                </button>
+              </a>
+              <a href="{% url 'otherbodies_list' %}" class="nav-link">
+                <button class="w-full px-4 py-2 text-left rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">
+                  Communities
+                </button>
+              </a>
+              <a href="{% url 'portal_list' %}" class="nav-link">
+                <button class="w-full px-4 py-2 text-left rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">
+                  Portals
+                </button>
+              </a>
+              <a href="{% url 'achievement_list' %}" class="nav-link">
+                <button class="w-full px-4 py-2 text-left rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">
+                  Achievements
+                </button>
+              </a>
+              <a href="{% url 'halloffame_list' %}" class="nav-link">
+                <button class="w-full px-4 py-2 text-left rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">
+                  Hall Of Fame
+                </button>
+              </a>
+              <a href="{% url 'contact' %}" class="nav-link">
+                <button class="w-full px-4 py-2 text-left rounded-lg text-sm font-medium hover:bg-slate-700/50 transition-all duration-300">
+                  Contact
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% block content %} {% endblock %}
+    </main>
+
+    <footer class="text-center py-4">
+      <div class="flex flex-col items-center">
+        <!-- <h1 class=" font-font text-center w-full text-xl mb-4">CONTACT US</h1> -->
+        <div class="flex flex-col gap-8 item-center">
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              class="flex gap-2"
+              href="https://www.facebook.com/tech.iitb"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="{% static 'img/facebook.svg' %}"
+                alt="Facebook profile"
+              />
+              <span class="font-font">Facebook</span>
+            </a>
+            <a
+              class="flex gap-2"
+              href="https://www.instagram.com/tech.iitb"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="{% static 'img/instagram.svg' %}"
+                alt="Instagram profile"
+              />
+              <span class="font-font">Instagram</span>
+            </a>
+            <a
+              class="flex gap-2"
+              href="https://twitter.com/tech_iitb"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="{% static 'img/twitter.svg' %}" alt="Twitter profile" />
+              <span class="font-font">Twitter</span>
+            </a>
+            <a class="flex gap-2" href="tel:8128679781">
+              <img src="{% static 'img/phone.svg' %}" alt="Phone" />
+              <span class="font-font">8128679781</span>
+            </a>
+            <a class="flex gap-2" href="mailto:gsectech@iitb.ac.in">
+              <img src="{% static 'img/mail.svg' %}" alt="Email" />
+              <span class="font-font">gsectech@iitb.ac.in</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <p class="mt-8">Developed by ITC Web Team with ❤️</p>
+    </footer>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-G6E0KHTTEW"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      dataLayer.push(arguments);
+      gtag("config", "G-G6E0KHTTEW");
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "IITB Tech Council",
+        "url": "https://tech-iitb.org",
+        "logo": "https://tech-iitb.org/static/img/ITClogoWhite.png",
+        "description": "Driving innovation and technical excellence at IIT Bombay",
+        "foundingDate": "2018",
+        "founders": [
+          {
+            "@type": "Person", 
+            "name": "IIT Bombay"
+          }
+        ],
+        "sameAs": [
+          "https://www.facebook.com/tech.iitb",
+          "https://www.instagram.com/tech.iitb", 
+          "https://twitter.com/tech_iitb"
+        ],
+        "memberOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Indian Institute of Technology Bombay", 
+          "url": "https://www.iitb.ac.in/"
+        },
+        "subOrganization": [
+          {
+            "@type": "Organization",
+            "name": "Clubs",
+            "description": "Technical clubs at IIT Bombay",
+            "members": [
+              "Web & Coding Club",
+              "Robotics Club", 
+              "Electronics Club",
+              "Astronomy Club",
+              "AI & ML Club"
+            ]
+          },
+          {
+            "@type": "Organization", 
+            "name": "Tech Teams",
+            "description": "Technical teams driving innovation",
+            "members": [
+              "Tech Council Web Team",
+              "Inter IIT Tech Team",
+              "Innovation Cell",
+              "Research and Development Team"
+            ]
+          },
+          {
+            "@type": "Organization",
+            "name": "Communities",
+            "description": "Technical communities at IIT Bombay",
+            "members": [
+              "Open Source Community",
+              "Competitive Programming Community", 
+              "Blockchain Community",
+              "Cybersecurity Community"
+            ]
+          }
+        ],
+        "awards": {
+          "@type": "ItemList",
+          "itemListElement": [
+            {
+              "@type": "Award",
+              "name": "Inter IIT Tech Meet Achievements",
+              "description": "Technical achievements in Inter IIT competitions"
+            }
+          ]
+        }
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+        const hamburgerIcon = document.querySelector(".hamburger-icon");
+        const crossIcon = document.querySelector(".cross-icon");
+
+        hamburger.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+          hamburgerIcon.classList.toggle("hidden");
+          crossIcon.classList.toggle("hidden");
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener("click", (event) => {
+          if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
+            mobileMenu.classList.add("hidden");
+            hamburgerIcon.classList.remove("hidden");
+            crossIcon.classList.add("hidden");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

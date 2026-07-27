@@ -14,7 +14,7 @@ export default function About() {
     <main className="relative h-full w-full overflow-hidden text-white">
       <div className="absolute inset-0">
         <Spline
-          scene="https://prod.spline.design/Hdtrd3vkM-S0nA6j/scene.splinecode"
+          scene="https://prod.spline.design/DeRwt5-Ygauh9zYX/scene.splinecode"
           style={{ width: '100%', height: '100%', transform: 'scale(1.02)' }}
         />
       </div>

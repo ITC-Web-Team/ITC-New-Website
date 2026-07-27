@@ -7,7 +7,7 @@ export default function ITC() {
     <main className="h-full w-full flex items-center justify-center">
       <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
         <Spline
-          scene="https://prod.spline.design/OOVj8rA8hNDQLQwo/scene.splinecode"
+          scene="https://prod.spline.design/7BKUCAYUubE4SAct/scene.splinecode"
           style={{
             width: '130%',
             height: '130%',

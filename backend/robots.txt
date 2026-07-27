@@ -1,0 +1,5 @@
+# robots.txt
+User-agent: *
+Disallow: /admin/
+Sitemap: https://tech-iitb.org/sitemap.xml
+
