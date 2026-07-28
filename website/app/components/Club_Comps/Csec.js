@@ -1,12 +1,16 @@
-import React from 'react'
+'use client';
 
-const Csec = () => {
-  return (
-    <div>
-      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/PUgW0zr7D6hSOTbL/scene.splinecode"></spline-viewer>
-    </div>
-  )
+import ClubSection from './ClubSection';
+
+const defaultProps = {
+  clubName: 'CSEC',
+  description: 'A systems and cybersecurity club built around secure thinking, careful debugging, and technical depth.',
+  websiteUrl: 'https://tech-iitb.org/clubs/',
+  instagramHandle: 'tech.iitb',
+  linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
+  splineScene: 'https://prod.spline.design/PUgW0zr7D6hSOTbL/scene.splinecode',
+};
+
+export default function Csec(props) {
+  return <ClubSection {...defaultProps} {...props} />;
 }
-
-export default Csec

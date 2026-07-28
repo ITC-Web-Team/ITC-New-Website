@@ -1,12 +1,16 @@
-import React from 'react'
+'use client';
 
-const Chemetl = () => {
-  return (
-    <div>
-      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/OxLHXGyVJ5nd07Wn/scene.splinecode"></spline-viewer>
-    </div>
-  )
+import ClubSection from './ClubSection';
+
+const defaultProps = {
+  clubName: 'ChemETL',
+  description: 'An applied chemistry and process-technology club for projects spanning experimentation and scale-up thinking.',
+  websiteUrl: 'https://tech-iitb.org/clubs/',
+  instagramHandle: 'tech.iitb',
+  linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
+  splineScene: 'https://prod.spline.design/OxLHXGyVJ5nd07Wn/scene.splinecode',
+};
+
+export default function Chemetl(props) {
+  return <ClubSection {...defaultProps} {...props} />;
 }
-
-export default Chemetl

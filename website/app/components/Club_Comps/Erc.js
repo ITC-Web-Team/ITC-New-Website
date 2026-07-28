@@ -1,12 +1,16 @@
-import React from 'react'
+'use client';
 
-const Erc = () => {
-  return (
-    <div>
-      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/emaIyFBXhsBa3YGI/scene.splinecode"></spline-viewer>
-    </div>
-  )
+import ClubSection from './ClubSection';
+
+const defaultProps = {
+  clubName: 'ERC',
+  description: 'A robotics and electronics club where prototyping, circuits, and embedded systems come together.',
+  websiteUrl: 'https://tech-iitb.org/clubs/',
+  instagramHandle: 'tech.iitb',
+  linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
+  splineScene: 'https://prod.spline.design/emaIyFBXhsBa3YGI/scene.splinecode',
+};
+
+export default function Erc(props) {
+  return <ClubSection {...defaultProps} {...props} />;
 }
-
-export default Erc

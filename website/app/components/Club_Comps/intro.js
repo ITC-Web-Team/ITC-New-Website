@@ -1,12 +1,16 @@
-import React from 'react'
+'use client';
 
-const intro = () => {
-  return (
-    <div>
-      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/2vNrWv1hlkDFdsiW/scene.splinecode"></spline-viewer>
-    </div>
-  )
+import ClubSection from './ClubSection';
+
+const defaultProps = {
+  clubName: 'Intro',
+  description: 'A full-screen opening scene for the clubs page, using the same spline-led entrance language as the home page.',
+  websiteUrl: 'https://tech-iitb.org/clubs/',
+  instagramHandle: 'tech.iitb',
+  linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
+  splineScene: 'https://prod.spline.design/2vNrWv1hlkDFdsiW/scene.splinecode',
+};
+
+export default function Intro(props) {
+  return <ClubSection {...defaultProps} {...props} />;
 }
-
-export default intro

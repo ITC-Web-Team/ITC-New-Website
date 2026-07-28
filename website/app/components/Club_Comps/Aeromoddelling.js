@@ -1,12 +1,16 @@
-import React from 'react'
+'use client';
 
-const Aeromoddelling = () => {
-  return (
-    <div>
-      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/ahCadaPjlOYB-Deh/scene.splinecode"></spline-viewer>
-    </div>
-  )
+import ClubSection from './ClubSection';
+
+const defaultProps = {
+  clubName: 'Aeromodelling',
+  description: 'Build, test, and refine flight-focused projects with a club experience centered on engineering and iteration.',
+  websiteUrl: 'https://tech-iitb.org/clubs/',
+  instagramHandle: 'tech.iitb',
+  linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
+  splineScene: 'https://prod.spline.design/ahCadaPjlOYB-Deh/scene.splinecode',
+};
+
+export default function Aeromodelling(props) {
+  return <ClubSection {...defaultProps} {...props} />;
 }
-
-export default Aeromoddelling

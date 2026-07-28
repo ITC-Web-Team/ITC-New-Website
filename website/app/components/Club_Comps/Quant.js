@@ -1,12 +1,16 @@
-import React from 'react'
+'use client';
 
-const quant = () => {
-  return (
-    <div>
-      <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/famZuWYiG2zvy9UF/scene.splinecode"></spline-viewer>
-    </div>
-  )
+import ClubSection from './ClubSection';
+
+const defaultProps = {
+  clubName: 'Quant',
+  description: 'A quantitative club for modeling, data-driven thinking, and the kind of problem solving that rewards precision.',
+  websiteUrl: 'https://tech-iitb.org/clubs/',
+  instagramHandle: 'tech.iitb',
+  linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
+  splineScene: 'https://prod.spline.design/famZuWYiG2zvy9UF/scene.splinecode',
+};
+
+export default function Quant(props) {
+  return <ClubSection {...defaultProps} {...props} />;
 }
-
-export default quant
