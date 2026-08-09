@@ -1,12 +1,13 @@
 /**
  * API client utility for Next.js frontend
- * Uses relative URLs to connect to backend on the same domain
+ * Connects to the Django REST API backend
  */
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || '/api';
+const API_BASE = (process.env.NEXT_PUBLIC_API_URL || 'https://backend.tech-iitb.org/api').replace(/\/+$/, '');
 
 export async function fetchAPI(endpoint, options = {}) {
-  const url = `${API_BASE}${endpoint}`;
+  const formattedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
+  const url = `${API_BASE}${formattedEndpoint}`;
   
   const response = await fetch(url, {
     ...options,
