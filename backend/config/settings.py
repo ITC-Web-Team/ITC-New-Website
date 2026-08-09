@@ -19,7 +19,13 @@ ALLOWED_HOSTS_ALL = True
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS_ALL = True
-CSRF_TRUSTED_ORIGINS = ['https://www.tech-iitb.org', 'https://tech-iitb.org']
+CSRF_TRUSTED_ORIGINS = [
+    'https://www.tech-iitb.org',
+    'https://tech-iitb.org',
+    'https://two.tech-iitb.org',
+    'https://backend.tech-iitb.org',
+    'http://localhost:3000',
+]
 
 # Installed apps
 INSTALLED_APPS = [
@@ -41,9 +47,9 @@ INSTALLED_APPS = [
 
 # Middleware settings
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -147,14 +153,17 @@ COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter']
 COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
 
 # CORS Configuration
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://localhost:3001',
     'http://127.0.0.1:3000',
     'https://tech-iitb.org',
     'https://www.tech-iitb.org',
+    'https://two.tech-iitb.org',
+    'https://backend.tech-iitb.org',
 ]
-CORS_ALLOW_CREDENTIALS = True
 
 # REST Framework Configuration
 REST_FRAMEWORK = {
