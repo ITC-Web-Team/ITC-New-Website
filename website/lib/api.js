@@ -1,13 +1,22 @@
 /**
  * API client utility for Next.js frontend
- * Connects to the Django REST API backend
+ * Uses same-origin /api rewrite proxy to eliminate browser CORS and SSL issues
  */
 
-const API_BASE = (process.env.NEXT_PUBLIC_API_URL || 'https://backend.tech-iitb.org/api').replace(/\/+$/, '');
+// On client side in browser, use relative /api so requests are same-origin.
+// On server side during build/SSR, use full URL.
+const getApiBase = () => {
+  if (typeof window !== 'undefined') {
+    return '/api';
+  }
+  const envUrl = process.env.BACKEND_INTERNAL_URL || process.env.NEXT_PUBLIC_API_URL || 'https://backend.tech-iitb.org/api';
+  return envUrl.replace(/\/+$/, '');
+};
 
 export async function fetchAPI(endpoint, options = {}) {
+  const apiBase = getApiBase();
   const formattedEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
-  const url = `${API_BASE}${formattedEndpoint}`;
+  const url = `${apiBase}${formattedEndpoint}`;
   
   const response = await fetch(url, {
     ...options,
