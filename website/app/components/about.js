@@ -1,7 +1,5 @@
 'use client';
 
-import Spline from '@splinetool/react-spline';
-
 const stats = [
   { value: '20+', label: 'Tech Bodies', accent: 'from-sky-400 to-blue-500' },
   { value: '80+', label: 'Yearly Events', accent: 'from-violet-400 to-fuchsia-500' },
@@ -11,16 +9,7 @@ const stats = [
 
 export default function About() {
   return (
-    <main className="relative h-full w-full overflow-hidden text-white">
-      <div className="absolute inset-0">
-        <Spline
-          scene="https://prod.spline.design/DeRwt5-Ygauh9zYX/scene.splinecode"
-          style={{ width: '100%', height: '100%', transform: 'scale(1.02)' }}
-        />
-      </div>
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.12),transparent_26%),radial-gradient(circle_at_bottom_right,rgba(236,72,153,0.1),transparent_26%),linear-gradient(180deg,rgba(2,4,10,0.08),rgba(2,4,10,0.3)_70%,rgba(2,4,10,0.42))]" />
-
+    <main className="relative h-full w-full text-white">
       <section className="relative flex h-full w-full items-center justify-center px-6 py-10 sm:px-10 lg:px-14">
         <div className="relative w-full max-w-6xl">
           <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
