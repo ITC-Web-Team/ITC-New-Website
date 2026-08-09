@@ -78,7 +78,7 @@ export default function Home() {
   useEffect(() => {
     const animateProgress = () => {
       setScrollProgress((cur) => {
-        const next = cur + (targetProgressRef.current - cur) * 0.09;
+        const next = cur + (targetProgressRef.current - cur) * 0.18;
         if (Math.abs(targetProgressRef.current - next) < 0.002) {
           animationFrameRef.current = null;
           return targetProgressRef.current;
@@ -103,7 +103,7 @@ export default function Home() {
       event.preventDefault();
       if (wheelLockRef.current) return;
 
-      const step = 0.55;
+      const step = 0.8;
       targetProgressRef.current = Math.max(
         0,
         Math.min(1, targetProgressRef.current + direction * step)
@@ -116,7 +116,7 @@ export default function Home() {
       wheelLockRef.current = true;
       window.setTimeout(() => {
         wheelLockRef.current = false;
-      }, 900);
+      }, 400);
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
@@ -156,7 +156,7 @@ export default function Home() {
 
         {/* ITC 3D scene */}
         <div
-          className="absolute inset-0 transition-[opacity,transform] duration-700 ease-out"
+          className="absolute inset-0 transition-[opacity,transform] duration-300 ease-out"
           style={{
             opacity: itcOpacity,
             transform: itcTransform,
@@ -168,7 +168,7 @@ export default function Home() {
 
         {/* About panel */}
         <div
-          className="absolute inset-0 transition-[opacity,transform] duration-700 ease-out"
+          className="absolute inset-0 transition-[opacity,transform] duration-300 ease-out"
           style={{
             opacity: aboutOpacity,
             transform: aboutTransform,
