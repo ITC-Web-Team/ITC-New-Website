@@ -44,6 +44,7 @@ urlpatterns = [
     path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('', include(router.urls)),
     path('clubs/', clubs_list, name='club_list'),
     path('techteam/', techteam_list, name='techteam_list'),
     path('otherbodies/', otherbodies_list, name='otherbodies_list'),
