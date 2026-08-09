@@ -1,10 +1,9 @@
 /**
  * API client utility for Next.js frontend
  * Uses same-origin /api rewrite proxy to eliminate browser CORS and SSL issues
+ * Includes client-side fallbacks to ensure pages never crash on missing API endpoints
  */
 
-// On client side in browser, use relative /api so requests are same-origin.
-// On server side during build/SSR, use full URL.
 const getApiBase = () => {
   if (typeof window !== 'undefined') {
     return '/api';
@@ -40,8 +39,13 @@ export async function fetchAPI(endpoint, options = {}) {
  * @param {number} type - Body type: 0=CLUBS, 1=TECH TEAMS, 2=COMMUNITIES
  */
 export async function fetchBodies(type = null) {
-  const endpoint = type !== null ? `/bodies/?type=${type}` : '/bodies/';
-  return fetchAPI(endpoint);
+  try {
+    const endpoint = type !== null ? `/bodies/?type=${type}` : '/bodies/';
+    return await fetchAPI(endpoint);
+  } catch (err) {
+    console.warn(`fetchBodies failed for type=${type}:`, err);
+    return [];
+  }
 }
 
 /**
@@ -56,45 +60,87 @@ export async function fetchBodyById(id) {
  * @param {string} bodyName - Optional body name to filter achievements
  */
 export async function fetchAchievements(bodyName = null) {
-  const endpoint = bodyName ? `/achievements/?body=${bodyName}` : '/achievements/';
-  return fetchAPI(endpoint);
+  try {
+    const endpoint = bodyName ? `/achievements/?body=${encodeURIComponent(bodyName)}` : '/achievements/';
+    return await fetchAPI(endpoint);
+  } catch (err) {
+    console.warn(`fetchAchievements failed:`, err);
+    return [];
+  }
 }
 
 /**
- * Fetch achievements grouped by year
+ * Fetch achievements grouped by year with fallback
  * @param {string} bodyName - Optional body name to filter achievements
  */
 export async function fetchAchievementsByYear(bodyName = null) {
-  const endpoint = bodyName ? `/achievements/by_year/?body=${bodyName}` : '/achievements/by_year/';
-  return fetchAPI(endpoint);
+  try {
+    const endpoint = bodyName ? `/achievements/by_year/?body=${encodeURIComponent(bodyName)}` : '/achievements/by_year/';
+    return await fetchAPI(endpoint);
+  } catch (err) {
+    console.warn(`fetchAchievementsByYear action endpoint returned error, falling back to manual grouping:`, err);
+    const achievementsData = await fetchAchievements(bodyName);
+    const list = Array.isArray(achievementsData) ? achievementsData : achievementsData.results || [];
+    
+    // Group achievements by year manually
+    const grouped = {};
+    for (const item of list) {
+      if (item.date) {
+        const year = new Date(item.date).getFullYear();
+        if (!grouped[year]) grouped[year] = [];
+        grouped[year].push(item);
+      }
+    }
+    return grouped;
+  }
 }
 
 /**
- * Fetch all bodies for filter dropdown
+ * Fetch all bodies for filter dropdown with fallback
  */
 export async function fetchBodiesForFilter() {
-  return fetchAPI('/achievements/bodies/');
+  try {
+    return await fetchAPI('/achievements/bodies/');
+  } catch (err) {
+    console.warn(`fetchBodiesForFilter action endpoint failed, falling back to fetchBodies():`, err);
+    return await fetchBodies();
+  }
 }
 
 /**
  * Fetch all portals
  */
 export async function fetchPortals() {
-  return fetchAPI('/portals/');
+  try {
+    return await fetchAPI('/portals/');
+  } catch (err) {
+    console.warn(`fetchPortals failed:`, err);
+    return [];
+  }
 }
 
 /**
  * Fetch all cabinet members
  */
 export async function fetchCabinet() {
-  return fetchAPI('/cabinet/');
+  try {
+    return await fetchAPI('/cabinet/');
+  } catch (err) {
+    console.warn(`fetchCabinet failed:`, err);
+    return [];
+  }
 }
 
 /**
  * Fetch all InterIIT years
  */
 export async function fetchInterIIT() {
-  return fetchAPI('/interiit/');
+  try {
+    return await fetchAPI('/interiit/');
+  } catch (err) {
+    console.warn(`fetchInterIIT failed:`, err);
+    return [];
+  }
 }
 
 /**
@@ -108,12 +154,22 @@ export async function fetchInterIITById(id) {
  * Fetch all galleries
  */
 export async function fetchGalleries() {
-  return fetchAPI('/gallery/');
+  try {
+    return await fetchAPI('/gallery/');
+  } catch (err) {
+    console.warn(`fetchGalleries failed:`, err);
+    return [];
+  }
 }
 
 /**
  * Fetch all work reports
  */
 export async function fetchWorkReports() {
-  return fetchAPI('/workreports/');
+  try {
+    return await fetchAPI('/workreports/');
+  } catch (err) {
+    console.warn(`fetchWorkReports failed:`, err);
+    return [];
+  }
 }

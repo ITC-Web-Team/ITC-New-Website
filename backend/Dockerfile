@@ -18,11 +18,10 @@ RUN pip install --no-cache-dir --upgrade pip setuptools wheel \
 # Copy project
 COPY . /app
 
-# Collect static files if needed (disabled by default)
-# RUN python manage.py collectstatic --noinput
-
 ENV PYTHONUNBUFFERED=1
+ENV PORT=8000
 EXPOSE 8000
+EXPOSE 80
 
-# Default command: run gunicorn
-CMD ["gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]
+# Default command: run gunicorn binding to PORT env or 8000 fallback
+CMD ["sh", "-c", "gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 3"]
