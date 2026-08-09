@@ -8,28 +8,14 @@ const nextConfig = {
     root: process.cwd(),
   },
 
-  async rewrites() {
-    // BACKEND_INTERNAL_URL: internal Docker/Coolify network URL (no external DNS needed)
-    // Falls back to the public URL if internal URL isn't configured
-    const backendUrl = (
-      process.env.BACKEND_INTERNAL_URL ||
-      process.env.NEXT_PUBLIC_API_URL ||
-      'https://backend.tech-iitb.org/api'
-    ).replace(/\/+$/, '');
-    console.log('[next.config] Proxying /api/* →', backendUrl);
-    return [
-      {
-        source: '/api/:path*',
-        destination: `${backendUrl}/:path*`,
-      },
-    ];
-  },
+  // /api/* is handled by app/api/[...slug]/route.js — no rewrites needed
 
   images: {
     unoptimized: true,
     remotePatterns: [
       { protocol: 'https', hostname: 'backend.tech-iitb.org' },
       { protocol: 'https', hostname: '*.tech-iitb.org' },
+      { protocol: 'https', hostname: 'files.tech-iitb.org' },
     ],
   },
 };
