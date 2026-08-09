@@ -2,7 +2,7 @@ import environ
 from pathlib import Path
 import os
 
-# Initialize environment variables
+# Initialize environment variables with safe defaults
 env = environ.Env(
     DEBUG=(bool, False)
 )
@@ -12,8 +12,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 environ.Env.read_env(env_file=os.path.join(BASE_DIR, '.env'))
 
 # Secret and Debug settings
-SECRET_KEY = env('SECRET_KEY')
-DEBUG = env('DEBUG')
+SECRET_KEY = env('SECRET_KEY', default='django-insecure-key-safe-fallback-for-itc-website')
+DEBUG = env('DEBUG', default=False)
 
 ALLOWED_HOSTS_ALL = True
 ALLOWED_HOSTS = ['*']
@@ -25,6 +25,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://two.tech-iitb.org',
     'https://backend.tech-iitb.org',
     'http://localhost:3000',
+    'http://127.0.0.1:3000',
 ]
 
 # Installed apps
@@ -81,42 +82,53 @@ TEMPLATES = [
 # WSGI application
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# Database settings
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
+# Database settings — Postgres with SQLite fallback if env vars missing
+DB_NAME = env('DB_NAME', default='')
+if DB_NAME:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': DB_NAME,
+            'USER': env('DB_USER', default='postgres'),
+            'PASSWORD': env('DB_PASSWORD', default=''),
+            'HOST': env('DB_HOST', default='localhost'),
+            'PORT': env('DB_PORT', default='5432'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # Static files configuration (Local)
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'  # Use local storage
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-# Media files configuration (MinIO)
-MEDIA_URL = env('MINIO_STORAGE_MEDIA_URL').rstrip('/') + '/'
-DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
-
-# MinIO Settings
-MINIO_STORAGE_ENDPOINT = env('MINIO_STORAGE_ENDPOINT')
-MINIO_STORAGE_PORT = env.int('MINIO_STORAGE_PORT', default=443)
-MINIO_STORAGE_ACCESS_KEY = env('MINIO_STORAGE_ACCESS_KEY')
-MINIO_STORAGE_SECRET_KEY = env('MINIO_STORAGE_SECRET_KEY')
-MINIO_STORAGE_USE_HTTPS = env.bool('MINIO_STORAGE_USE_HTTPS', default=True)
-MINIO_STORAGE_MEDIA_BUCKET_NAME = env('MINIO_STORAGE_MEDIA_BUCKET_NAME')
-
-# MinIO Media Settings
-MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
-MINIO_STORAGE_AUTO_CREATE_MEDIA_POLICY = "READ_WRITE"
-MINIO_STORAGE_MEDIA_OBJECT_METADATA = {
-    "Cache-Control": "max-age=86400"
-}
+# Media files configuration (MinIO or local fallback)
+MINIO_MEDIA_URL = env('MINIO_STORAGE_MEDIA_URL', default='')
+if MINIO_MEDIA_URL:
+    MEDIA_URL = MINIO_MEDIA_URL.rstrip('/') + '/'
+    DEFAULT_FILE_STORAGE = "minio_storage.storage.MinioMediaStorage"
+    MINIO_STORAGE_ENDPOINT = env('MINIO_STORAGE_ENDPOINT', default='localhost')
+    MINIO_STORAGE_PORT = env.int('MINIO_STORAGE_PORT', default=443)
+    MINIO_STORAGE_ACCESS_KEY = env('MINIO_STORAGE_ACCESS_KEY', default='')
+    MINIO_STORAGE_SECRET_KEY = env('MINIO_STORAGE_SECRET_KEY', default='')
+    MINIO_STORAGE_USE_HTTPS = env.bool('MINIO_STORAGE_USE_HTTPS', default=True)
+    MINIO_STORAGE_MEDIA_BUCKET_NAME = env('MINIO_STORAGE_MEDIA_BUCKET_NAME', default='media')
+    MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
+    MINIO_STORAGE_AUTO_CREATE_MEDIA_POLICY = "READ_WRITE"
+    MINIO_STORAGE_MEDIA_OBJECT_METADATA = {
+        "Cache-Control": "max-age=86400"
+    }
+else:
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 # Whitenoise for static files in production
 if not DEBUG:
@@ -147,8 +159,8 @@ USE_TZ = True
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-COMPRESS_ENABLED = True  # Enable compression
-COMPRESS_OFFLINE = True  # This allows pre-compression during production build
+COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
 COMPRESS_CSS_FILTERS = ['compressor.filters.cssmin.CSSMinFilter']
 COMPRESS_JS_FILTERS = ['compressor.filters.jsmin.JSMinFilter']
 
