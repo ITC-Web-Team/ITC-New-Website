@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import home, clubs_list, techteam_list, otherbodies_list, body_detail, portal_list, achievement_list, achievement_detail, halloffame, contact
+from .views import home, clubs_list, techteam_list, otherbodies_list, body_detail, portal_list, achievement_list, achievement_detail, halloffame, contact, health_check
 from .api import (
     BodyViewSet, MemberViewSet, AchievementViewSet, PortalViewSet,
     TechStackViewSet, CabinetViewSet, InterIITViewSet,
@@ -37,6 +37,8 @@ def robots_txt(request):
 
 
 urlpatterns = [
+    path('health/', health_check, name='health_check'),
+    path('api/health/', health_check, name='api_health_check'),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap' ),
     path('robots.txt', robots_txt),
     path('grappelli/', include('grappelli.urls')),
