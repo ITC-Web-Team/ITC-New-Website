@@ -1,4 +1,11 @@
 node_modules
+.next
+dist
+build
+npm-debug.log
+.env
+coverage
+node_modules
 
 .next
 
@@ -10,7 +17,7 @@ Dockerfile
 
 README.md
 
-*.log
+.log
 
 .env.local
 .env.development

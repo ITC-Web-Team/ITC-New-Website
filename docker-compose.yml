@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: itc_backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./website
+      dockerfile: Dockerfile
+    container_name: itc_frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+    restart: unless-stopped
+
+# Optional volumes or networks can be added as needed for DB, redis, etc.
