@@ -90,11 +90,24 @@ export default function Home() {
     };
   }, [scrollProgress]);
 
+  // Set scrollRestoration to manual and force scroll to top on load to prevent getting stuck on back navigation
+  useEffect(() => {
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+    return () => {
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'auto';
+      }
+    };
+  }, []);
+
   // ── Smooth wheel-scroll transition logic ──────────────────────────────────
   useEffect(() => {
     const animateProgress = () => {
       setScrollProgress((cur) => {
-        const next = cur + (targetProgressRef.current - cur) * 0.12; // slightly slower, smoother transition ease
+        const next = cur + (targetProgressRef.current - cur) * 0.22; // Snappier, faster transition ease
         if (Math.abs(targetProgressRef.current - next) < 0.001) {
           animationFrameRef.current = null;
           return targetProgressRef.current;
@@ -134,7 +147,7 @@ export default function Home() {
       wheelLockRef.current = true;
       window.setTimeout(() => {
         wheelLockRef.current = false;
-      }, 800); // lock wheel inputs during active animation transition
+      }, 400); // Reduced lock from 800ms to 400ms for responsiveness
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
@@ -550,7 +563,7 @@ export default function Home() {
             {/* View full Hall of Fame */}
             <div className="mt-14 text-center">
               <Link
-                href="/hall-of-fame"
+                href="/halloffame"
                 className="group inline-flex items-center gap-3 rounded-2xl border border-blue-500/30 bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white shadow-[0_5px_30px_rgba(59,130,246,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_40px_rgba(59,130,246,0.5)]"
               >
                 View Full Hall of Fame
