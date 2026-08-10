@@ -14,168 +14,138 @@ import Tl from '../components/Club_Comps/Tl';
 import Energy from '../components/Club_Comps/Energy';
 import Chemetl from '../components/Club_Comps/Chemetl';
 import Quant from '../components/Club_Comps/Quant';
+import { fetchBodies } from '@/lib/api';
 
-const CLUB_DATA = [
-  {
-    Component: Intro,
-    clubName: 'Intro',
-    description: 'A full-screen opener for the clubs experience, built around the same entrance language used on the home page.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/2vNrWv1hlkDFdsiW/scene.splinecode',
-  },
-  {
-    Component: Krittika,
-    clubName: 'Krittika',
-    description: 'Astronomy and astrophotography projects that turn curiosity about the night sky into hands-on exploration.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/vhWTM0J5b9R4G5Dn/scene.splinecode',
-  },
-  {
-    Component: Aeromodelling,
-    clubName: 'Aeromodelling',
-    description: 'A flight-focused build space for projects that mix engineering, experimentation, and iterative design.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/ahCadaPjlOYB-Deh/scene.splinecode',
-  },
-  {
-    Component: WnCC,
-    clubName: 'WNCC',
-    description: 'A community for coding, collaboration, and technical growth with a strong project-oriented rhythm.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/BI-mcBhItOMri26t/scene.splinecode',
-  },
-  {
-    Component: Mnp,
-    clubName: 'MNP',
-    description: 'A makerspace for materials, nano-projects, and practical experimentation built for curious engineers.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/chkiXDhlBLZHp4QI/scene.splinecode',
-  },
-  {
-    Component: Csec,
-    clubName: 'CSEC',
-    description: 'A systems and cybersecurity club built around secure thinking, careful debugging, and technical depth.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/PUgW0zr7D6hSOTbL/scene.splinecode',
-  },
-  {
-    Component: Biox,
-    clubName: 'BioX',
-    description: 'An interdisciplinary club exploring biology, biotechnology, and computation through hands-on projects.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/BPQWXGJSsM-eExXQ/scene.splinecode',
-  },
-  {
-    Component: Erc,
-    clubName: 'ERC',
-    description: 'A robotics and electronics club where prototyping, circuits, and embedded systems come together.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/emaIyFBXhsBa3YGI/scene.splinecode',
-  },
-  {
-    Component: Tl,
-    clubName: 'TL',
-    description: 'A flexible technical learning space for members building interdisciplinary projects and leadership skills.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/AAEIPDFSVVUR9RpY/scene.splinecode',
-  },
-  {
-    Component: Energy,
-    clubName: 'Energy',
-    description: 'A club dedicated to energy systems, sustainability, and practical engineering around power and efficiency.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/1kxdvBqKD-xqx4GS/scene.splinecode',
-  },
-  {
-    Component: Chemetl,
-    clubName: 'ChemETL',
-    description: 'An applied chemistry and process-technology club for projects spanning experimentation and scale-up thinking.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/OxLHXGyVJ5nd07Wn/scene.splinecode',
-  },
-  {
-    Component: Quant,
-    clubName: 'Quant',
-    description: 'A quantitative club for modeling, data-driven thinking, and the kind of problem solving that rewards precision.',
-    websiteUrl: 'https://tech-iitb.org/clubs/',
-    instagramHandle: 'tech.iitb',
-    linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://prod.spline.design/famZuWYiG2zvy9UF/scene.splinecode',
-  },
+// ── Spline scenes per club (UI-only, not stored in DB) ──────────────────────
+const CLUB_SPLINE = {
+  Intro:          'https://prod.spline.design/2vNrWv1hlkDFdsiW/scene.splinecode',
+  Krittika:       'https://prod.spline.design/vhWTM0J5b9R4G5Dn/scene.splinecode',
+  WNCC:           'https://prod.spline.design/BI-mcBhItOMri26t/scene.splinecode',
+  WnCC:           'https://prod.spline.design/BI-mcBhItOMri26t/scene.splinecode',
+  MnP:            'https://prod.spline.design/chkiXDhlBLZHp4QI/scene.splinecode',
+  Mnp:            'https://prod.spline.design/chkiXDhlBLZHp4QI/scene.splinecode',
+  CSEC:           'https://prod.spline.design/PUgW0zr7D6hSOTbL/scene.splinecode',
+  Csec:           'https://prod.spline.design/PUgW0zr7D6hSOTbL/scene.splinecode',
+  BioX:           'https://prod.spline.design/BPQWXGJSsM-eExXQ/scene.splinecode',
+  Biox:           'https://prod.spline.design/BPQWXGJSsM-eExXQ/scene.splinecode',
+  ERC:            'https://prod.spline.design/emaIyFBXhsBa3YGI/scene.splinecode',
+  Erc:            'https://prod.spline.design/emaIyFBXhsBa3YGI/scene.splinecode',
+  'Tinkerers Lab':'https://prod.spline.design/AAEIPDFSVVUR9RpY/scene.splinecode',
+  TL:             'https://prod.spline.design/AAEIPDFSVVUR9RpY/scene.splinecode',
+  Tl:             'https://prod.spline.design/AAEIPDFSVVUR9RpY/scene.splinecode',
+  'Energy Club':  'https://prod.spline.design/1kxdvBqKD-xqx4GS/scene.splinecode',
+  Energy:         'https://prod.spline.design/1kxdvBqKD-xqx4GS/scene.splinecode',
+  ChemETL:        'https://prod.spline.design/OxLHXGyVJ5nd07Wn/scene.splinecode',
+  Chemetl:        'https://prod.spline.design/OxLHXGyVJ5nd07Wn/scene.splinecode',
+  'Quant Club':   'https://prod.spline.design/famZuWYiG2zvy9UF/scene.splinecode',
+  Quant:          'https://prod.spline.design/famZuWYiG2zvy9UF/scene.splinecode',
+  Aeromodelling:  'https://prod.spline.design/ahCadaPjlOYB-Deh/scene.splinecode',
+};
+
+// ── Ordered component map (Aeromodelling is last among clubs) ─────────────────
+// Key: lowercase name used for matching DB entries
+const CLUB_COMPONENTS = [
+  { key: 'krittika',      Component: Krittika,      fallbackName: 'Krittika'      },
+  { key: 'wncc',          Component: WnCC,           fallbackName: 'WNCC'          },
+  { key: 'mnp',           Component: Mnp,            fallbackName: 'MnP'           },
+  { key: 'csec',          Component: Csec,           fallbackName: 'CSEC'          },
+  { key: 'biox',          Component: Biox,           fallbackName: 'BioX'          },
+  { key: 'erc',           Component: Erc,            fallbackName: 'ERC'           },
+  { key: 'tinkerers',     Component: Tl,             fallbackName: 'Tinkerers Lab' },
+  { key: 'energy',        Component: Energy,         fallbackName: 'Energy Club'   },
+  { key: 'chemetl',       Component: Chemetl,        fallbackName: 'ChemETL'       },
+  { key: 'quant',         Component: Quant,          fallbackName: 'Quant Club'    },
+  { key: 'aeromodelling', Component: Aeromodelling,  fallbackName: 'Aeromodelling' },
 ];
 
-export default function ClubsPage() {
-  const sectionRefs = useRef([]);
-  const [seenSections, setSeenSections] = useState(() => CLUB_DATA.map((_, index) => index === 0));
+// Match a DB body to one of our component keys (case-insensitive substring)
+function matchComponent(body) {
+  const haystack = (body.name || '').toLowerCase();
+  return CLUB_COMPONENTS.find(({ key }) => haystack.includes(key)) || null;
+}
 
+// Build a club entry, merging DB data with static UI config
+function buildClubEntry({ Component, fallbackName, body }) {
+  const name    = body?.name        || fallbackName;
+  const spline  = CLUB_SPLINE[name] || CLUB_SPLINE[fallbackName] || '';
+  return {
+    Component,
+    clubName:        name,
+    description:     body?.description || body?.about || '',
+    websiteUrl:      body?.website     || null,
+    instagramHandle: body?.instagram   || null,
+    linkedinUrl:     body?.linkedin    || null,
+    splineScene:     spline,
+  };
+}
+
+export default function ClubsPage() {
+  const sectionRefs   = useRef([]);
+  const [clubs,       setClubs]       = useState(null); // null = loading
+  const [seenSections, setSeenSections] = useState([]);
+
+  // ── Fetch clubs from backend, merge with component map ──────────────────
   useEffect(() => {
+    fetchBodies(0).then((data) => {
+      const bodies = Array.isArray(data) ? data : (data.results || []);
+
+      const ordered = CLUB_COMPONENTS.map((cfg) => {
+        const body = bodies.find((b) => matchComponent(b)?.key === cfg.key);
+        return buildClubEntry({ ...cfg, body });
+      });
+
+      // Prepend the Intro slide (no DB entry)
+      const introEntry = {
+        Component:       Intro,
+        clubName:        'Intro',
+        description:     '',
+        websiteUrl:      null,
+        instagramHandle: null,
+        linkedinUrl:     null,
+        splineScene:     CLUB_SPLINE.Intro,
+      };
+
+      setClubs([introEntry, ...ordered]);
+      setSeenSections([true, ...ordered.map(() => false)]);
+    });
+  }, []);
+
+  // ── Intersection observer (lazy-render Spline scenes) ────────────────────
+  useEffect(() => {
+    if (!clubs) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         setSeenSections((current) => {
           const next = [...current];
           let changed = false;
-
           for (const entry of entries) {
-            const sectionIndex = Number(entry.target.getAttribute('data-section-index'));
-
-            if (entry.isIntersecting && !next[sectionIndex]) {
-              next[sectionIndex] = true;
+            const idx = Number(entry.target.getAttribute('data-section-index'));
+            if (entry.isIntersecting && !next[idx]) {
+              next[idx] = true;
               changed = true;
             }
           }
-
           return changed ? next : current;
         });
       },
-      {
-        threshold: 0.45,
-        rootMargin: '0px 0px -10% 0px',
-      },
+      { threshold: 0.45, rootMargin: '0px 0px -10% 0px' },
     );
 
-    sectionRefs.current.forEach((section) => {
-      if (section) {
-        observer.observe(section);
-      }
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+    sectionRefs.current.forEach((el) => { if (el) observer.observe(el); });
+    return () => observer.disconnect();
+  }, [clubs]);
 
   const clubSections = useMemo(
     () =>
-      CLUB_DATA.map((club, index) => ({
-        ...club,
-        isVisible: seenSections[index],
-        ref: (node) => {
-          sectionRefs.current[index] = node;
-        },
-      })),
-    [seenSections],
+      clubs
+        ? clubs.map((club, index) => ({
+            ...club,
+            isVisible: seenSections[index] ?? false,
+            ref: (node) => { sectionRefs.current[index] = node; },
+          }))
+        : [],
+    [clubs, seenSections],
   );
 
   return (
@@ -184,29 +154,35 @@ export default function ClubsPage() {
 
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.08),transparent_30%)]" />
 
-      {clubSections.map((club, index) => {
-        const ClubComponent = club.Component;
-
-        return (
-          <div
-            key={club.clubName}
-            ref={club.ref}
-            data-section-index={index}
-            className="relative"
-          >
-            <ClubComponent
-              index={index}
-              isVisible={club.isVisible}
-              clubName={club.clubName}
-              description={club.description}
-              websiteUrl={club.websiteUrl}
-              instagramHandle={club.instagramHandle}
-              linkedinUrl={club.linkedinUrl}
-              splineScene={club.splineScene}
-            />
-          </div>
-        );
-      })}
+      {clubs === null ? (
+        // Loading state — keep the page from jumping
+        <div className="flex min-h-screen items-center justify-center">
+          <div className="h-6 w-6 animate-spin rounded-full border-2 border-white/10 border-t-white/60" />
+        </div>
+      ) : (
+        clubSections.map((club, index) => {
+          const ClubComponent = club.Component;
+          return (
+            <div
+              key={club.clubName}
+              ref={club.ref}
+              data-section-index={index}
+              className="relative"
+            >
+              <ClubComponent
+                index={index}
+                isVisible={club.isVisible}
+                clubName={club.clubName}
+                description={club.description}
+                websiteUrl={club.websiteUrl}
+                instagramHandle={club.instagramHandle}
+                linkedinUrl={club.linkedinUrl}
+                splineScene={club.splineScene}
+              />
+            </div>
+          );
+        })
+      )}
     </main>
   );
 }

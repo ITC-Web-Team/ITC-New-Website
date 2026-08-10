@@ -32,7 +32,7 @@ export default function Contact() {
       <Navbar />
 
       {/* 3D Spline Background Scene — interactive */}
-      <SplineScene url="https://prod.spline.design/lef3qDOiHdOfbags/scene.splinecode" interactive={true} />
+      <SplineScene url="https://prod.spline.design/Wo6UttIK8jjj1QsT/scene.splinecode" interactive={true} />
 
       {/* Ultra-light accent tint only */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.07),transparent_50%),radial-gradient(circle_at_bottom_right,rgba(99,102,241,0.05),transparent_45%)] z-1" />
