@@ -84,25 +84,41 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # Database settings — Postgres with SQLite fallback if env vars missing
-DB_NAME = env('DB_NAME', default='')
-if DB_NAME:
+DATABASE_URL = env('DATABASE_URL', default='')
+if DATABASE_URL:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': DB_NAME,
-            'USER': env('DB_USER', default='postgres'),
-            'PASSWORD': env('DB_PASSWORD', default=''),
-            'HOST': env('DB_HOST', default='localhost'),
-            'PORT': env('DB_PORT', default='5432'),
-        }
+        'default': env.db('DATABASE_URL')
     }
+    # Log connection info (safely masked)
+    db_conn = DATABASES['default']
+    print(f"[Database Config] Using DATABASE_URL. Connecting to host: {db_conn.get('HOST', 'localhost')}, port: {db_conn.get('PORT', '5432')}, db: {db_conn.get('NAME')}")
 else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+    db_name = env('DB_NAME', default=env('POSTGRES_DB', default=env('DATABASE_NAME', default='')))
+    if db_name:
+        db_user = env('DB_USER', default=env('POSTGRES_USER', default=env('DATABASE_USER', default='postgres')))
+        db_password = env('DB_PASSWORD', default=env('POSTGRES_PASSWORD', default=env('DATABASE_PASSWORD', default='')))
+        db_host = env('DB_HOST', default=env('POSTGRES_HOST', default=env('DATABASE_HOST', default='localhost')))
+        db_port = env('DB_PORT', default=env('POSTGRES_PORT', default=env('DATABASE_PORT', default='5432')))
+        
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': db_name,
+                'USER': db_user,
+                'PASSWORD': db_password,
+                'HOST': db_host,
+                'PORT': db_port,
+            }
         }
-    }
+        print(f"[Database Config] Connecting to PostgreSQL at host: {db_host}, port: {db_port}, db: {db_name}, user: {db_user}")
+    else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
+        print(f"[Database Config] No database credentials found. Falling back to local SQLite at {DATABASES['default']['NAME']}")
 
 # Static files configuration (Local)
 STATIC_URL = '/static/'
