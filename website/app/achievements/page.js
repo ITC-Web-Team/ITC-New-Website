@@ -91,7 +91,7 @@ export default function Achievements() {
       <Navbar />
 
       {/* 3D Spline Background Scene */}
-      <SplineScene url="https://prod.spline.design/voidspiral-DVEO7fSYQ2xMH5oHhzTW6kIz/scene.splinecode" />
+      <SplineScene url="https://prod.spline.design/RRnoQaeTb9ZXsdtf/scene.splinecode" />
 
       {/* Ambient Gradient Overlays */}
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.22),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.15),transparent_40%),linear-gradient(180deg,#050505_0%,#08040f_50%,#020202_100%)] z-1 opacity-70" />
