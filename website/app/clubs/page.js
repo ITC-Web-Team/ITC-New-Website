@@ -49,7 +49,7 @@ const CLUB_COMPONENTS = [
   { key: 'krittika',      Component: Krittika,      fallbackName: 'Krittika',      preload: false  },
   { key: 'wncc',          Component: WnCC,           fallbackName: 'WNCC',           preload: false },
   { key: 'mnp',           Component: Mnp,            fallbackName: 'MnP',            preload: false },
-  { key: 'csec',          Component: Csec,           fallbackName: 'CSEC',           preload: true  },
+  { key: 'csec',          Component: Csec,           fallbackName: 'CSEC',           preload: false  },
   { key: 'biox',          Component: Biox,           fallbackName: 'BioX',           preload: false },
   { key: 'erc',           Component: Erc,            fallbackName: 'ERC',            preload: false },
   { key: 'tinkerers',     Component: Tl,             fallbackName: 'Tinkerers Lab', preload: false },
