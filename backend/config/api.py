@@ -3,6 +3,19 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from django.db.models import Q
 from collections import defaultdict
+import traceback
+from rest_framework.views import exception_handler
+
+def custom_exception_handler(exc, context):
+    response = exception_handler(exc, context)
+    if response is None:
+        tb = traceback.format_exc()
+        return Response({
+            'error': str(exc),
+            'type': exc.__class__.__name__,
+            'traceback': tb
+        }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    return response
 
 from .models import Body, Member, Achievement, Portal, TechStack, Cabinet, WorkReport, InterIIT, ProblemStatements, Gallery
 from .serializers import (
