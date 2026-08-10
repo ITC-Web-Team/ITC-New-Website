@@ -1,10 +1,35 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import Spline from '@splinetool/react-spline';
 
 export default function SplineScene({ scene, isVisible }) {
+  const containerRef = useRef(null);
+
+  // Suppress pointer events during scrolling so that Spline doesn't capture the scroll wheel
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    let scrollTimer = null;
+
+    const handleScroll = () => {
+      el.style.pointerEvents = 'none';
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        el.style.pointerEvents = 'auto';
+      }, 250); // restore interactivity 250ms after scroll ceases
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimer);
+    };
+  }, []);
+
   return (
-    <div className="relative h-full w-full overflow-hidden pointer-events-auto">
+    <div ref={containerRef} className="relative h-full w-full overflow-hidden pointer-events-auto">
       <div className={`absolute inset-0 transition-opacity duration-1000 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         <Spline
           scene={scene}
