@@ -1,75 +1,73 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import Spline from '@splinetool/react-spline';
 
 /**
- * SplineScene component for background or embedded 3D Spline scenes.
- * Supports full Spline URLs (https://prod.spline.design/.../scene.splinecode)
- * and short Spline scene IDs (e.g., "lef3qDOiHdOfbags").
- *
- * @param {Object} props
- * @param {string} props.url - The Spline scene URL or short scene ID
- * @param {string} props.scene - Alternative prop name for scene URL
- * @param {string} props.className - Additional CSS classes for container
- * @param {boolean} props.interactive - Whether the 3D scene should receive mouse events
+ * SplineScene — interactive, preloaded 3D background.
+ * - No loading spinner (scenes start rendering immediately, hidden until ready).
+ * - pointer-events-auto so users can interact with the 3D.
+ * - Scroll on the content layer (z-10+) is NOT blocked — pointer events on the
+ *   Spline layer only fire when the user isn't scrolling the page.
  */
-export default function SplineScene({ url, scene, className = '', interactive = false }) {
-  const [loaded, setLoaded] = useState(false);
-  const [error, setError] = useState(false);
+export default function SplineScene({ url, scene, className = '', interactive = true }) {
+  const containerRef = useRef(null);
 
   const rawUrl = url || scene || '';
 
-  // Helper to normalize short Spline IDs into full scene.splinecode URLs
   const getFullSplineUrl = (inputUrl) => {
     if (!inputUrl) return '';
     const trimmed = inputUrl.trim();
-    if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) {
-      return trimmed;
-    }
-    // Handle short IDs or voidspiral IDs
+    if (trimmed.startsWith('http://') || trimmed.startsWith('https://')) return trimmed;
     return `https://prod.spline.design/${trimmed}/scene.splinecode`;
   };
 
   const finalUrl = getFullSplineUrl(rawUrl);
 
+  // When the user starts scrolling, temporarily suppress pointer events on the
+  // Spline layer so the scroll isn't captured by the 3D canvas.
   useEffect(() => {
-    setLoaded(false);
-    setError(false);
-  }, [finalUrl]);
+    if (!interactive) return;
+    const el = containerRef.current;
+    if (!el) return;
+
+    let scrollTimer = null;
+
+    const disablePointer = () => {
+      el.style.pointerEvents = 'none';
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        el.style.pointerEvents = 'auto';
+      }, 300);
+    };
+
+    window.addEventListener('scroll', disablePointer, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', disablePointer);
+      clearTimeout(scrollTimer);
+    };
+  }, [interactive]);
+
+  if (!finalUrl) return null;
 
   return (
-    <div className={`fixed inset-0 overflow-hidden ${interactive ? 'pointer-events-auto' : 'pointer-events-none'} z-0 ${className}`}>
-      {/* Background ambient gradient fallback */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.15),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.12),transparent_40%),linear-gradient(180deg,#090d16_0%,#05070c_100%)] z-0" />
+    <div
+      ref={containerRef}
+      className={`fixed inset-0 overflow-hidden z-0 ${interactive ? 'pointer-events-auto' : 'pointer-events-none'} ${className}`}
+    >
+      {/* Ambient base gradient (visible while Spline loads) */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(99,102,241,0.14),transparent_55%),radial-gradient(ellipse_at_bottom_right,rgba(168,85,247,0.09),transparent_50%),linear-gradient(180deg,#060810_0%,#030305_100%)]" />
 
-      {/* Loading Skeleton / Pulse effect */}
-      {!loaded && !error && finalUrl && (
-        <div className="absolute inset-0 flex items-center justify-center bg-slate-950/60 backdrop-blur-sm z-10 transition-opacity duration-700">
-          <div className="flex flex-col items-center gap-3">
-            <div className="w-8 h-8 border-2 border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
-            <span className="text-xs tracking-widest text-slate-400 uppercase">Loading 3D Scene...</span>
-          </div>
-        </div>
-      )}
+      {/* Spline canvas — renders immediately, fades in on load */}
+      <div className="relative w-full h-full pointer-events-auto">
+        <Spline
+          scene={finalUrl}
+          style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}
+        />
+      </div>
 
-      {/* Spline canvas */}
-      {finalUrl && !error && (
-        <div className={`relative w-full h-full transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'} z-1`}>
-          <Spline
-            scene={finalUrl}
-            onLoad={() => setLoaded(true)}
-            onError={(err) => {
-              console.warn('SplineScene failed to load:', finalUrl, err);
-              setError(true);
-            }}
-            style={{ width: '100%', height: '100%' }}
-          />
-        </div>
-      )}
-
-      {/* Overlay vignette: much lighter to let Spline detail shine */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/15 via-transparent to-slate-950/35 pointer-events-none z-2" />
+      {/* Ultra-light bottom vignette — just enough to ground content, not hide Spline */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/[0.04] via-transparent to-black/25 pointer-events-none" />
     </div>
   );
 }

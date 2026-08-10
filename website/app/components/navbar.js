@@ -7,7 +7,7 @@ export default function Navbar() {
     { label: "TECH TEAMS", href: "/techteams" },
     { label: "PORTALS", href: "/portals" },
     { label: "ACHIEVEMENTS", href: "/achievements" },
-    { label: "HALL OF FAME", href: "/hall-of-fame" },
+    { label: "HALL OF FAME", href: "/halloffame" },
   ];
 
   return (

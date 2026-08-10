@@ -31,11 +31,11 @@ export default function HallOfFame() {
       {/* Navbar */}
       <Navbar />
 
-      {/* 3D Spline Background Scene */}
-      <SplineScene url="https://prod.spline.design/7BKUCAYUubE4SAct/scene.splinecode" />
+      {/* 3D Spline Background Scene — interactive */}
+      <SplineScene url="https://prod.spline.design/kHATwDL9c08lufl2/scene.splinecode" interactive={true} />
 
-      {/* Ambient Gradient Overlays */}
-      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,rgba(234,179,8,0.2),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.15),transparent_40%),linear-gradient(180deg,#050505_0%,#0c0903_50%,#020202_100%)] z-1 opacity-70" />
+      {/* Ultra-light accent tint only */}
+      <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,rgba(234,179,8,0.07),transparent_50%),radial-gradient(circle_at_bottom_right,rgba(168,85,247,0.05),transparent_45%)] z-1" />
 
       {/* Content Container */}
       <div className="relative z-10 min-h-screen pt-32 pb-28 px-4 sm:px-6 lg:px-10 max-w-7xl mx-auto space-y-16">

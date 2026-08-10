@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
 import Spline from '@splinetool/react-spline';
 import ITC from './components/ITC';
@@ -19,6 +19,7 @@ export default function Home() {
   const targetProgressRef = useRef(0);
   const animationFrameRef = useRef(null);
   const wheelLockRef = useRef(false);
+  const homeBgRef = useRef(null);
 
   // Secondary sections data
   const [clubs, setClubs] = useState([]);
@@ -144,23 +145,37 @@ export default function Home() {
     };
   }, []);
 
+  // Suppress home bg pointer events while scrolling so scroll isn't captured by Spline
+  useEffect(() => {
+    const el = homeBgRef.current;
+    if (!el) return;
+    let t = null;
+    const onScroll = () => {
+      el.style.pointerEvents = 'none';
+      clearTimeout(t);
+      t = setTimeout(() => { el.style.pointerEvents = 'auto'; }, 300);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => { window.removeEventListener('scroll', onScroll); clearTimeout(t); };
+  }, []);
+
   const itcOpacity = Math.max(0, 1 - scrollProgress * 1.15);
   const aboutOpacity = Math.max(0, Math.min(1, (scrollProgress - 0.18) * 1.18));
   const itcTransform = `translateY(${scrollProgress * -18}px) scale(${1 - scrollProgress * 0.02})`;
   const aboutTransform = `translateY(${Math.max(0, (1 - scrollProgress) * 18)}px) scale(${0.985 + scrollProgress * 0.015})`;
 
   return (
-    <main className="relative bg-black text-white">
+    <main className="relative bg-[#030303] text-[#f0f0f5]" style={{ fontFamily: 'var(--font-body)' }}>
       <Navbar />
 
-      {/* ══ ABOUT SPLINE — fixed background for the entire page ═══════════ */}
-      <div className="pointer-events-none fixed inset-0 z-0">
+      {/* ══ ABOUT SPLINE — fixed, interactive, scroll-aware background ═══════════ */}
+      <div ref={homeBgRef} className="fixed inset-0 z-0 pointer-events-auto">
         <Spline
           scene="https://prod.spline.design/DeRwt5-Ygauh9zYX/scene.splinecode"
-          style={{ width: '100%', height: '100%', transform: 'scale(1.02)' }}
+          style={{ width: '100%', height: '100%', transform: 'scale(1.02)', pointerEvents: 'auto' }}
         />
-        {/* Subtle overlay keeps text readable but lets Spline shine through vibrantly */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.08),transparent_55%),linear-gradient(180deg,rgba(2,4,10,0.02),rgba(2,4,10,0.18)_60%,rgba(2,4,10,0.3))] opacity-90" />
+        {/* Ultra-light bottom vignette only */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none" />
       </div>
 
       {/* ══ HERO SECTION (scroll-based ITC → About) ══════════════════════ */}
@@ -195,42 +210,50 @@ export default function Home() {
           <About />
         </div>
 
-        {/* Scroll hint */}
-        <div className="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2 rounded-full border border-white/10 bg-black/30 px-4 py-2 text-[10px] uppercase tracking-[0.35em] text-white/55 backdrop-blur-md">
-          Scroll to transition
+        {/* Scroll hint with animated chevron */}
+        <div className="pointer-events-none absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+          <span className="rounded-full border border-white/8 bg-white/[0.03] px-5 py-2 text-[10px] font-medium uppercase tracking-[0.4em] text-white/40 backdrop-blur-xl" style={{ fontFamily: 'var(--font-body)' }}>
+            Scroll
+          </span>
+          <svg className="w-4 h-4 text-white/25 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 14l-7 7m0 0l-7-7" />
+          </svg>
         </div>
       </section>
 
       {/* ══ CTA BUTTONS ══════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-20 px-4">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.08),transparent_60%)]" />
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-wrap gap-5 justify-center">
+      <section className="relative z-10 py-24 px-4">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.06),transparent_70%)]" />
+        <div className="relative z-10 max-w-4xl mx-auto flex flex-wrap gap-4 justify-center">
           <Link
             href="/clubs"
-            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-2xl border border-blue-500/30 bg-gradient-to-r from-blue-600 to-blue-500 px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white shadow-[0_5px_30px_rgba(59,130,246,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_40px_rgba(59,130,246,0.5)]"
+            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/10 bg-white/[0.04] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur-2xl transition-all duration-500 hover:scale-[1.03] hover:border-indigo-400/30 hover:bg-indigo-500/10 hover:text-white hover:shadow-[0_0_40px_rgba(99,102,241,0.2)]"
+            style={{ fontFamily: 'var(--font-body)' }}
           >
             <span>Explore Clubs</span>
-            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5 opacity-50 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </Link>
 
           <Link
             href="/techteams"
-            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-2xl border border-white/20 bg-white/5 px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white backdrop-blur-md shadow-[0_5px_30px_rgba(0,0,0,0.3)] transition-all duration-300 hover:scale-105 hover:border-blue-400/40 hover:bg-blue-600/15 hover:shadow-[0_8px_40px_rgba(59,130,246,0.25)]"
+            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/10 bg-white/[0.04] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur-2xl transition-all duration-500 hover:scale-[1.03] hover:border-violet-400/30 hover:bg-violet-500/10 hover:text-white hover:shadow-[0_0_40px_rgba(139,92,246,0.2)]"
+            style={{ fontFamily: 'var(--font-body)' }}
           >
             <span>Tech Teams</span>
-            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5 opacity-50 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </Link>
 
           <Link
             href="/portals"
-            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-2xl border border-purple-500/30 bg-gradient-to-r from-purple-600 to-violet-600 px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white shadow-[0_5px_30px_rgba(147,51,234,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_40px_rgba(147,51,234,0.5)]"
+            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/10 bg-white/[0.04] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur-2xl transition-all duration-500 hover:scale-[1.03] hover:border-purple-400/30 hover:bg-purple-500/10 hover:text-white hover:shadow-[0_0_40px_rgba(168,85,247,0.2)]"
+            style={{ fontFamily: 'var(--font-body)' }}
           >
             <span>Communities</span>
-            <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-3.5 h-3.5 opacity-50 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
           </Link>
@@ -243,11 +266,12 @@ export default function Home() {
 
         <div className="relative z-10 max-w-7xl mx-auto">
           {/* Section heading */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-300 to-pink-400">
+          <div className="text-center mb-20">
+            <span className="inline-block rounded-full border border-white/8 bg-white/[0.03] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white/35 backdrop-blur-xl mb-5" style={{ fontFamily: 'var(--font-body)' }}>Who We Are</span>
+            <h2 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white/95" style={{ fontFamily: 'var(--font-display)' }}>
               Our Family
             </h2>
-            <div className="mt-4 h-px w-20 bg-gradient-to-r from-transparent via-purple-500/60 to-transparent mx-auto" />
+            <div className="mt-5 h-px w-16 bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto" />
           </div>
 
           {/* Clubs */}
@@ -360,11 +384,12 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.08),transparent_60%)]" />
 
           <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-300 to-rose-400">
+            <div className="text-center mb-20">
+              <span className="inline-block rounded-full border border-white/8 bg-white/[0.03] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white/35 backdrop-blur-xl mb-5" style={{ fontFamily: 'var(--font-body)' }}>Milestones</span>
+              <h2 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white/92" style={{ fontFamily: 'var(--font-display)' }}>
                 Recent Achievements
               </h2>
-              <div className="mt-4 h-px w-20 bg-gradient-to-r from-transparent via-pink-500/60 to-transparent mx-auto" />
+              <div className="mt-5 h-px w-14 bg-gradient-to-r from-transparent via-white/18 to-transparent mx-auto" />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -433,11 +458,12 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(234,179,8,0.08),transparent_55%),radial-gradient(circle_at_bottom,rgba(59,130,246,0.06),transparent_55%)]" />
 
           <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-300 to-amber-400">
+            <div className="text-center mb-20">
+              <span className="inline-block rounded-full border border-white/8 bg-white/[0.03] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white/35 backdrop-blur-xl mb-5" style={{ fontFamily: 'var(--font-body)' }}>Hall of Fame</span>
+              <h2 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white/92" style={{ fontFamily: 'var(--font-display)' }}>
                 Latest Inter IIT Tech Meet
               </h2>
-              <div className="mt-4 h-px w-20 bg-gradient-to-r from-transparent via-amber-500/60 to-transparent mx-auto" />
+              <div className="mt-5 h-px w-14 bg-gradient-to-r from-transparent via-white/18 to-transparent mx-auto" />
             </div>
 
             {/* Card */}
@@ -543,11 +569,12 @@ export default function Home() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.07),transparent_60%)]" />
 
           <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-300 to-rose-400">
+            <div className="text-center mb-20">
+              <span className="inline-block rounded-full border border-white/8 bg-white/[0.03] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white/35 backdrop-blur-xl mb-5" style={{ fontFamily: 'var(--font-body)' }}>Transparency</span>
+              <h2 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white/92" style={{ fontFamily: 'var(--font-display)' }}>
                 Work Reports
               </h2>
-              <div className="mt-4 h-px w-20 bg-gradient-to-r from-transparent via-purple-500/60 to-transparent mx-auto" />
+              <div className="mt-5 h-px w-14 bg-gradient-to-r from-transparent via-white/18 to-transparent mx-auto" />
             </div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
