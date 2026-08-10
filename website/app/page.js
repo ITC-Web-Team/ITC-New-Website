@@ -290,10 +290,10 @@ export default function Home() {
           {/* Clubs */}
           {clubs.length > 0 && (
             <div className="mb-16">
-              <h3 className="text-[11px] font-medium uppercase tracking-[0.45em] text-white/30 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-body)' }}>
-                <span className="text-3xl sm:text-3xl font-extrabold tracking-tight text-white/95" />
+              <h3 className="text-[13px] font-extrabold uppercase tracking-[0.32em] text-white/80 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-display)' }}>
+                <span className="h-px flex-1 bg-white/10" />
                 Clubs
-                <span className="h-px flex-1 bg-white/8" />
+                <span className="h-px flex-1 bg-white/10" />
               </h3>
               <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
                 {clubs.map((club) => (
@@ -324,10 +324,10 @@ export default function Home() {
           {/* Tech Teams */}
           {techTeams.length > 0 && (
             <div className="mb-16">
-              <h3 className="text-[11px] font-medium uppercase tracking-[0.45em] text-white/30 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-body)' }}>
-                <span className="text-3xl sm:text-3xl font-extrabold tracking-tight text-white/95"/>
+              <h3 className="text-[13px] font-extrabold uppercase tracking-[0.32em] text-white/80 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-display)' }}>
+                <span className="h-px flex-1 bg-white/10" />
                 Tech Teams
-                <span className="h-px flex-1 bg-white/8" />
+                <span className="h-px flex-1 bg-white/10" />
               </h3>
               <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
                 {techTeams.map((team) => (
@@ -358,10 +358,10 @@ export default function Home() {
           {/* Communities */}
           {communities.length > 0 && (
             <div>
-              <h3 className="text-[11px] font-medium uppercase tracking-[0.45em] text-white/30 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-body)' }}>
-                <span className="text-3xl sm:text-3xl font-extrabold tracking-tight text-white/95"/>
+              <h3 className="text-[13px] font-extrabold uppercase tracking-[0.32em] text-white/80 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-display)' }}>
+                <span className="h-px flex-1 bg-white/10" />
                 Communities
-                <span className="h-px flex-1 bg-white/8" />
+                <span className="h-px flex-1 bg-white/10" />
               </h3>
               <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
                 {communities.map((community) => (
