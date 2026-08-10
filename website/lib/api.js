@@ -1,16 +1,23 @@
 /**
  * API client utility for Next.js frontend
- * Uses same-origin /api rewrite proxy to eliminate browser CORS and SSL issues
- * Includes client-side fallbacks to ensure pages never crash on missing API endpoints
+ * Calls the backend directly — CORS_ALLOW_ALL_ORIGINS=True is set on Django.
+ * No proxy needed. Works from both browser and Next.js server.
  */
 
 const getApiBase = () => {
   if (typeof window !== 'undefined') {
-    return '/api';
+    // Browser always hits the public backend directly. CORS is allowed.
+    return 'https://backend.tech-iitb.org/api';
   }
-  const envUrl = process.env.BACKEND_INTERNAL_URL || process.env.NEXT_PUBLIC_API_URL || 'https://backend.tech-iitb.org/api';
-  return envUrl.replace(/\/+$/, '');
+  // Server-side uses the env var if available, otherwise falls back to public url
+  return (
+    process.env.BACKEND_INTERNAL_URL ||
+    process.env.NEXT_PUBLIC_API_URL ||
+    'https://backend.tech-iitb.org/api'
+  ).replace(/\/+$/, '');
 };
+
+
 
 export async function fetchAPI(endpoint, options = {}) {
   const apiBase = getApiBase();
