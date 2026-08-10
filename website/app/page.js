@@ -277,10 +277,10 @@ export default function Home() {
           {/* Clubs */}
           {clubs.length > 0 && (
             <div className="mb-16">
-              <h3 className="text-xl font-bold text-blue-400 uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
-                <span className="h-px flex-1 bg-gradient-to-r from-blue-500/40 to-transparent" />
+              <h3 className="text-[11px] font-medium uppercase tracking-[0.45em] text-white/30 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-body)' }}>
+                <span className="h-px flex-1 bg-white/8" />
                 Clubs
-                <span className="h-px flex-1 bg-gradient-to-l from-blue-500/40 to-transparent" />
+                <span className="h-px flex-1 bg-white/8" />
               </h3>
               <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
                 {clubs.map((club) => (
@@ -311,10 +311,10 @@ export default function Home() {
           {/* Tech Teams */}
           {techTeams.length > 0 && (
             <div className="mb-16">
-              <h3 className="text-xl font-bold text-purple-400 uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
-                <span className="h-px flex-1 bg-gradient-to-r from-purple-500/40 to-transparent" />
+              <h3 className="text-[11px] font-medium uppercase tracking-[0.45em] text-white/30 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-body)' }}>
+                <span className="h-px flex-1 bg-white/8" />
                 Tech Teams
-                <span className="h-px flex-1 bg-gradient-to-l from-purple-500/40 to-transparent" />
+                <span className="h-px flex-1 bg-white/8" />
               </h3>
               <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
                 {techTeams.map((team) => (
@@ -345,10 +345,10 @@ export default function Home() {
           {/* Communities */}
           {communities.length > 0 && (
             <div>
-              <h3 className="text-xl font-bold text-pink-400 uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
-                <span className="h-px flex-1 bg-gradient-to-r from-pink-500/40 to-transparent" />
+              <h3 className="text-[11px] font-medium uppercase tracking-[0.45em] text-white/30 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-body)' }}>
+                <span className="h-px flex-1 bg-white/8" />
                 Communities
-                <span className="h-px flex-1 bg-gradient-to-l from-pink-500/40 to-transparent" />
+                <span className="h-px flex-1 bg-white/8" />
               </h3>
               <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
                 {communities.map((community) => (
