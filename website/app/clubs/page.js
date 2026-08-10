@@ -82,8 +82,21 @@ function buildClubEntry({ Component, fallbackName, preload, body }) {
 
 export default function ClubsPage() {
   const sectionRefs   = useRef([]);
-  const [clubs,       setClubs]       = useState(null); // null = loading
-  const [seenSections, setSeenSections] = useState([]);
+  
+  // Pre-initialize with Intro slide so it mounts and preloads its Spline scene instantly on page load
+  const [clubs, setClubs] = useState([
+    {
+      Component:       Intro,
+      clubName:        'Intro',
+      description:     '',
+      websiteUrl:      null,
+      instagramHandle: null,
+      linkedinUrl:     null,
+      splineScene:     CLUB_SPLINE.Intro,
+      preload:         true,
+    }
+  ]);
+  const [seenSections, setSeenSections] = useState([true]);
 
   // ── Fetch clubs from backend, merge with component map ──────────────────
   useEffect(() => {
@@ -95,26 +108,14 @@ export default function ClubsPage() {
         return buildClubEntry({ ...cfg, body });
       });
 
-      // Prepend the Intro slide (no DB entry, preloaded by default)
-      const introEntry = {
-        Component:       Intro,
-        clubName:        'Intro',
-        description:     '',
-        websiteUrl:      null,
-        instagramHandle: null,
-        linkedinUrl:     null,
-        splineScene:     CLUB_SPLINE.Intro,
-        preload:         true,
-      };
-
-      setClubs([introEntry, ...ordered]);
-      setSeenSections([true, ...ordered.map(() => false)]);
+      setClubs((prev) => [prev[0], ...ordered]);
+      setSeenSections((prev) => [true, ...ordered.map(() => false)]);
     });
   }, []);
 
   // ── Intersection observer (lazy-render Spline scenes) ────────────────────
   useEffect(() => {
-    if (!clubs) return;
+    if (!clubs || clubs.length <= 1) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -140,13 +141,11 @@ export default function ClubsPage() {
 
   const clubSections = useMemo(
     () =>
-      clubs
-        ? clubs.map((club, index) => ({
-            ...club,
-            isVisible: seenSections[index] ?? false,
-            ref: (node) => { sectionRefs.current[index] = node; },
-          }))
-        : [],
+      clubs.map((club, index) => ({
+        ...club,
+        isVisible: seenSections[index] ?? false,
+        ref: (node) => { sectionRefs.current[index] = node; },
+      })),
     [clubs, seenSections],
   );
 
@@ -156,36 +155,29 @@ export default function ClubsPage() {
 
       <div className="pointer-events-none fixed inset-0 bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.16),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.08),transparent_30%)]" />
 
-      {clubs === null ? (
-        // Loading state — keep the page from jumping
-        <div className="flex min-h-screen items-center justify-center">
-          <div className="h-6 w-6 animate-spin rounded-full border-2 border-white/10 border-t-white/60" />
-        </div>
-      ) : (
-        clubSections.map((club, index) => {
-          const ClubComponent = club.Component;
-          return (
-            <div
-              key={club.clubName}
-              ref={club.ref}
-              data-section-index={index}
-              className="relative"
-            >
-              <ClubComponent
-                index={index}
-                isVisible={club.isVisible}
-                clubName={club.clubName}
-                description={club.description}
-                websiteUrl={club.websiteUrl}
-                instagramHandle={club.instagramHandle}
-                linkedinUrl={club.linkedinUrl}
-                splineScene={club.splineScene}
-                preload={club.preload}
-              />
-            </div>
-          );
-        })
-      )}
+      {clubSections.map((club, index) => {
+        const ClubComponent = club.Component;
+        return (
+          <div
+            key={club.clubName}
+            ref={club.ref}
+            data-section-index={index}
+            className="relative"
+          >
+            <ClubComponent
+              index={index}
+              isVisible={club.isVisible}
+              clubName={club.clubName}
+              description={club.description}
+              websiteUrl={club.websiteUrl}
+              instagramHandle={club.instagramHandle}
+              linkedinUrl={club.linkedinUrl}
+              splineScene={club.splineScene}
+              preload={club.preload}
+            />
+          </div>
+        );
+      })}
     </main>
   );
 }
