@@ -74,12 +74,27 @@ export default function Home() {
     load();
   }, []);
 
+  // Lock normal scrolling while the transition is not fully complete (scrollProgress < 1)
+  useEffect(() => {
+    if (scrollProgress < 1) {
+      document.body.style.overflow = 'hidden';
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, [scrollProgress]);
+
   // ── Smooth wheel-scroll transition logic ──────────────────────────────────
   useEffect(() => {
     const animateProgress = () => {
       setScrollProgress((cur) => {
-        const next = cur + (targetProgressRef.current - cur) * 0.18;
-        if (Math.abs(targetProgressRef.current - next) < 0.002) {
+        const next = cur + (targetProgressRef.current - cur) * 0.12; // slightly slower, smoother transition ease
+        if (Math.abs(targetProgressRef.current - next) < 0.001) {
           animationFrameRef.current = null;
           return targetProgressRef.current;
         }
@@ -89,21 +104,23 @@ export default function Home() {
     };
 
     const handleWheel = (event) => {
-      // Only intercept while at the very top of the page
-      if (window.scrollY > 20) return;
+      // If we are below the fold, let normal scrolling happen
+      if (window.scrollY > 0) return;
 
       const direction = event.deltaY > 0 ? 1 : -1;
 
-      // Scrolling DOWN but transition already complete → release to normal scroll
+      // Scrolling DOWN but transition already complete → let normal scroll handle it
       if (direction > 0 && targetProgressRef.current >= 1) return;
-      // Scrolling UP but already at the beginning → release to normal scroll
+      // Scrolling UP but already at the beginning → let normal scroll handle it
       if (direction < 0 && targetProgressRef.current <= 0) return;
 
-      // We are mid-transition: take over scrolling
+      // We are in the transition phase: block default scrolling!
       event.preventDefault();
+
       if (wheelLockRef.current) return;
 
-      const step = 0.8;
+      // 1.0 step triggers transition in a single distinct wheel scroll action
+      const step = 1.0;
       targetProgressRef.current = Math.max(
         0,
         Math.min(1, targetProgressRef.current + direction * step)
@@ -116,7 +133,7 @@ export default function Home() {
       wheelLockRef.current = true;
       window.setTimeout(() => {
         wheelLockRef.current = false;
-      }, 400);
+      }, 800); // lock wheel inputs during active animation transition
     };
 
     window.addEventListener('wheel', handleWheel, { passive: false });
@@ -142,8 +159,8 @@ export default function Home() {
           scene="https://prod.spline.design/DeRwt5-Ygauh9zYX/scene.splinecode"
           style={{ width: '100%', height: '100%', transform: 'scale(1.02)' }}
         />
-        {/* Subtle overlay keeps text readable */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.1),transparent_40%),linear-gradient(180deg,rgba(2,4,10,0.05),rgba(2,4,10,0.45)_60%,rgba(2,4,10,0.65))]" />
+        {/* Subtle overlay keeps text readable but lets Spline shine through vibrantly */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(99,102,241,0.08),transparent_55%),linear-gradient(180deg,rgba(2,4,10,0.02),rgba(2,4,10,0.18)_60%,rgba(2,4,10,0.3))] opacity-90" />
       </div>
 
       {/* ══ HERO SECTION (scroll-based ITC → About) ══════════════════════ */}

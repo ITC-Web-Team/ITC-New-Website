@@ -68,8 +68,8 @@ export default function SplineScene({ url, scene, className = '', interactive = 
         </div>
       )}
 
-      {/* Overlay vignette */}
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/80 pointer-events-none z-2" />
+      {/* Overlay vignette: much lighter to let Spline detail shine */}
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/15 via-transparent to-slate-950/35 pointer-events-none z-2" />
     </div>
   );
 }
