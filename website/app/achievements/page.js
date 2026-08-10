@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react';
 import Navbar from '../components/navbar';
 import SplineScene from '@/app/components/SplineScene';
 import { fetchAchievementsByYear, fetchBodiesForFilter } from '@/lib/api';
+import Footer from '../components/footer';
 
 export default function Achievements() {
   const [achievementsByYear, setAchievementsByYear] = useState({});
@@ -248,6 +249,7 @@ export default function Achievements() {
           </div>
         )}
       </div>
+      <Footer />
     </main>
   );
 }

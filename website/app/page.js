@@ -6,6 +6,7 @@ import Spline from '@splinetool/react-spline';
 import ITC from './components/ITC';
 import About from './components/about';
 import Navbar from './components/navbar';
+import Footer from './components/footer';
 import {
   fetchBodies,
   fetchAchievements,
@@ -633,8 +634,7 @@ export default function Home() {
         </section>
       )}
 
-      {/* ══ FOOTER SPACER ════════════════════════════════════════════════ */}
-      <div className="h-24 bg-gradient-to-t from-black/80 to-transparent" />
+      <Footer />
     </main>
   );
 }

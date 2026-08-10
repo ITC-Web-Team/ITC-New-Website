@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import SplineScene from '@/app/components/SplineScene';
 import { fetchBodies } from '@/lib/api';
+import Footer from '../components/footer';
 
 export default function TechTeams() {
   const [bodies, setBodies] = useState([]);
@@ -126,6 +127,7 @@ export default function TechTeams() {
           </div>
         )}
       </div>
+      <Footer />
     </main>
   );
 }

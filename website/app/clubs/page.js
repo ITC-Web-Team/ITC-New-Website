@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 import Intro from '../components/Club_Comps/intro';
 import Krittika from '../components/Club_Comps/Krittika';
 import Aeromodelling from '../components/Club_Comps/Aeromoddelling';
@@ -178,6 +179,7 @@ export default function ClubsPage() {
           </div>
         );
       })}
+      <Footer />
     </main>
   );
 }

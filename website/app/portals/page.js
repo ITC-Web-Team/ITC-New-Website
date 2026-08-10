@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import SplineScene from '@/app/components/SplineScene';
 import { fetchPortals } from '@/lib/api';
+import Footer from '../components/footer';
 
 export default function Portals() {
   const [portals, setPortals] = useState([]);
@@ -147,6 +148,7 @@ export default function Portals() {
           </div>
         )}
       </div>
+      <Footer />
     </main>
   );
 }

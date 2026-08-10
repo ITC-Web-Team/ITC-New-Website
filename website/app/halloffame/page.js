@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import SplineScene from '@/app/components/SplineScene';
 import { fetchInterIIT } from '@/lib/api';
+import Footer from '../components/footer';
 
 export default function HallOfFame() {
   const [items, setItems] = useState([]);
@@ -186,6 +187,7 @@ export default function HallOfFame() {
           </div>
         )}
       </div>
+      <Footer />
     </main>
   );
 }

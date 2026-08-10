@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import SplineScene from '@/app/components/SplineScene';
 import { fetchCabinet } from '@/lib/api';
+import Footer from '../components/footer';
 
 export default function Contact() {
   const [cabinet, setCabinet] = useState([]);
@@ -197,6 +198,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }
