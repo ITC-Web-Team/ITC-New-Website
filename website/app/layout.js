@@ -1,4 +1,5 @@
 import "./globals.css";
+import MobileBlock from "./components/MobileBlock";
 
 export const metadata = {
   title: "Institute Technical Council | IIT Bombay",
@@ -9,7 +10,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <MobileBlock />
+        {children}
+      </body>
     </html>
   );
 }
