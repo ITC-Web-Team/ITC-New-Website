@@ -87,9 +87,10 @@ def achievement_list(request):
     
     achievements_by_year = defaultdict(list)
     for achievement in achievements.order_by('-date'):
-        achievements_by_year[achievement.date.year].append(achievement)
+        year = achievement.date.year if achievement.date else 2026
+        achievements_by_year[year].append(achievement)
     
-    sorted_achievements = dict(sorted(achievements_by_year.items(), reverse=True))
+    sorted_achievements = dict(sorted(achievements_by_year.items(), key=lambda x: int(x[0]) if str(x[0]).isdigit() else 0, reverse=True))
     
     context = {
         'achievements_by_year': sorted_achievements,

@@ -77,11 +77,11 @@ class AchievementViewSet(viewsets.ReadOnlyModelViewSet):
         
         achievements_by_year = defaultdict(list)
         for achievement in achievements.order_by('-date'):
-            year = achievement.date.year
+            year = achievement.date.year if achievement.date else 2026
             achievements_by_year[year].append(AchievementSerializer(achievement).data)
         
-        # Sort by year descending
-        sorted_achievements = dict(sorted(achievements_by_year.items(), reverse=True))
+        # Sort by year descending, converting keys to strings/ints safely
+        sorted_achievements = dict(sorted(achievements_by_year.items(), key=lambda x: int(x[0]) if str(x[0]).isdigit() else 0, reverse=True))
         
         return Response(sorted_achievements)
     
