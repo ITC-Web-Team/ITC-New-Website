@@ -45,17 +45,17 @@ const CLUB_SPLINE = {
 // ── Ordered component map (Aeromodelling is last among clubs) ─────────────────
 // Key: lowercase name used for matching DB entries
 const CLUB_COMPONENTS = [
-  { key: 'krittika',      Component: Krittika,      fallbackName: 'Krittika'      },
-  { key: 'wncc',          Component: WnCC,           fallbackName: 'WNCC'          },
-  { key: 'mnp',           Component: Mnp,            fallbackName: 'MnP'           },
-  { key: 'csec',          Component: Csec,           fallbackName: 'CSEC'          },
-  { key: 'biox',          Component: Biox,           fallbackName: 'BioX'          },
-  { key: 'erc',           Component: Erc,            fallbackName: 'ERC'           },
-  { key: 'tinkerers',     Component: Tl,             fallbackName: 'Tinkerers Lab' },
-  { key: 'energy',        Component: Energy,         fallbackName: 'Energy Club'   },
-  { key: 'chemetl',       Component: Chemetl,        fallbackName: 'ChemETL'       },
-  { key: 'quant',         Component: Quant,          fallbackName: 'Quant Club'    },
-  { key: 'aeromodelling', Component: Aeromodelling,  fallbackName: 'Aeromodelling' },
+  { key: 'krittika',      Component: Krittika,      fallbackName: 'Krittika',      preload: true  },
+  { key: 'wncc',          Component: WnCC,           fallbackName: 'WNCC',           preload: false },
+  { key: 'mnp',           Component: Mnp,            fallbackName: 'MnP',            preload: false },
+  { key: 'csec',          Component: Csec,           fallbackName: 'CSEC',           preload: true  },
+  { key: 'biox',          Component: Biox,           fallbackName: 'BioX',           preload: false },
+  { key: 'erc',           Component: Erc,            fallbackName: 'ERC',            preload: false },
+  { key: 'tinkerers',     Component: Tl,             fallbackName: 'Tinkerers Lab', preload: false },
+  { key: 'energy',        Component: Energy,         fallbackName: 'Energy Club',   preload: false },
+  { key: 'chemetl',       Component: Chemetl,        fallbackName: 'ChemETL',       preload: false },
+  { key: 'quant',         Component: Quant,          fallbackName: 'Quant Club',    preload: false },
+  { key: 'aeromodelling', Component: Aeromodelling,  fallbackName: 'Aeromodelling', preload: true  },
 ];
 
 // Match a DB body to one of our component keys (case-insensitive substring)
@@ -65,7 +65,7 @@ function matchComponent(body) {
 }
 
 // Build a club entry, merging DB data with static UI config
-function buildClubEntry({ Component, fallbackName, body }) {
+function buildClubEntry({ Component, fallbackName, preload, body }) {
   const name    = body?.name        || fallbackName;
   const spline  = CLUB_SPLINE[name] || CLUB_SPLINE[fallbackName] || '';
   return {
@@ -76,6 +76,7 @@ function buildClubEntry({ Component, fallbackName, body }) {
     instagramHandle: body?.instagram   || null,
     linkedinUrl:     body?.linkedin    || null,
     splineScene:     spline,
+    preload,
   };
 }
 
@@ -94,7 +95,7 @@ export default function ClubsPage() {
         return buildClubEntry({ ...cfg, body });
       });
 
-      // Prepend the Intro slide (no DB entry)
+      // Prepend the Intro slide (no DB entry, preloaded by default)
       const introEntry = {
         Component:       Intro,
         clubName:        'Intro',
@@ -103,6 +104,7 @@ export default function ClubsPage() {
         instagramHandle: null,
         linkedinUrl:     null,
         splineScene:     CLUB_SPLINE.Intro,
+        preload:         true,
       };
 
       setClubs([introEntry, ...ordered]);
@@ -178,6 +180,7 @@ export default function ClubsPage() {
                 instagramHandle={club.instagramHandle}
                 linkedinUrl={club.linkedinUrl}
                 splineScene={club.splineScene}
+                preload={club.preload}
               />
             </div>
           );
