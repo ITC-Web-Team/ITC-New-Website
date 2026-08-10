@@ -291,7 +291,7 @@ export default function Home() {
           {clubs.length > 0 && (
             <div className="mb-16">
               <h3 className="text-[13px] font-extrabold uppercase tracking-[0.32em] text-white/80 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-display)' }}>
-                <span className="h-px flex-1 bg-white/10" />
+                <span className="h-px flex-1 text-3xl bg-white/10" />
                 Clubs
                 <span className="h-px flex-1 bg-white/10" />
               </h3>
@@ -325,7 +325,7 @@ export default function Home() {
           {techTeams.length > 0 && (
             <div className="mb-16">
               <h3 className="text-[13px] font-extrabold uppercase tracking-[0.32em] text-white/80 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-display)' }}>
-                <span className="h-px flex-1 bg-white/10" />
+                <span className="h-px flex-1 text-3xl bg-white/10" />
                 Tech Teams
                 <span className="h-px flex-1 bg-white/10" />
               </h3>
@@ -359,7 +359,7 @@ export default function Home() {
           {communities.length > 0 && (
             <div>
               <h3 className="text-[13px] font-extrabold uppercase tracking-[0.32em] text-white/80 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-display)' }}>
-                <span className="h-px flex-1 bg-white/10" />
+                <span className="h-px text-3xl flex-1 bg-white/10" />
                 Communities
                 <span className="h-px flex-1 bg-white/10" />
               </h3>
