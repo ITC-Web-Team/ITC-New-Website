@@ -45,7 +45,7 @@ const CLUB_SPLINE = {
 // ── Ordered component map (Aeromodelling is last among clubs) ─────────────────
 // Key: lowercase name used for matching DB entries
 const CLUB_COMPONENTS = [
-  { key: 'krittika',      Component: Krittika,      fallbackName: 'Krittika',      preload: true  },
+  { key: 'krittika',      Component: Krittika,      fallbackName: 'Krittika',      preload: false  },
   { key: 'wncc',          Component: WnCC,           fallbackName: 'WNCC',           preload: false },
   { key: 'mnp',           Component: Mnp,            fallbackName: 'MnP',            preload: false },
   { key: 'csec',          Component: Csec,           fallbackName: 'CSEC',           preload: true  },
