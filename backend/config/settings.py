@@ -48,6 +48,7 @@ INSTALLED_APPS = [
 
 # Middleware settings
 MIDDLEWARE = [
+    'config.middleware.TracebackMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
