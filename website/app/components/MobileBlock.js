@@ -61,19 +61,42 @@ export default function MobileBlock() {
       </h1>
 
       {/* Sub-text */}
-      <p
-        style={{
-          fontSize: '0.8rem',
-          color: 'rgba(255,255,255,0.3)',
-          letterSpacing: '0.05em',
-          lineHeight: 1.7,
-          maxWidth: '260px',
-          marginBottom: '2.5rem',
-        }}
-      >
-        This experience is designed for larger screens.<br />
-        Please open it on a laptop or desktop.
-      </p>
+<p
+  style={{
+    fontSize: '0.8rem',
+    color: 'rgba(255,255,255,0.3)',
+    letterSpacing: '0.05em',
+    lineHeight: 1.7,
+    maxWidth: '260px',
+    marginBottom: '2rem',
+  }}
+>
+  This experience is designed for larger screens.<br />
+  Please open it on a laptop or desktop.
+</p>
+
+<a
+  href="https://mobile.tech-iitb.org/"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '12px 24px',
+    borderRadius: '999px',
+    background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+    color: '#fff',
+    fontSize: '0.85rem',
+    fontWeight: 600,
+    textDecoration: 'none',
+    marginBottom: '2.5rem',
+    boxShadow: '0 8px 24px rgba(99,102,241,0.25)',
+    transition: 'all 0.2s ease',
+  }}
+>
+  Continue on Mobile →
+</a>
 
       {/* Divider */}
       <div
