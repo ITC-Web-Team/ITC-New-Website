@@ -8,6 +8,16 @@ const nextConfig = {
     root: process.cwd(),
   },
 
+  compress: true,
+
+  async headers() {
+    const longCache = [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }];
+    return [
+      { source: '/img/:path*', headers: longCache },
+      { source: '/media/:path*', headers: longCache },
+    ];
+  },
+
   // /api/* is handled by app/api/[...slug]/route.js — no rewrites needed
 
   images: {
