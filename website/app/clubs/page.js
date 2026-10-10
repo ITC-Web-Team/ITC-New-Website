@@ -98,6 +98,8 @@ export default function ClubsPage() {
     }
   ]);
   const [seenSections, setSeenSections] = useState([true]);
+  // Which sections currently have their Spline scene mounted (unloaded again once scrolled away)
+  const [mountedSections, setMountedSections] = useState([true]);
 
   // ── Fetch clubs from backend, merge with component map ──────────────────
   useEffect(() => {
@@ -111,6 +113,7 @@ export default function ClubsPage() {
 
       setClubs((prev) => [prev[0], ...ordered]);
       setSeenSections((prev) => [true, ...ordered.map(() => false)]);
+      setMountedSections([true, ...ordered.map(() => false)]);
     });
   }, []);
 
@@ -120,6 +123,21 @@ export default function ClubsPage() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        setMountedSections((current) => {
+          const next = [...current];
+          let changed = false;
+          for (const entry of entries) {
+            const idx = Number(entry.target.getAttribute('data-section-index'));
+            if (!entry.isIntersecting && next[idx]) {
+              next[idx] = false; // fully scrolled away → unload scene
+              changed = true;
+            } else if (entry.isIntersecting && entry.intersectionRatio >= 0.45 && !next[idx]) {
+              next[idx] = true;
+              changed = true;
+            }
+          }
+          return changed ? next : current;
+        });
         setSeenSections((current) => {
           const next = [...current];
           let changed = false;
@@ -133,7 +151,7 @@ export default function ClubsPage() {
           return changed ? next : current;
         });
       },
-      { threshold: 0.45, rootMargin: '0px 0px -10% 0px' },
+      { threshold: [0, 0.45], rootMargin: '0px 0px -10% 0px' },
     );
 
     sectionRefs.current.forEach((el) => { if (el) observer.observe(el); });
@@ -145,9 +163,10 @@ export default function ClubsPage() {
       clubs.map((club, index) => ({
         ...club,
         isVisible: seenSections[index] ?? false,
+        mountScene: mountedSections[index] ?? false,
         ref: (node) => { sectionRefs.current[index] = node; },
       })),
-    [clubs, seenSections],
+    [clubs, seenSections, mountedSections],
   );
 
   return (
@@ -174,7 +193,7 @@ export default function ClubsPage() {
               instagramHandle={club.instagramHandle}
               linkedinUrl={club.linkedinUrl}
               splineScene={club.splineScene}
-              preload={club.preload}
+              mountScene={club.mountScene}
             />
           </div>
         );
