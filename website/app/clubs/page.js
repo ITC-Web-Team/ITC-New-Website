@@ -100,6 +100,12 @@ export default function ClubsPage() {
   const [seenSections, setSeenSections] = useState([true]);
   // Only scenes within ±1 of the active section stay mounted (frees WebGL contexts)
   const [activeIndex, setActiveIndex] = useState(0);
+  // Neighbours mount only after the active scene has had time to load (avoids parallel loads while scrolling)
+  const [settledIndex, setSettledIndex] = useState(0);
+  useEffect(() => {
+    const t = setTimeout(() => setSettledIndex(activeIndex), 700);
+    return () => clearTimeout(t);
+  }, [activeIndex]);
 
   // ── Fetch clubs from backend, merge with component map ──────────────────
   useEffect(() => {
@@ -181,7 +187,8 @@ export default function ClubsPage() {
               instagramHandle={club.instagramHandle}
               linkedinUrl={club.linkedinUrl}
               splineScene={club.splineScene}
-              mountScene={Math.abs(index - activeIndex) <= 1}
+              active={index === activeIndex}
+              mountScene={index === activeIndex || (settledIndex === activeIndex && Math.abs(index - activeIndex) <= 1)}
             />
           </div>
         );

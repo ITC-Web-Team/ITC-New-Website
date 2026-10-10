@@ -24,6 +24,7 @@ export default function ClubSection({
   isVisible,
   index,
   mountScene = true,
+  active = true,
 }) {
   const shouldRenderScene = mountScene;
 
@@ -32,22 +33,22 @@ export default function ClubSection({
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.2),transparent_28%),linear-gradient(180deg,#050505_0%,#07040f_48%,#020202_100%)]" />
 
       <div
-        className={`relative flex h-full w-full flex-col overflow-hidden border border-white/10 bg-white/2 shadow-[0_30px_100px_rgba(0,0,0,0.48)] transition-all duration-700 ease-out ${
-          isVisible ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-10 opacity-0 blur-[1px]'
+        className={`relative flex h-full w-full flex-col overflow-hidden border border-white/10 bg-white/2 shadow-[0_30px_100px_rgba(0,0,0,0.48)] transition-opacity duration-700 ease-out ${
+          isVisible ? 'opacity-100' : 'opacity-0'
         }`}
       >
         <div className="relative h-full flex-1">
           <div className="pointer-events-auto absolute inset-0">
-            {shouldRenderScene && splineScene ? <SplineScene scene={splineScene} isVisible={isVisible} /> : null}
+            {shouldRenderScene && splineScene ? <SplineScene scene={splineScene} isVisible={isVisible} active={active} /> : null}
           </div>
 
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.08)_48%,rgba(0,0,0,0.42)_100%)]" />
 
           <div className="pointer-events-none absolute inset-x-5 top-5 z-20 flex items-center justify-between sm:inset-x-7 lg:inset-x-10">
-            <span className="rounded-full border border-white/12 bg-black/30 px-3 py-1.5 text-[10px] uppercase tracking-[0.35em] text-white/65 backdrop-blur-md sm:px-4">
+            <span className="rounded-full border border-white/12 bg-black/60 px-3 py-1.5 text-[10px] uppercase tracking-[0.35em] text-white/65 sm:px-4">
               {String(index + 1).padStart(2, '0')}
             </span>
-            <span className="rounded-full border border-white/12 bg-black/30 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/55 backdrop-blur-md sm:px-4">
+            <span className="rounded-full border border-white/12 bg-black/60 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/55 sm:px-4">
               Scroll to transition
             </span>
           </div>
