@@ -98,6 +98,8 @@ export default function ClubsPage() {
     }
   ]);
   const [seenSections, setSeenSections] = useState([true]);
+  // Only scenes within ±1 of the active section stay mounted (frees WebGL contexts)
+  const [activeIndex, setActiveIndex] = useState(0);
 
   // ── Fetch clubs from backend, merge with component map ──────────────────
   useEffect(() => {
@@ -120,6 +122,11 @@ export default function ClubsPage() {
 
     const observer = new IntersectionObserver(
       (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActiveIndex(Number(entry.target.getAttribute('data-section-index')));
+          }
+        }
         setSeenSections((current) => {
           const next = [...current];
           let changed = false;
@@ -174,7 +181,7 @@ export default function ClubsPage() {
               instagramHandle={club.instagramHandle}
               linkedinUrl={club.linkedinUrl}
               splineScene={club.splineScene}
-              preload={club.preload}
+              mountScene={Math.abs(index - activeIndex) <= 1}
             />
           </div>
         );
