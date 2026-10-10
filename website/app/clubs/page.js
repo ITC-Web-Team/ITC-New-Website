@@ -187,7 +187,6 @@ export default function ClubsPage() {
               instagramHandle={club.instagramHandle}
               linkedinUrl={club.linkedinUrl}
               splineScene={club.splineScene}
-              active={index === activeIndex}
               mountScene={index === activeIndex || (settledIndex === activeIndex && Math.abs(index - activeIndex) <= 1)}
             />
           </div>

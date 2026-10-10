@@ -6,9 +6,8 @@ import dynamic from 'next/dynamic';
 // Lazy-load the Spline runtime so it isn't in the initial bundle
 const Spline = dynamic(() => import('@splinetool/react-spline'), { ssr: false });
 
-export default function SplineScene({ scene, isVisible, active = true }) {
+export default function SplineScene({ scene, isVisible }) {
   const containerRef = useRef(null);
-  const appRef = useRef(null);
   const [loaded, setLoaded] = useState(false);
 
   // Suppress pointer events during scrolling so that Spline doesn't capture the scroll wheel
@@ -33,16 +32,6 @@ export default function SplineScene({ scene, isVisible, active = true }) {
     };
   }, []);
 
-  // Only the on-screen scene renders frames; neighbours are loaded but paused
-  useEffect(() => {
-    const app = appRef.current;
-    if (!app) return;
-    try {
-      if (active) app.play?.();
-      else app.stop?.();
-    } catch {}
-  }, [active, loaded]);
-
   return (
     <div ref={containerRef} className="relative h-full w-full overflow-hidden pointer-events-auto">
       {!loaded && (
@@ -53,10 +42,7 @@ export default function SplineScene({ scene, isVisible, active = true }) {
       <div className={`absolute inset-0 transition-opacity duration-700 ease-out ${isVisible && loaded ? 'opacity-100' : 'opacity-0'}`}>
         <Spline
           scene={scene}
-          onLoad={(app) => {
-            appRef.current = app;
-            setLoaded(true);
-          }}
+          onLoad={() => setLoaded(true)}
           style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}
         />
       </div>

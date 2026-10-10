@@ -24,7 +24,6 @@ export default function ClubSection({
   isVisible,
   index,
   mountScene = true,
-  active = true,
 }) {
   const shouldRenderScene = mountScene;
 
@@ -39,7 +38,7 @@ export default function ClubSection({
       >
         <div className="relative h-full flex-1">
           <div className="pointer-events-auto absolute inset-0">
-            {shouldRenderScene && splineScene ? <SplineScene scene={splineScene} isVisible={isVisible} active={active} /> : null}
+            {shouldRenderScene && splineScene ? <SplineScene scene={splineScene} isVisible={isVisible} /> : null}
           </div>
 
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.08)_48%,rgba(0,0,0,0.42)_100%)]" />
