@@ -23,9 +23,9 @@ export default function ClubSection({
   splineScene,
   isVisible,
   index,
-  mountScene = true,
+  preload = false,
 }) {
-  const shouldRenderScene = mountScene;
+  const shouldRenderScene = preload || Boolean(isVisible);
 
   return (
     <section className="relative h-screen overflow-hidden">
