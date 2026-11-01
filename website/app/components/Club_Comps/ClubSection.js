@@ -22,10 +22,23 @@ export default function ClubSection({
   linkedinUrl,
   splineScene,
   isVisible,
-  index,
   mountScene = true,
 }) {
   const shouldRenderScene = Boolean(mountScene);
+  const normalizedWebsiteUrl = normalizeUrl(websiteUrl);
+
+  const openWebsite = () => {
+    if (normalizedWebsiteUrl) {
+      window.open(normalizedWebsiteUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const handleSceneKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      openWebsite();
+    }
+  };
 
   return (
     <section className="relative h-screen overflow-hidden">
@@ -36,21 +49,20 @@ export default function ClubSection({
           isVisible ? 'translate-y-0 opacity-100 blur-0' : 'translate-y-10 opacity-0 blur-[1px]'
         }`}
       >
-        <div className="relative h-full flex-1">
+        <div
+          className={`relative h-full flex-1 ${normalizedWebsiteUrl ? 'cursor-pointer' : ''}`}
+          onClick={normalizedWebsiteUrl ? openWebsite : undefined}
+          onKeyDown={normalizedWebsiteUrl ? handleSceneKeyDown : undefined}
+          role={normalizedWebsiteUrl ? 'link' : undefined}
+          tabIndex={normalizedWebsiteUrl && isVisible ? 0 : undefined}
+          aria-label={normalizedWebsiteUrl ? `Open ${clubName} website in a new tab` : undefined}
+        >
           <div className="pointer-events-auto absolute inset-0">
             {shouldRenderScene && splineScene ? <SplineScene scene={splineScene} isVisible={isVisible} /> : null}
           </div>
 
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.08)_48%,rgba(0,0,0,0.42)_100%)]" />
 
-          <div className="pointer-events-none absolute inset-x-5 top-5 z-20 flex items-center justify-between sm:inset-x-7 lg:inset-x-10">
-            <span className="rounded-full border border-white/12 bg-black/30 px-3 py-1.5 text-[10px] uppercase tracking-[0.35em] text-white/65 backdrop-blur-md sm:px-4">
-              {String(index + 1).padStart(2, '0')}
-            </span>
-            <span className="rounded-full border border-white/12 bg-black/30 px-3 py-1.5 text-[10px] uppercase tracking-[0.3em] text-white/55 backdrop-blur-md sm:px-4">
-              Scroll to transition
-            </span>
-          </div>
         </div>
 
         <div className="group relative z-20 border-t border-white/10 bg-[linear-gradient(180deg,rgba(6,6,10,0.72),rgba(8,8,14,0.92))] px-5 py-3 sm:px-7 sm:py-2.5">
@@ -59,14 +71,12 @@ export default function ClubSection({
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-white/48">
               <span>{clubName}</span>
-              <span className="h-px w-8 bg-white/15" />
-              <span>Hover for links</span>
             </div>
 
             <div className="flex items-center gap-3 sm:justify-end">
-              {normalizeUrl(websiteUrl) && (
+              {normalizedWebsiteUrl && (
                 <a
-                  href={normalizeUrl(websiteUrl)}
+                  href={normalizedWebsiteUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="rounded-full border border-white/10 bg-white/3 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.3em] text-white/82 transition duration-300 hover:-translate-y-0.5 hover:border-purple-300/30 hover:bg-white/8 hover:text-white"

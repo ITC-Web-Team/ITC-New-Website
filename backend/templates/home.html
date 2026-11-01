@@ -93,30 +93,7 @@ and technical growth{% endblock %} {% block content %}
           ></div>
         </a>
 
-        <!-- Gradient Button -->
-        <a
-          href="{% url 'otherbodies_list' %}"
-          class="group relative inline-flex items-center justify-center px-8 py-4 overflow-hidden rounded-xl bg-gradient-to-r from-purple-600 via-blue-500 to-purple-600 bg-size-200 bg-pos-0 transition-all duration-500 hover:bg-pos-100 hover:scale-105 shadow-[0_5px_15px_rgba(147,51,234,0.35)] hover:shadow-[0_8px_25px_rgba(147,51,234,0.45)]"
-        >
-          <span
-            class="relative flex items-center text-white text-lg font-semibold"
-          >
-            Communities
-            <svg
-              class="w-5 h-5 ml-2 transform transition-transform group-hover:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </span>
-        </a>
+    
       </div>
     </div>
 
@@ -274,30 +251,7 @@ and technical growth{% endblock %} {% block content %}
       </div>
       {% endif %}
 
-      <!-- Communities -->
-      {% if communities %}
-      <div class="mb-16">
-        <h3 class="text-2xl font-bold mb-8 text-pink-400">Communities</h3>
-        <div
-          class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6"
-        >
-          {% for community in communities %}
-          <a href="{% url 'body_detail' community.name %}" class="group">
-            <div
-              class="aspect-square bg-slate-800/50 rounded-xl p-3 backdrop-blur-md border border-slate-700/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/10"
-            >
-              <img
-                src="{{ community.logo.url }}"
-                alt="{{ community.name }} logo"
-                class="w-full h-full object-contain transition-opacity group-hover:opacity-80"
-                loading="lazy"
-              />
-            </div>
-          </a>
-          {% endfor %}
-        </div>
-      </div>
-      {% endif %}
+   
     </div>
   </div>
 

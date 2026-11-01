@@ -12,6 +12,7 @@ import {
   fetchAchievements,
   fetchInterIIT,
   fetchWorkReports,
+  isCsecBody,
 } from '@/lib/api';
 
 // ─── Scroll-based hero → about transition ──────────────────────────────────
@@ -25,7 +26,6 @@ export default function Home() {
   // Secondary sections data
   const [clubs, setClubs] = useState([]);
   const [techTeams, setTechTeams] = useState([]);
-  const [communities, setCommunities] = useState([]);
   const [achievements, setAchievements] = useState([]);
   const [interIITs, setInterIITs] = useState([]);
   const [workReports, setWorkReports] = useState([]);
@@ -43,17 +43,32 @@ export default function Home() {
             fetchInterIIT(),
             fetchWorkReports(),
           ]);
-        if (clubData.status === 'fulfilled') {
-          const d = clubData.value;
-          setClubs(Array.isArray(d) ? d : d.results || []);
+        const asList = (result) => {
+          if (result.status !== 'fulfilled') return [];
+          const data = result.value;
+          return Array.isArray(data) ? data : data?.results || [];
+        };
+        const clubBodies = asList(clubData);
+        const communityBodies = asList(communityData);
+        const clubsWithCsec = [...clubBodies];
+
+        for (const body of communityBodies) {
+          if (
+            isCsecBody(body) &&
+            !clubsWithCsec.some((club) => isCsecBody(club))
+          ) {
+            clubsWithCsec.push(body);
+          }
         }
+
+        setClubs(
+          clubsWithCsec.sort((a, b) =>
+            String(a.name || '').localeCompare(String(b.name || ''))
+          )
+        );
         if (teamData.status === 'fulfilled') {
           const d = teamData.value;
           setTechTeams(Array.isArray(d) ? d : d.results || []);
-        }
-        if (communityData.status === 'fulfilled') {
-          const d = communityData.value;
-          setCommunities(Array.isArray(d) ? d : d.results || []);
         }
         if (achData.status === 'fulfilled') {
           const d = achData.value;
@@ -266,7 +281,7 @@ export default function Home() {
             className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/10 bg-white/[0.04] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur-2xl transition-all duration-500 hover:scale-[1.03] hover:border-purple-400/30 hover:bg-purple-500/10 hover:text-white hover:shadow-[0_0_40px_rgba(168,85,247,0.2)]"
             style={{ fontFamily: 'var(--font-body)' }}
           >
-            <span>Communities</span>
+            <span>Portal</span>
             <svg className="w-3.5 h-3.5 opacity-50 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
@@ -356,39 +371,6 @@ export default function Home() {
             </div>
           )}
 
-          {/* Communities */}
-          {communities.length > 0 && (
-            <div>
-              <h3 className="text-[13px] font-extrabold uppercase tracking-[0.32em] text-white/80 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-display)' }}>
-                <span className="h-px text-3xl flex-1 bg-white/10" />
-                Communities
-                <span className="h-px flex-1 bg-white/10" />
-              </h3>
-              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
-                {communities.map((community) => (
-                  <Link
-                    key={community.id}
-                    href={`/portals`}
-                    className="group aspect-square rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-pink-500/40 hover:bg-pink-500/10 hover:shadow-[0_0_20px_rgba(236,72,153,0.2)]"
-                    title={community.name}
-                  >
-                    {community.logo ? (
-                      <img
-                        src={community.logo}
-                        alt={`${community.name} logo`}
-                        className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-[10px] font-bold text-white/40 text-center leading-tight">
-                        {community.name}
-                      </div>
-                    )}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
       </section>
 

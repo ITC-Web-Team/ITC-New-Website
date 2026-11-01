@@ -17,6 +17,16 @@ const getApiBase = () => {
   ).replace(/\/+$/, '');
 };
 
+const CSEC_BODY_ALIASES = new Set([
+  'cyber security community',
+  'cybersecurity community',
+]);
+
+export function isCsecBody(body) {
+  const name = String(body?.name || '').trim().toLowerCase();
+  return name.includes('csec') || CSEC_BODY_ALIASES.has(name);
+}
+
 
 
 export async function fetchAPI(endpoint, options = {}) {
