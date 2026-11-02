@@ -44,6 +44,10 @@ const CLUB_SPLINE = {
   Aeromodelling: 'https://prod.spline.design/ahCadaPjlOYB-Deh/scene.splinecode',
 };
 
+// Large scene files that take longest to download — preloaded early on the
+// clubs page so they're ready before the user reaches them.
+const HEAVY_SCENES = [CLUB_SPLINE.Krittika, CLUB_SPLINE.CSEC, CLUB_SPLINE.BioX];
+
 const CLUB_COMPONENTS = [
   { key: 'krittika', Component: Krittika, fallbackName: 'Krittika' },
   { key: 'wncc', Component: WnCC, fallbackName: 'WNCC' },
@@ -197,14 +201,14 @@ export default function ClubsPage() {
   };
 
   // Download the upcoming slides' 3D scenes in the background, so they open
-  // without a loading wait when the user moves to them.
+  // without a loading wait when the user moves to them. The next slide comes
+  // first, then the heaviest scenes, then the remaining nearby slides.
   useEffect(() => {
     const timer = setTimeout(() => {
-      preloadSplineScenes(
-        [activeIndex + 1, activeIndex + 2, activeIndex - 1]
-          .filter((i) => i >= 0 && i < clubs.length)
-          .map((i) => clubs[i].splineScene)
-      );
+      const nearby = [activeIndex + 1, activeIndex + 2, activeIndex - 1]
+        .filter((i) => i >= 0 && i < clubs.length)
+        .map((i) => clubs[i].splineScene);
+      preloadSplineScenes([nearby[0], ...HEAVY_SCENES, ...nearby.slice(1)]);
     }, 1500);
     return () => clearTimeout(timer);
   }, [activeIndex, clubs]);
