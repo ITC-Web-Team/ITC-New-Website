@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import Link from 'next/link';
-import Spline from '@splinetool/react-spline';
+import Spline from '@/app/components/OptimizedSpline';
 import ITC from './components/ITC';
 import About from './components/about';
 import Navbar from './components/navbar';
@@ -224,7 +224,7 @@ export default function Home() {
             pointerEvents: scrollProgress > 0.45 ? 'none' : 'auto',
           }}
         >
-          <ITC />
+          <ITC paused={scrollProgress >= 1} />
         </div>
 
         {/* About panel */}

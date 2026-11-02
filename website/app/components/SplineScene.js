@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Spline from '@splinetool/react-spline';
+import Spline from '@/app/components/OptimizedSpline';
 
 /**
  * SplineScene — interactive, preloaded 3D background.
