@@ -1,7 +1,8 @@
 'use client';
 
-import { useCallback, useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { getPreloadedScene, preloadSplineScene } from '@/lib/splinePreload';
 
 /**
  * OptimizedSpline — drop-in replacement for `@splinetool/react-spline`.
@@ -13,6 +14,8 @@ import dynamic from 'next/dynamic';
  *  - Rendering is paused (app.stop()) while the scene is off-screen, the tab is
  *    hidden, or the caller passes `paused` (e.g. the scene is fully faded out),
  *    and resumed (app.play()) as soon as it is visible again.
+ *  - Scene files go through a shared download cache, so a scene that was
+ *    preloaded in the background (see lib/splinePreload.js) opens instantly.
  *  - Render resolution is capped: 1x on low-end hardware, at most 2x elsewhere,
  *    so weak GPUs on hi-DPI screens don't render 2-3x the pixels.
  */
@@ -42,7 +45,23 @@ function getPixelRatioCap() {
   return lowEnd ? 1 : Math.min(dpr, 2);
 }
 
-export default function OptimizedSpline({ paused = false, onLoad, ...props }) {
+export default function OptimizedSpline({ paused = false, onLoad, scene, ...props }) {
+  // Resolve the scene through the download cache (reuses a background preload
+  // instead of downloading the same file twice).
+  const [resolved, setResolved] = useState({ scene: null, src: null });
+  const src = getPreloadedScene(scene) || (resolved.scene === scene ? resolved.src : null);
+
+  useEffect(() => {
+    if (!scene || getPreloadedScene(scene)) return;
+    let cancelled = false;
+    preloadSplineScene(scene).then((url) => {
+      if (!cancelled) setResolved({ scene, src: url });
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [scene]);
+
   const appRef = useRef(null);
   const stateRef = useRef({ paused, inView: true, pageVisible: true });
   const observerRef = useRef(null);
@@ -120,5 +139,6 @@ export default function OptimizedSpline({ paused = false, onLoad, ...props }) {
     [onLoad, sync]
   );
 
-  return <Spline {...props} onLoad={handleLoad} />;
+  if (!src) return null;
+  return <Spline {...props} scene={src} onLoad={handleLoad} />;
 }

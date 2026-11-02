@@ -17,6 +17,7 @@ import Energy from '../components/Club_Comps/Energy';
 import Chemetl from '../components/Club_Comps/Chemetl';
 import Quant from '../components/Club_Comps/Quant';
 import { fetchBodies } from '@/lib/api';
+import { preloadSplineScenes } from '@/lib/splinePreload';
 
 const CLUB_SPLINE = {
   Intro: 'https://prod.spline.design/2vNrWv1hlkDFdsiW/scene.splinecode',
@@ -194,6 +195,19 @@ export default function ClubsPage() {
       wheelLock.current = false;
     }, 700);
   };
+
+  // Download the upcoming slides' 3D scenes in the background, so they open
+  // without a loading wait when the user moves to them.
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      preloadSplineScenes(
+        [activeIndex + 1, activeIndex + 2, activeIndex - 1]
+          .filter((i) => i >= 0 && i < clubs.length)
+          .map((i) => clubs[i].splineScene)
+      );
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, [activeIndex, clubs]);
 
   const clubSections = useMemo(
     () =>
