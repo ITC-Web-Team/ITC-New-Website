@@ -369,7 +369,14 @@ export default function ClubsPage() {
             {allClubs.map((body) => (
               <a
                 key={body.id}
-                href={`/bodies/${body.name}`}
+                href={
+                  body.website
+                    ? /^https?:\/\//i.test(body.website)
+                      ? body.website
+                      : `https://${body.website}`
+                    : `/bodies/${body.name}`
+                }
+                {...(body.website ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 className="group relative flex cursor-pointer flex-col justify-between overflow-hidden rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(14,18,32,0.7),rgba(10,12,22,0.4))] p-8 shadow-[0_30px_100px_rgba(0,0,0,0.5)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-purple-400/40 hover:shadow-[0_30px_100px_rgba(168,85,247,0.25)]"
               >
                 <div>

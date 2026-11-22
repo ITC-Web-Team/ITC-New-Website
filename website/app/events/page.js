@@ -117,7 +117,6 @@ export default function EventsPage() {
         </span>
       </div>
       <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
-        {e.venue && <span>📍 {e.venue}</span>}
         {e.time && <span>🕒 {e.time}</span>}
       </div>
       <div className="mt-3 flex flex-wrap gap-2">
