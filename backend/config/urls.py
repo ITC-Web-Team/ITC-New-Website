@@ -5,7 +5,7 @@ from .views import home, clubs_list, techteam_list, otherbodies_list, body_detai
 from .api import (
     BodyViewSet, MemberViewSet, AchievementViewSet, PortalViewSet,
     TechStackViewSet, CabinetViewSet, InterIITViewSet,
-    ProblemStatementsViewSet, GalleryViewSet, WorkReportViewSet
+    ProblemStatementsViewSet, GalleryViewSet, WorkReportViewSet, EventViewSet
 )
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,6 +25,7 @@ router.register(r'interiit', InterIITViewSet, basename='interiit')
 router.register(r'problemstatements', ProblemStatementsViewSet, basename='problemstatement')
 router.register(r'gallery', GalleryViewSet, basename='gallery')
 router.register(r'workreports', WorkReportViewSet, basename='workreport')
+router.register(r'events', EventViewSet, basename='event')
 
 sitemaps = {
     'static': StaticViewSitemap,

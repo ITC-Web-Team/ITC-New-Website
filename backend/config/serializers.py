@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Body, Member, Achievement, Portal, TechStack, Cabinet, WorkReport, InterIIT, ProblemStatements, Gallery
+from .models import Body, Member, Achievement, Portal, TechStack, Cabinet, WorkReport, InterIIT, ProblemStatements, Gallery, Event
 
 
 class TechStackSerializer(serializers.ModelSerializer):
@@ -80,3 +80,10 @@ class WorkReportSerializer(serializers.ModelSerializer):
     class Meta:
         model = WorkReport
         fields = ['id', 'title', 'image', 'url']
+
+
+class EventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = ['id', 'name', 'start_date', 'end_date', 'date_label',
+                  'is_approximate', 'venue', 'time', 'clubs']

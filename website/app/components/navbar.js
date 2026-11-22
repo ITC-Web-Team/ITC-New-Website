@@ -10,6 +10,7 @@ export default function Navbar() {
   const links = [
     { label: "CLUBS", href: "/clubs" },
     { label: "TECH TEAMS", href: "/techteams" },
+    { label: "EVENTS", href: "/events" },
     { label: "PORTALS", href: "/portals" },
     { label: "ACHIEVEMENTS", href: "/achievements" },
     { label: "HALL OF FAME", href: "/halloffame" },

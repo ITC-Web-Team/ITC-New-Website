@@ -190,3 +190,16 @@ export async function fetchWorkReports() {
     return [];
   }
 }
+
+/**
+ * Fetch all calendar events (workshops, sessions, competitions)
+ */
+export async function fetchEvents() {
+  try {
+    const data = await fetchAPI('/events/');
+    return Array.isArray(data) ? data : data.results || [];
+  } catch (err) {
+    console.warn(`fetchEvents failed:`, err);
+    return [];
+  }
+}

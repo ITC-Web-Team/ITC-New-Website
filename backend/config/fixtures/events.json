@@ -1,0 +1,2118 @@
+[
+ {
+  "name": "Seasons of Code",
+  "start_date": "2026-05-15",
+  "end_date": "2026-07-15",
+  "date_label": "15th May- 15th July",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Summer of Science",
+  "start_date": "2026-05-15",
+  "end_date": "2026-07-15",
+  "date_label": "15th May- 15th July",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Summer of Quant",
+  "start_date": "2026-06-01",
+  "end_date": "2026-07-31",
+  "date_label": "June - July",
+  "is_approximate": true,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Quant Club"
+  ]
+ },
+ {
+  "name": "Summer of Robotics",
+  "start_date": "2026-06-01",
+  "end_date": "2026-07-31",
+  "date_label": "June - July",
+  "is_approximate": true,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Krittika Summer Projects",
+  "start_date": "2026-05-01",
+  "end_date": "2026-07-31",
+  "date_label": "May - July",
+  "is_approximate": true,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Krittika"
+  ]
+ },
+ {
+  "name": "Institute Technical Summer Projects",
+  "start_date": "2026-05-01",
+  "end_date": "2026-08-31",
+  "date_label": "May - August",
+  "is_approximate": true,
+  "venue": "Hybrid",
+  "time": "",
+  "clubs": [
+   "ITC"
+  ]
+ },
+ {
+  "name": "Simulation Workshop-1",
+  "start_date": "2026-05-21",
+  "end_date": null,
+  "date_label": "21st May",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Simulation Workshop-2",
+  "start_date": "2026-05-28",
+  "end_date": null,
+  "date_label": "28th May",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "ITSP Bootcamp",
+  "start_date": "2026-05-31",
+  "end_date": null,
+  "date_label": "31st May onwards",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Electronics & Robotics Club",
+   "Aeromodelling Club",
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Energy Podcast-1",
+  "start_date": "2026-06-09",
+  "end_date": null,
+  "date_label": "9th June",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "DSA Bootcamp",
+  "start_date": "2026-06-01",
+  "end_date": "2026-07-31",
+  "date_label": "1st June - 31st July",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Energy Podcast-2",
+  "start_date": "2026-06-23",
+  "end_date": null,
+  "date_label": "23rd June",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Mock Interview-1",
+  "start_date": "2026-06-27",
+  "end_date": null,
+  "date_label": "27th June",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Learner Space",
+  "start_date": "2026-06-09",
+  "end_date": "2026-07-09",
+  "date_label": "9th June-9th July",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "ITC"
+  ]
+ },
+ {
+  "name": "Blog -1",
+  "start_date": "2026-07-10",
+  "end_date": null,
+  "date_label": "10th July",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Mock Interview-2",
+  "start_date": "2026-07-18",
+  "end_date": null,
+  "date_label": "18th July",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Mock Interview-3",
+  "start_date": "2026-07-25",
+  "end_date": null,
+  "date_label": "25th July",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "XLR8 Oreo dryrun",
+  "start_date": "2026-08-07",
+  "end_date": null,
+  "date_label": "7th August",
+  "is_approximate": false,
+  "venue": "2 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "PAN-India ENS Formation",
+  "start_date": "2026-08-08",
+  "end_date": null,
+  "date_label": "8th August",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "XLR8 Oreo",
+  "start_date": "2026-08-08",
+  "end_date": null,
+  "date_label": "8th August",
+  "is_approximate": false,
+  "venue": "2 x LA",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "GD-1",
+  "start_date": "2026-08-12",
+  "end_date": null,
+  "date_label": "12th August",
+  "is_approximate": false,
+  "venue": "1 x LT",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Blog-2",
+  "start_date": "2026-08-14",
+  "end_date": null,
+  "date_label": "14th August",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Hardware Session dryrun",
+  "start_date": "2026-08-14",
+  "end_date": null,
+  "date_label": "14th August",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Hardware Session",
+  "start_date": "2026-08-15",
+  "end_date": null,
+  "date_label": "15th August",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Soldering session",
+  "start_date": "2026-08-16",
+  "end_date": null,
+  "date_label": "16th August",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Careers in Astro",
+  "start_date": "2026-08-19",
+  "end_date": null,
+  "date_label": "19th August",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Krittika"
+  ]
+ },
+ {
+  "name": "Coding Circuit-1",
+  "start_date": "2026-08-20",
+  "end_date": null,
+  "date_label": "20th August",
+  "is_approximate": false,
+  "venue": "2 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Software session dryrun",
+  "start_date": "2026-08-22",
+  "end_date": null,
+  "date_label": "22nd August",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Software session",
+  "start_date": "2026-08-23",
+  "end_date": null,
+  "date_label": "23rd August",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "National Space Day",
+  "start_date": "2026-08-22",
+  "end_date": "2026-08-23",
+  "date_label": "22 & 23rd August",
+  "is_approximate": false,
+  "venue": "SOM Foyer or IC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Krittika"
+  ]
+ },
+ {
+  "name": "GD -2",
+  "start_date": "2026-08-26",
+  "end_date": null,
+  "date_label": "26th August",
+  "is_approximate": false,
+  "venue": "1 x LT",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Bazinga Physics Dryrun",
+  "start_date": "2026-08-28",
+  "end_date": null,
+  "date_label": "28th August",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "20:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Bazinga Physics",
+  "start_date": "2026-08-29",
+  "end_date": null,
+  "date_label": "29th August",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Cryptic Hunt",
+  "start_date": "2026-08-30",
+  "end_date": null,
+  "date_label": "30th August",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Cyber Security Club"
+  ]
+ },
+ {
+  "name": "Coding Circuit-2",
+  "start_date": "2026-09-02",
+  "end_date": null,
+  "date_label": "2nd September",
+  "is_approximate": false,
+  "venue": "2 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "P&ID Session",
+  "start_date": "2026-09-04",
+  "end_date": "2026-09-06",
+  "date_label": "4,5 & 6th September",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Colloquium",
+  "start_date": "2026-09-05",
+  "end_date": "2026-09-06",
+  "date_label": "5 & 6th September",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Talk Session -1",
+  "start_date": "2026-09-09",
+  "end_date": null,
+  "date_label": "9th September",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Energize",
+  "start_date": "2026-09-22",
+  "end_date": null,
+  "date_label": "22nd September",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Fresher Orientation",
+  "start_date": "2026-09-23",
+  "end_date": null,
+  "date_label": "23rd September",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Git101",
+  "start_date": "2026-09-25",
+  "end_date": null,
+  "date_label": "25th September",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "RC Plane Orientation",
+  "start_date": "2026-09-24",
+  "end_date": null,
+  "date_label": "24th September",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Basics of Hacking (Forensics)",
+  "start_date": "2026-09-26",
+  "end_date": null,
+  "date_label": "26th September",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "15:30-17:00",
+  "clubs": [
+   "Cyber Security Club"
+  ]
+ },
+ {
+  "name": "Arcano",
+  "start_date": "2026-09-27",
+  "end_date": null,
+  "date_label": "27th September",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "Reflections-1",
+  "start_date": "2026-09-27",
+  "end_date": null,
+  "date_label": "27th September",
+  "is_approximate": false,
+  "venue": "1 x LT",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Design Session RC Plane",
+  "start_date": "2026-09-27",
+  "end_date": null,
+  "date_label": "27th September",
+  "is_approximate": false,
+  "venue": "2 x LC",
+  "time": "12:30-19:00",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Design Session RC Plane",
+  "start_date": "2026-09-30",
+  "end_date": null,
+  "date_label": "30th September",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-19:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Simulator Sessions",
+  "start_date": "2026-09-28",
+  "end_date": "2026-10-08",
+  "date_label": "28th September - 8th October",
+  "is_approximate": false,
+  "venue": "3x LT",
+  "time": "18:00-23:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Make your own hand exoskeleton",
+  "start_date": "2026-09-30",
+  "end_date": null,
+  "date_label": "30th September",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "Filed Visit -1",
+  "start_date": "2026-10-01",
+  "end_date": "2026-10-31",
+  "date_label": "October",
+  "is_approximate": true,
+  "venue": "",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Hello FOSS Orientation",
+  "start_date": "2026-10-01",
+  "end_date": null,
+  "date_label": "1st October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Heisenberg",
+  "start_date": "2026-10-02",
+  "end_date": "2026-10-04",
+  "date_label": "2,3,4 October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Simulator Sessions",
+  "start_date": "2026-10-02",
+  "end_date": "2026-10-04",
+  "date_label": "2,3,4 October",
+  "is_approximate": false,
+  "venue": "3x LT",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Awards Ceremony dryrun",
+  "start_date": "2026-10-02",
+  "end_date": null,
+  "date_label": "2nd October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Awards Ceremony",
+  "start_date": "2026-10-03",
+  "end_date": null,
+  "date_label": "3rd October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Basics of Hacking (Web)",
+  "start_date": "2026-10-03",
+  "end_date": null,
+  "date_label": "3rd October",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Cyber Security Club"
+  ]
+ },
+ {
+  "name": "Basics of Hacking (REV)",
+  "start_date": "2026-10-04",
+  "end_date": null,
+  "date_label": "4th October",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Cyber Security Club"
+  ]
+ },
+ {
+  "name": "Astro-101",
+  "start_date": "2026-10-04",
+  "end_date": null,
+  "date_label": "4th October",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Krittika"
+  ]
+ },
+ {
+  "name": "Make your own hand exoskeleton",
+  "start_date": "2026-10-07",
+  "end_date": null,
+  "date_label": "7th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "Talk Session-2",
+  "start_date": "2026-10-08",
+  "end_date": null,
+  "date_label": "8th October",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Simulator Sessions",
+  "start_date": "2026-10-05",
+  "end_date": "2026-10-09",
+  "date_label": "5th - 9th October",
+  "is_approximate": false,
+  "venue": "1x LT",
+  "time": "18:00-23:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Make your own hand exoskeleton",
+  "start_date": "2026-10-09",
+  "end_date": null,
+  "date_label": "9th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "Workshop-1 Dryrun",
+  "start_date": "2026-10-09",
+  "end_date": null,
+  "date_label": "9th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Bazinga Maths Dryrun",
+  "start_date": "2026-10-09",
+  "end_date": null,
+  "date_label": "9th October",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Worshop-1",
+  "start_date": "2026-10-10",
+  "end_date": null,
+  "date_label": "10th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Bazinga Maths",
+  "start_date": "2026-10-10",
+  "end_date": null,
+  "date_label": "10th October",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "GSOC Bootcamp",
+  "start_date": "2026-10-10",
+  "end_date": null,
+  "date_label": "10th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00 - 23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Simulator Sessions",
+  "start_date": "2026-10-10",
+  "end_date": null,
+  "date_label": "10th October",
+  "is_approximate": false,
+  "venue": "1 x LT",
+  "time": "10:00 - 23:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Simulator Sessions",
+  "start_date": "2026-10-11",
+  "end_date": null,
+  "date_label": "11th October",
+  "is_approximate": false,
+  "venue": "1 x LT",
+  "time": "10:00 - 23:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Research Showcase",
+  "start_date": "2026-10-11",
+  "end_date": null,
+  "date_label": "11th October",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "12:00 - 22:00",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Basics of Hacking (Crypto)",
+  "start_date": "2026-10-11",
+  "end_date": null,
+  "date_label": "11th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-19:30",
+  "clubs": [
+   "Cyber Security Club"
+  ]
+ },
+ {
+  "name": "Astromania",
+  "start_date": "2026-10-12",
+  "end_date": null,
+  "date_label": "12th October",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Krittika"
+  ]
+ },
+ {
+  "name": "Build Check",
+  "start_date": "2026-10-07",
+  "end_date": "2026-10-08",
+  "date_label": "7th and 8th October",
+  "is_approximate": false,
+  "venue": "TL",
+  "time": "",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Energy Trading",
+  "start_date": "2026-10-14",
+  "end_date": null,
+  "date_label": "14th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Talk Session -1",
+  "start_date": "2026-10-14",
+  "end_date": null,
+  "date_label": "14th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Coding Circuit - 3",
+  "start_date": "2026-10-14",
+  "end_date": null,
+  "date_label": "14th October",
+  "is_approximate": false,
+  "venue": "2 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Flying Sessions",
+  "start_date": "2026-10-07",
+  "end_date": "2026-10-22",
+  "date_label": "7th October-22nd October",
+  "is_approximate": false,
+  "venue": "Gymkhana Ground",
+  "time": "Weekdays: 13:00-17:00, Weekends: 9:00-17:00",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Freshie Orientation",
+  "start_date": "2026-10-16",
+  "end_date": null,
+  "date_label": "16th October",
+  "is_approximate": false,
+  "venue": "1×LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Quant Club"
+  ]
+ },
+ {
+  "name": "Make your own hand exoskeleton",
+  "start_date": "2026-10-17",
+  "end_date": null,
+  "date_label": "17th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "Basics of Hacking (PWN)",
+  "start_date": "2026-10-17",
+  "end_date": null,
+  "date_label": "17th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "15:30-17:30",
+  "clubs": [
+   "Cyber Security Club"
+  ]
+ },
+ {
+  "name": "GD-1",
+  "start_date": "2026-10-17",
+  "end_date": null,
+  "date_label": "17th October",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "AP-101",
+  "start_date": "2026-10-18",
+  "end_date": null,
+  "date_label": "18th October",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Krittika"
+  ]
+ },
+ {
+  "name": "3D Bio-Printer Workshop",
+  "start_date": "2026-10-21",
+  "end_date": null,
+  "date_label": "21st October",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "Theory GC",
+  "start_date": "2026-10-21",
+  "end_date": null,
+  "date_label": "21st October",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Krittika"
+  ]
+ },
+ {
+  "name": "Mental Math Dryrun",
+  "start_date": "2026-10-23",
+  "end_date": null,
+  "date_label": "23rd October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "20:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "CP-101",
+  "start_date": "2026-10-23",
+  "end_date": null,
+  "date_label": "23rd October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Mental Math",
+  "start_date": "2026-10-24",
+  "end_date": null,
+  "date_label": "24th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Code-Clash",
+  "start_date": "2026-10-24",
+  "end_date": null,
+  "date_label": "24th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Crime Scene Investigation",
+  "start_date": "2026-10-25",
+  "end_date": null,
+  "date_label": "25th October",
+  "is_approximate": false,
+  "venue": "2 x LH Same Floor",
+  "time": "10:00-23:30",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "Tyro-CTF",
+  "start_date": "2026-10-25",
+  "end_date": null,
+  "date_label": "25th October",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Cyber Security Club"
+  ]
+ },
+ {
+  "name": "3D Bio-Printer Workshop -2",
+  "start_date": "2026-10-28",
+  "end_date": null,
+  "date_label": "28th October",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "ML-101",
+  "start_date": "2026-10-28",
+  "end_date": null,
+  "date_label": "28th October",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Final RC Plane Competition",
+  "start_date": "2026-10-23",
+  "end_date": "2026-10-26",
+  "date_label": "23,24,25,26 October",
+  "is_approximate": false,
+  "venue": "Gymkhana Ground",
+  "time": "9:00-17:00",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "LogIQ GC",
+  "start_date": "2026-10-31",
+  "end_date": null,
+  "date_label": "31st October",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30- 23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Coding- Circuit -4",
+  "start_date": "2026-11-01",
+  "end_date": null,
+  "date_label": "1st November",
+  "is_approximate": false,
+  "venue": "2 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Industry Visit and Presession",
+  "start_date": "2026-11-03",
+  "end_date": "2026-11-05",
+  "date_label": "3,4 & 5th November",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Closing Ceremony RC Plane",
+  "start_date": "2026-11-01",
+  "end_date": null,
+  "date_label": "1st November",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Chemlymp 2.0 Round 1 (online)",
+  "start_date": "2026-11-22",
+  "end_date": "2026-11-30",
+  "date_label": "Week 4 of November",
+  "is_approximate": true,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Reactorious",
+  "start_date": "2026-12-01",
+  "end_date": "2026-12-31",
+  "date_label": "December",
+  "is_approximate": true,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Matlab Bootcamp",
+  "start_date": "2026-12-01",
+  "end_date": "2026-12-31",
+  "date_label": "December",
+  "is_approximate": true,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Computational Programing Projects",
+  "start_date": "2026-12-01",
+  "end_date": "2026-12-31",
+  "date_label": "December",
+  "is_approximate": true,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Number Theory",
+  "start_date": "2026-12-01",
+  "end_date": "2026-12-31",
+  "date_label": "December",
+  "is_approximate": true,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Renewathon",
+  "start_date": "2026-12-01",
+  "end_date": "2027-03-31",
+  "date_label": "December - March",
+  "is_approximate": true,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Blog-3",
+  "start_date": "2026-12-04",
+  "end_date": null,
+  "date_label": "4th December",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "AirShow",
+  "start_date": "2027-01-08",
+  "end_date": "2027-01-14",
+  "date_label": "January 2nd Week",
+  "is_approximate": true,
+  "venue": "Gymkhana Ground",
+  "time": "",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Freshers GC",
+  "start_date": "2027-01-01",
+  "end_date": "2027-01-31",
+  "date_label": "January",
+  "is_approximate": true,
+  "venue": "",
+  "time": "",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Chemlymp 2.0 Round 2",
+  "start_date": "2027-01-08",
+  "end_date": null,
+  "date_label": "8th January",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Chemlymp 2.0 Round 2",
+  "start_date": "2027-01-09",
+  "end_date": null,
+  "date_label": "9th January",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Coding Circuit - 5",
+  "start_date": "2027-01-08",
+  "end_date": null,
+  "date_label": "8th January",
+  "is_approximate": false,
+  "venue": "2 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Observatory Introduction",
+  "start_date": "2027-01-10",
+  "end_date": null,
+  "date_label": "10th January/9",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Krittika"
+  ]
+ },
+ {
+  "name": "Tyro Meet",
+  "start_date": "2027-01-11",
+  "end_date": null,
+  "date_label": "11th January",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Cyber Security Club"
+  ]
+ },
+ {
+  "name": "Maths for ML -1",
+  "start_date": "2027-01-13",
+  "end_date": null,
+  "date_label": "13th January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Tambola Night Dryrun",
+  "start_date": "2027-01-14",
+  "end_date": null,
+  "date_label": "14th January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Chemlymp 2.0 Round 2",
+  "start_date": "2027-01-15",
+  "end_date": null,
+  "date_label": "15th January",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Tambola Night",
+  "start_date": "2027-01-15",
+  "end_date": null,
+  "date_label": "15th January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Workshop -2 Dryrun",
+  "start_date": "2027-01-15",
+  "end_date": null,
+  "date_label": "15th January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Chemlymp 2.0 Round 2",
+  "start_date": "2027-01-16",
+  "end_date": null,
+  "date_label": "16th January",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Workshop -2",
+  "start_date": "2027-01-16",
+  "end_date": null,
+  "date_label": "16th January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Talk Session -2",
+  "start_date": "2027-01-19",
+  "end_date": null,
+  "date_label": "19th January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Talk Session",
+  "start_date": "2027-01-20",
+  "end_date": null,
+  "date_label": "20th January",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Maths for ML - 2",
+  "start_date": "2027-01-20",
+  "end_date": null,
+  "date_label": "20th January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "AI-ML GC",
+  "start_date": "2027-01-20",
+  "end_date": null,
+  "date_label": "20th January- TBD",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Linux Workshop",
+  "start_date": "2027-01-21",
+  "end_date": null,
+  "date_label": "21st January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Workshop -3 dryrun",
+  "start_date": "2027-01-22",
+  "end_date": null,
+  "date_label": "22nd January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Workshop-3",
+  "start_date": "2027-01-23",
+  "end_date": null,
+  "date_label": "23rd January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "OS Workshop",
+  "start_date": "2027-01-23",
+  "end_date": null,
+  "date_label": "23rd January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Sweat Sensors Workshop",
+  "start_date": "2027-01-24",
+  "end_date": null,
+  "date_label": "24th January",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "10:00-23:30",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "Experimental Biology-1",
+  "start_date": "2027-01-26",
+  "end_date": null,
+  "date_label": "26th January",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "GC Live case competition",
+  "start_date": "2027-01-27",
+  "end_date": null,
+  "date_label": "27th January",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Maths for ML -3",
+  "start_date": "2027-01-27",
+  "end_date": null,
+  "date_label": "27th January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Sudoku Sprint Dryrun",
+  "start_date": "2027-01-28",
+  "end_date": null,
+  "date_label": "28th January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Experimental Biology-1",
+  "start_date": "2027-01-29",
+  "end_date": null,
+  "date_label": "29th January",
+  "is_approximate": false,
+  "venue": "BioTL",
+  "time": "",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "Sudoku Sprint",
+  "start_date": "2027-01-29",
+  "end_date": null,
+  "date_label": "29th January",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Freshers GC",
+  "start_date": "2027-01-30",
+  "end_date": "2027-01-31",
+  "date_label": "30 & 31st January",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Maths for ML-4",
+  "start_date": "2027-02-03",
+  "end_date": null,
+  "date_label": "3rd February",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Mathaton",
+  "start_date": "2027-02-05",
+  "end_date": null,
+  "date_label": "5th February",
+  "is_approximate": false,
+  "venue": "1xLH, 1xIC",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Coding Circuit - 6",
+  "start_date": "2027-02-05",
+  "end_date": null,
+  "date_label": "5th February",
+  "is_approximate": false,
+  "venue": "2 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Satellite Simulation Hackathon",
+  "start_date": "2027-02-06",
+  "end_date": null,
+  "date_label": "6th February",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Workshop -4 Dryrun",
+  "start_date": "2027-02-06",
+  "end_date": null,
+  "date_label": "6th February",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Workshop -4",
+  "start_date": "2027-02-07",
+  "end_date": null,
+  "date_label": "7th February",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Maths for ML-5",
+  "start_date": "2027-02-10",
+  "end_date": null,
+  "date_label": "10th February",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Reflections -2",
+  "start_date": "2027-02-12",
+  "end_date": null,
+  "date_label": "12th February",
+  "is_approximate": false,
+  "venue": "1 x LT",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "LFS",
+  "start_date": "2027-02-13",
+  "end_date": null,
+  "date_label": "13th February",
+  "is_approximate": false,
+  "venue": "Gymkhana Ground",
+  "time": "13:00-17:00",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Field Visit -2",
+  "start_date": "2027-03-01",
+  "end_date": "2027-03-31",
+  "date_label": "March",
+  "is_approximate": true,
+  "venue": "",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ },
+ {
+  "name": "Research Paper Forum",
+  "start_date": "2027-03-02",
+  "end_date": null,
+  "date_label": "2nd March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Research Paper Forum",
+  "start_date": "2027-03-03",
+  "end_date": null,
+  "date_label": "3rd March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Rocketery Workshop",
+  "start_date": "2027-03-03",
+  "end_date": null,
+  "date_label": "3rd March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "14:30-16:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Filed Visit Pre-session",
+  "start_date": "2027-03-05",
+  "end_date": null,
+  "date_label": "5th March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "BioX"
+  ]
+ },
+ {
+  "name": "Research Paper Forum",
+  "start_date": "2027-03-05",
+  "end_date": null,
+  "date_label": "5th March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "AI-Safety Sessions + Hackathon",
+  "start_date": "2027-03-05",
+  "end_date": null,
+  "date_label": "5th March",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Jhatka GC Dryrun",
+  "start_date": "2027-03-05",
+  "end_date": null,
+  "date_label": "5th March",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Research Paper Forum",
+  "start_date": "2027-03-06",
+  "end_date": null,
+  "date_label": "6th March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Jhatka GC",
+  "start_date": "2027-03-06",
+  "end_date": null,
+  "date_label": "6th March",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "AI-Safety Sessions + Hackathon",
+  "start_date": "2027-03-06",
+  "end_date": "2027-03-07",
+  "date_label": "6 & 7th March",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Rocketery Hardware",
+  "start_date": "2027-03-07",
+  "end_date": null,
+  "date_label": "7th March",
+  "is_approximate": false,
+  "venue": "Outside Insti",
+  "time": "",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Cryptogue",
+  "start_date": "2027-03-08",
+  "end_date": null,
+  "date_label": "8th March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Muon Workshop",
+  "start_date": "2027-03-09",
+  "end_date": null,
+  "date_label": "9th March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Krittika"
+  ]
+ },
+ {
+  "name": "Codewars V7",
+  "start_date": "2027-03-10",
+  "end_date": null,
+  "date_label": "10th March",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Physicsathon",
+  "start_date": "2027-03-11",
+  "end_date": null,
+  "date_label": "11th March",
+  "is_approximate": false,
+  "venue": "1 x LH, 1 x IC",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Workshop -5 Dryrun",
+  "start_date": "2027-03-12",
+  "end_date": null,
+  "date_label": "12th March",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Coding Circuit -7",
+  "start_date": "2027-03-12",
+  "end_date": null,
+  "date_label": "12th March",
+  "is_approximate": false,
+  "venue": "2 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Workshop -5",
+  "start_date": "2027-03-13",
+  "end_date": null,
+  "date_label": "13th March",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "LFS-2",
+  "start_date": "2027-03-14",
+  "end_date": null,
+  "date_label": "14th March",
+  "is_approximate": false,
+  "venue": "Gymkhana Ground",
+  "time": "13:00-17:00",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "GD-2",
+  "start_date": "2027-03-14",
+  "end_date": null,
+  "date_label": "14th March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Cryptogue",
+  "start_date": "2027-03-15",
+  "end_date": null,
+  "date_label": "15th March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Industry Visit and Presession",
+  "start_date": "2027-03-16",
+  "end_date": "2027-03-18",
+  "date_label": "16,17 & 18th March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Chemistry Club",
+   "ChemETL"
+  ]
+ },
+ {
+  "name": "Workshop -6 Dryrun",
+  "start_date": "2027-03-19",
+  "end_date": null,
+  "date_label": "19th March",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "Workshop -6",
+  "start_date": "2027-03-20",
+  "end_date": null,
+  "date_label": "20th March",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "10:00-23:30",
+  "clubs": [
+   "Electronics & Robotics Club"
+  ]
+ },
+ {
+  "name": "heli-vtol session",
+  "start_date": "2027-03-21",
+  "end_date": null,
+  "date_label": "21th March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Cryptogue",
+  "start_date": "2027-03-22",
+  "end_date": null,
+  "date_label": "22nd March",
+  "is_approximate": false,
+  "venue": "1 x LC",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "LFS-3",
+  "start_date": "2027-03-28",
+  "end_date": null,
+  "date_label": "28th March",
+  "is_approximate": false,
+  "venue": "Gymkhana Ground",
+  "time": "13:00-17:30",
+  "clubs": [
+   "Aeromodelling Club"
+  ]
+ },
+ {
+  "name": "Integration Bee Dryrun",
+  "start_date": "2027-03-31",
+  "end_date": null,
+  "date_label": "31st March",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Codewars Finale",
+  "start_date": "2027-03-31",
+  "end_date": null,
+  "date_label": "31st March",
+  "is_approximate": false,
+  "venue": "1 x LH",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Web and Coding Club"
+  ]
+ },
+ {
+  "name": "Integration Bee",
+  "start_date": "2027-04-01",
+  "end_date": null,
+  "date_label": "1st April",
+  "is_approximate": false,
+  "venue": "1 x LA",
+  "time": "17:30-23:30",
+  "clubs": [
+   "Maths & Physics Club"
+  ]
+ },
+ {
+  "name": "Energy Podcast-3",
+  "start_date": "2027-04-03",
+  "end_date": null,
+  "date_label": "3rd April",
+  "is_approximate": false,
+  "venue": "Online",
+  "time": "",
+  "clubs": [
+   "Energy & Sustainability Club"
+  ]
+ }
+]

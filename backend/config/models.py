@@ -210,3 +210,20 @@ class Gallery(models.Model):
 
     def __str__(self):
         return self.title
+
+class Event(models.Model):
+    """A dated entry on the events calendar (workshops, sessions, competitions...)."""
+    name = models.CharField(max_length=200)
+    start_date = models.DateField()
+    end_date = models.DateField(blank=True, null=True, help_text="Leave empty for single-day events")
+    date_label = models.CharField(max_length=100, blank=True, help_text="Date as originally announced, e.g. '4,5 & 6th September'")
+    is_approximate = models.BooleanField(default=False, help_text="Exact dates not fixed yet (e.g. 'December')")
+    venue = models.CharField(max_length=150, blank=True)
+    time = models.CharField(max_length=100, blank=True)
+    clubs = models.JSONField(default=list, blank=True, help_text="List of organising club names")
+
+    class Meta:
+        ordering = ['start_date', 'name']
+
+    def __str__(self):
+        return f"{self.name} ({self.start_date})"
