@@ -24,6 +24,7 @@ CSRF_TRUSTED_ORIGINS = [
     'https://tech-iitb.org',
     'https://two.tech-iitb.org',
     'https://backend.tech-iitb.org',
+    'https://www.backend.tech-iitb.org',
     'http://localhost:3000',
     'http://127.0.0.1:3000',
 ]
