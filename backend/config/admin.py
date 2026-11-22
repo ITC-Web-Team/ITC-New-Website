@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Body, Member, Achievement, Portal, TechStack, Cabinet, WorkReport, InterIIT, ProblemStatements, Gallery, Event
+from .models import Body, Member, Achievement, Portal, TechStack, Cabinet, WorkReport, InterIIT, ProblemStatements, Gallery, Event, TeamMember
 
 # Admin for Body Model
 class BodyAdmin(admin.ModelAdmin):
@@ -88,3 +88,11 @@ class EventAdmin(admin.ModelAdmin):
     ordering = ('start_date',)
 
 admin.site.register(Event, EventAdmin)
+
+
+class TeamMemberAdmin(admin.ModelAdmin):
+    list_display = ('name', 'post', 'email', 'priority')
+    search_fields = ('name', 'post', 'email')
+    ordering = ('priority', 'name')
+
+admin.site.register(TeamMember, TeamMemberAdmin)

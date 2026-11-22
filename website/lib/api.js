@@ -203,3 +203,16 @@ export async function fetchEvents() {
     return [];
   }
 }
+
+/**
+ * Fetch team members (managers / nominees) for the Team page
+ */
+export async function fetchTeam() {
+  try {
+    const data = await fetchAPI('/team/');
+    return Array.isArray(data) ? data : data.results || [];
+  } catch (err) {
+    console.warn(`fetchTeam failed:`, err);
+    return [];
+  }
+}

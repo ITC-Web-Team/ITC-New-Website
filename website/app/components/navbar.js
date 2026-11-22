@@ -11,6 +11,7 @@ export default function Navbar() {
     { label: "CLUBS", href: "/clubs" },
     { label: "TECH TEAMS", href: "/techteams" },
     { label: "EVENTS", href: "/events" },
+    { label: "TEAM", href: "/team" },
     { label: "PORTALS", href: "/portals" },
     { label: "ACHIEVEMENTS", href: "/achievements" },
     { label: "HALL OF FAME", href: "/halloffame" },

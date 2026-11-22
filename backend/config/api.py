@@ -17,12 +17,12 @@ def custom_exception_handler(exc, context):
         }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     return response
 
-from .models import Body, Member, Achievement, Portal, TechStack, Cabinet, WorkReport, InterIIT, ProblemStatements, Gallery, Event
+from .models import Body, Member, Achievement, Portal, TechStack, Cabinet, WorkReport, InterIIT, ProblemStatements, Gallery, Event, TeamMember
 from .serializers import (
     BodySerializer, MemberSerializer, AchievementSerializer,
     PortalSerializer, TechStackSerializer, CabinetSerializer,
     InterIITSerializer, ProblemStatementsSerializer,
-    GallerySerializer, WorkReportSerializer, EventSerializer
+    GallerySerializer, WorkReportSerializer, EventSerializer, TeamMemberSerializer
 )
 
 
@@ -134,3 +134,9 @@ class EventViewSet(viewsets.ReadOnlyModelViewSet):
 
     def get_queryset(self):
         return Event.objects.all().order_by('start_date', 'name')
+
+
+class TeamMemberViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = TeamMember.objects.all().order_by('priority', 'name')
+    serializer_class = TeamMemberSerializer
+    pagination_class = None

@@ -227,3 +227,26 @@ class Event(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.start_date})"
+
+
+class TeamMember(models.Model):
+    """Club/team managers and nominees shown on the Team page."""
+    name = models.CharField(max_length=100)
+    post = models.CharField(max_length=150)
+    email = models.EmailField(blank=True)
+    linkedin = models.URLField(max_length=300, blank=True)
+    instagram = models.URLField(max_length=300, blank=True)
+    image = models.ImageField(
+        upload_to='team/',
+        storage=get_media_storage,
+        blank=True,
+        null=True,
+        help_text="Leave empty to show the placeholder avatar"
+    )
+    priority = models.IntegerField(default=0, help_text="Lower numbers appear first")
+
+    class Meta:
+        ordering = ['priority', 'name']
+
+    def __str__(self):
+        return f'{self.name} - {self.post}'
