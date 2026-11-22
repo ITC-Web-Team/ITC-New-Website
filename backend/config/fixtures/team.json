@@ -40,116 +40,12 @@
   "priority": 4
  },
  {
-  "name": "Hrishika Agrawal",
-  "post": "Quant Club Manager",
-  "email": "hrishika.agrawal@iitb.ac.in",
-  "linkedin": "https://www.linkedin.com/in/hrishika-agrawal-145828317",
-  "instagram": "https://www.instagram.com/hrishika.agrawal",
-  "priority": 5
- },
- {
-  "name": "Mudil Goel",
-  "post": "Quant Club Manager",
-  "email": "24b3932@iitb.ac.in",
-  "linkedin": "https://www.linkedin.com/in/mudil-goel",
-  "instagram": "https://www.instagram.com/mudil_goel",
-  "priority": 6
- },
- {
-  "name": "Aditya Patel",
-  "post": "Electronics & Robotics Club Manager",
-  "email": "adityapatel@iitb.ac.in",
-  "linkedin": "https://www.linkedin.com/in/aditya-patel-98584b327",
-  "instagram": "https://www.instagram.com/aadi_16.1",
-  "priority": 7
- },
- {
-  "name": "Daksh Makwana",
-  "post": "Electronics & Robotics Club Manager",
-  "email": "24b2471@iitb.ac.in",
-  "linkedin": "https://www.linkedin.com/in/daksh-makwana-698253326",
-  "instagram": "",
-  "priority": 8
- },
- {
-  "name": "Sushant Kashyap",
-  "post": "Energy & Sustainability club Manager",
-  "email": "",
-  "linkedin": "https://www.linkedin.com/in/sushant-kashyap-5b0490334",
-  "instagram": "https://www.instagram.com/i_m__sushant_7",
-  "priority": 9
- },
- {
-  "name": "Rucha Ranade",
-  "post": "Energy & Sustainability club Manager",
-  "email": "rucha.energyiitb@gmail.com",
-  "linkedin": "https://www.linkedin.com/in/rucha-ranade-6b035533b",
-  "instagram": "https://www.instagram.com/righteous_ru_cha",
-  "priority": 10
- },
- {
-  "name": "Ayush Mohapatra",
-  "post": "Institute BioX Secretary",
-  "email": "ayushmohapatra006@gmail.com",
-  "linkedin": "https://www.linkedin.com/in/ayush-mohapatra-18323128a",
-  "instagram": "https://www.instagram.com/ayush.mohapatra60",
-  "priority": 11
- },
- {
-  "name": "Guru Jahnavi M",
-  "post": "Krittika Manager",
-  "email": "gurujahnavi007@gmail.com",
-  "linkedin": "https://www.linkedin.com/in/guru-jahnavi-madana",
-  "instagram": "",
-  "priority": 12
- },
- {
-  "name": "Omanshu Kale",
-  "post": "Chemistry Club and ChemE TL Manager",
-  "email": "omanshukale04@gmail.com",
-  "linkedin": "https://www.linkedin.com/in/omanshu-kale-osk",
-  "instagram": "https://www.instagram.com/k_omanshhuu01",
-  "priority": 13
- },
- {
-  "name": "Sweta Hole",
-  "post": "Chemistry Club & ChemETL Manager",
-  "email": "holesweta@gmail.com",
-  "linkedin": "https://www.linkedin.com/in/sweta-hole-a3a340300",
-  "instagram": "https://www.instagram.com/sweta_hole",
-  "priority": 14
- },
- {
-  "name": "Keshav Kumar",
-  "post": "Cybersecurity club Manager",
-  "email": "24b0354@iitb.ac.in",
-  "linkedin": "https://www.linkedin.com/in/keshav-kumar2006",
-  "instagram": "https://www.instagram.com/keshvvv___",
-  "priority": 15
- },
- {
-  "name": "Sanaa Tabassum",
-  "post": "MnP Manager",
-  "email": "secondsanaa@gmail.com",
-  "linkedin": "",
-  "instagram": "https://www.instagram.com/sanaatabss",
-  "priority": 16
- },
- {
-  "name": "Visharad Srivastava",
-  "post": "MnP Manager",
-  "email": "24b1202@iitb.ac.in",
-  "linkedin": "https://in.linkedin.com/in/visharad-srivastava-1339b6325",
-  "instagram": "https://www.instagram.com/visharadsr",
-  "priority": 17
- },
- {
   "name": "Avnish Vijay More",
   "post": "Web and Coding Club Manager",
   "email": "avnish.wncc@gmail.com",
   "linkedin": "https://www.linkedin.com/in/avnish-more",
   "instagram": "https://www.instagram.com/avn1sh.__",
-  "priority": 18
+  "priority": 5
  },
  {
   "name": "Mithra Bijumon",
@@ -157,6 +53,110 @@
   "email": "mithra.wncc@gmail.com",
   "linkedin": "https://www.linkedin.com/in/mithra-bijumon-059104301",
   "instagram": "",
+  "priority": 6
+ },
+ {
+  "name": "Hrishika Agrawal",
+  "post": "Quant Club Manager",
+  "email": "hrishika.agrawal@iitb.ac.in",
+  "linkedin": "https://www.linkedin.com/in/hrishika-agrawal-145828317",
+  "instagram": "https://www.instagram.com/hrishika.agrawal",
+  "priority": 7
+ },
+ {
+  "name": "Mudil Goel",
+  "post": "Quant Club Manager",
+  "email": "24b3932@iitb.ac.in",
+  "linkedin": "https://www.linkedin.com/in/mudil-goel",
+  "instagram": "https://www.instagram.com/mudil_goel",
+  "priority": 8
+ },
+ {
+  "name": "Aditya Patel",
+  "post": "Electronics & Robotics Club Manager",
+  "email": "adityapatel@iitb.ac.in",
+  "linkedin": "https://www.linkedin.com/in/aditya-patel-98584b327",
+  "instagram": "https://www.instagram.com/aadi_16.1",
+  "priority": 9
+ },
+ {
+  "name": "Daksh Makwana",
+  "post": "Electronics & Robotics Club Manager",
+  "email": "24b2471@iitb.ac.in",
+  "linkedin": "https://www.linkedin.com/in/daksh-makwana-698253326",
+  "instagram": "",
+  "priority": 10
+ },
+ {
+  "name": "Sushant Kashyap",
+  "post": "Energy & Sustainability club Manager",
+  "email": "",
+  "linkedin": "https://www.linkedin.com/in/sushant-kashyap-5b0490334",
+  "instagram": "https://www.instagram.com/i_m__sushant_7",
+  "priority": 11
+ },
+ {
+  "name": "Rucha Ranade",
+  "post": "Energy & Sustainability club Manager",
+  "email": "rucha.energyiitb@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/rucha-ranade-6b035533b",
+  "instagram": "https://www.instagram.com/righteous_ru_cha",
+  "priority": 12
+ },
+ {
+  "name": "Ayush Mohapatra",
+  "post": "Institute BioX Secretary",
+  "email": "ayushmohapatra006@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/ayush-mohapatra-18323128a",
+  "instagram": "https://www.instagram.com/ayush.mohapatra60",
+  "priority": 13
+ },
+ {
+  "name": "Guru Jahnavi M",
+  "post": "Krittika Manager",
+  "email": "gurujahnavi007@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/guru-jahnavi-madana",
+  "instagram": "",
+  "priority": 14
+ },
+ {
+  "name": "Omanshu Kale",
+  "post": "Chemistry Club and ChemE TL Manager",
+  "email": "omanshukale04@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/omanshu-kale-osk",
+  "instagram": "https://www.instagram.com/k_omanshhuu01",
+  "priority": 15
+ },
+ {
+  "name": "Sweta Hole",
+  "post": "Chemistry Club & ChemETL Manager",
+  "email": "holesweta@gmail.com",
+  "linkedin": "https://www.linkedin.com/in/sweta-hole-a3a340300",
+  "instagram": "https://www.instagram.com/sweta_hole",
+  "priority": 16
+ },
+ {
+  "name": "Keshav Kumar",
+  "post": "Cybersecurity club Manager",
+  "email": "24b0354@iitb.ac.in",
+  "linkedin": "https://www.linkedin.com/in/keshav-kumar2006",
+  "instagram": "https://www.instagram.com/keshvvv___",
+  "priority": 17
+ },
+ {
+  "name": "Sanaa Tabassum",
+  "post": "MnP Manager",
+  "email": "secondsanaa@gmail.com",
+  "linkedin": "",
+  "instagram": "https://www.instagram.com/sanaatabss",
+  "priority": 18
+ },
+ {
+  "name": "Visharad Srivastava",
+  "post": "MnP Manager",
+  "email": "24b1202@iitb.ac.in",
+  "linkedin": "https://in.linkedin.com/in/visharad-srivastava-1339b6325",
+  "instagram": "https://www.instagram.com/visharadsr",
   "priority": 19
  },
  {
