@@ -94,6 +94,9 @@ export default function ClubsPage() {
     },
   ]);
 
+  const [allClubs, setAllClubs] = useState([]);
+  const [clubsLoading, setClubsLoading] = useState(true);
+
   const [activeIndex, setActiveIndex] = useState(0);
   const touchStartX = useRef(null);
   const wheelLock = useRef(false);
@@ -110,6 +113,9 @@ export default function ClubsPage() {
           ? data
           : data?.results || [];
 
+        setAllClubs(bodies);
+        setClubsLoading(false);
+
         const ordered = CLUB_COMPONENTS.map((cfg) => {
           const body = bodies.find(
             (item) => matchComponent(item)?.key === cfg.key
@@ -122,6 +128,7 @@ export default function ClubsPage() {
       })
       .catch((error) => {
         console.error('Failed to fetch clubs:', error);
+        if (!cancelled) setClubsLoading(false);
       });
 
     return () => {
@@ -330,6 +337,69 @@ export default function ClubsPage() {
         <div className="absolute right-5 top-5 z-40 rounded-full border border-white/15 bg-black/50 px-3 py-1.5 text-xs text-white/80 backdrop-blur-md">
           {activeIndex + 1} / {totalClubs}
         </div>
+      </section>
+
+      {/* All clubs together, loaded from the backend */}
+      <section className="relative z-10 mx-auto max-w-7xl space-y-12 bg-black px-4 py-24 sm:px-6 lg:px-10">
+        <div className="space-y-4 text-center">
+          <h2 className="bg-gradient-to-r from-white via-purple-100 to-purple-400 bg-clip-text text-4xl font-black tracking-tight text-transparent sm:text-6xl">
+            All Clubs
+          </h2>
+          <p className="mx-auto max-w-2xl text-slate-300/80">
+            Browse every club at a glance.
+          </p>
+          <div className="mx-auto h-px w-28 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
+        </div>
+
+        {clubsLoading && (
+          <div className="flex flex-col items-center gap-4 py-12">
+            <div className="h-12 w-12 animate-spin rounded-full border-2 border-purple-500/30 border-t-purple-400" />
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">
+              Loading Clubs...
+            </p>
+          </div>
+        )}
+
+        {!clubsLoading && allClubs.length === 0 && (
+          <p className="text-center text-slate-400">No clubs found.</p>
+        )}
+
+        {allClubs.length > 0 && (
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 lg:grid-cols-3">
+            {allClubs.map((body) => (
+              <a
+                key={body.id}
+                href={`/bodies/${body.name}`}
+                className="group relative flex cursor-pointer flex-col justify-between overflow-hidden rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(14,18,32,0.7),rgba(10,12,22,0.4))] p-8 shadow-[0_30px_100px_rgba(0,0,0,0.5)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-purple-400/40 hover:shadow-[0_30px_100px_rgba(168,85,247,0.25)]"
+              >
+                <div>
+                  <div className="mb-6 flex items-center gap-5">
+                    <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-2xl border-2 border-white/15 bg-black/50 shadow-xl transition-all duration-500 group-hover:scale-105 group-hover:border-purple-400/50">
+                      {body.logo && (
+                        <img
+                          src={body.logo}
+                          alt={`${body.name} Logo`}
+                          loading="lazy"
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                      )}
+                    </div>
+                    <h3 className="text-2xl font-bold leading-snug text-white transition-colors group-hover:text-purple-200">
+                      {body.name}
+                    </h3>
+                  </div>
+                  <p className="mb-8 line-clamp-3 text-sm leading-relaxed text-slate-300/85">
+                    {body.short_description}
+                  </p>
+                </div>
+                <div className="flex items-center justify-between border-t border-white/10 pt-4 text-xs font-bold uppercase tracking-[0.25em] text-purple-400 transition-colors group-hover:text-purple-300">
+                  <span>Explore Club</span>
+                  <span aria-hidden="true">→</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        )}
       </section>
 
       <Footer />
