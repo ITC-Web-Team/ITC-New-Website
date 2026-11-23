@@ -15,8 +15,11 @@ def get_media_storage():
         if secret and access:
             from minio_storage.storage import MinioMediaStorage
             return MinioMediaStorage()
-    except Exception:
-        pass
+    except Exception as exc:
+        # Never fall back silently: files saved to the local disk never reach MinIO.
+        import logging
+        logging.getLogger(__name__).error("MinIO storage failed to initialise, using local disk: %r", exc)
+        print(f"[Storage] MinIO init FAILED, falling back to local disk: {exc!r}", flush=True)
     from django.core.files.storage import FileSystemStorage
     return FileSystemStorage()
 

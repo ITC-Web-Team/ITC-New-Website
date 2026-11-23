@@ -138,8 +138,10 @@ if MINIO_MEDIA_URL:
     MINIO_STORAGE_SECRET_KEY = env('MINIO_STORAGE_SECRET_KEY', default='')
     MINIO_STORAGE_USE_HTTPS = env.bool('MINIO_STORAGE_USE_HTTPS', default=True)
     MINIO_STORAGE_MEDIA_BUCKET_NAME = env('MINIO_STORAGE_MEDIA_BUCKET_NAME', default='media')
-    MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = True
-    MINIO_STORAGE_AUTO_CREATE_MEDIA_POLICY = "READ_WRITE"
+    # The bucket already exists and is public. Creating it / setting its policy at startup
+    # needs admin rights and makes storage init fail (and silently fall back to local disk).
+    MINIO_STORAGE_AUTO_CREATE_MEDIA_BUCKET = False
+    MINIO_STORAGE_AUTO_CREATE_MEDIA_POLICY = "NONE"
     MINIO_STORAGE_MEDIA_OBJECT_METADATA = {
         "Cache-Control": "max-age=86400"
     }

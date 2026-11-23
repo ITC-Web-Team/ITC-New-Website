@@ -9,6 +9,30 @@ import Footer from '../components/footer';
 // Paste the Spline export link here once it's ready (empty = plain black background).
 const TEAM_SPLINE_URL = '';
 
+function Avatar({ member }) {
+  const [failed, setFailed] = useState(false);
+
+  if (member.image && !failed) {
+    return (
+      <img
+        className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+        src={member.image}
+        alt={`Profile picture of ${member.name}`}
+        loading="lazy"
+        onError={() => setFailed(true)}
+      />
+    );
+  }
+
+  // Placeholder: no photo uploaded yet, or the uploaded file could not be loaded.
+  return (
+    <svg className="w-full h-full text-purple-300/40" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label={`${member.name} (photo coming soon)`}>
+      <circle cx="12" cy="9" r="4" />
+      <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z" />
+    </svg>
+  );
+}
+
 export default function Team() {
   const [team, setTeam] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -96,18 +120,7 @@ export default function Team() {
 
                 {/* Profile Picture (placeholder until a photo is uploaded) */}
                 <div className="relative w-36 h-36 mb-6 rounded-3xl overflow-hidden border-2 border-white/15 shadow-2xl group-hover:border-purple-400/50 transition-all duration-500 group-hover:scale-105 bg-gradient-to-br from-purple-900/40 to-slate-900/60">
-                  {member.image ? (
-                    <img
-                      className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
-                      src={member.image}
-                      alt={`Profile picture of ${member.name}`}
-                    />
-                  ) : (
-                    <svg className="w-full h-full text-purple-300/40" viewBox="0 0 24 24" fill="currentColor" aria-label={`${member.name} (photo coming soon)`}>
-                      <circle cx="12" cy="9" r="4" />
-                      <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z" />
-                    </svg>
-                  )}
+                  <Avatar member={member} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
