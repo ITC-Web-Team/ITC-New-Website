@@ -216,3 +216,15 @@ export async function fetchTeam() {
     return [];
   }
 }
+
+/**
+ * Best external link for a club / tech team: website, then LinkedIn, Instagram,
+ * GitHub, Facebook. Returns null when none is set (no internal fallback page).
+ */
+export function getBodyLink(body) {
+  const raw = [body?.website, body?.linkedin, body?.instagram, body?.github, body?.facebook]
+    .map((v) => String(v || '').trim())
+    .find(Boolean);
+  if (!raw) return null;
+  return /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
+}

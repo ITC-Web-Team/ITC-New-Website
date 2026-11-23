@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import SplineScene from '@/app/components/SplineScene';
-import { fetchBodies } from '@/lib/api';
+import { fetchBodies, getBodyLink } from '@/lib/api';
 import Footer from '../components/footer';
 
 export default function TechTeams() {
@@ -84,11 +84,14 @@ export default function TechTeams() {
         {/* Bodies Grid */}
         {!loading && !error && (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-            {bodies.map((body) => (
-              <a
+            {bodies.map((body) => {
+              const link = getBodyLink(body);
+              const Card = link ? 'a' : 'div';
+              return (
+              <Card
                 key={body.id}
-                href={`/bodies/${body.name}`}
-                className="group relative overflow-hidden rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(14,18,32,0.7),rgba(10,12,22,0.4))] p-8 shadow-[0_30px_100px_rgba(0,0,0,0.5)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-blue-400/40 hover:shadow-[0_30px_100px_rgba(59,130,246,0.25)] cursor-pointer flex flex-col justify-between"
+                {...(link ? { href: link, target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className={`group relative overflow-hidden rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(14,18,32,0.7),rgba(10,12,22,0.4))] p-8 shadow-[0_30px_100px_rgba(0,0,0,0.5)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-blue-400/40 hover:shadow-[0_30px_100px_rgba(59,130,246,0.25)] ${link ? 'cursor-pointer' : 'cursor-default'} flex flex-col justify-between`}
               >
                 {/* Glow Overlay */}
                 <div className="pointer-events-none absolute -inset-x-20 -top-20 h-40 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-cyan-600/20 blur-3xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
@@ -115,15 +118,16 @@ export default function TechTeams() {
                 </div>
 
                 <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs font-bold uppercase tracking-[0.25em] text-blue-400 group-hover:text-blue-300 transition-colors">
-                  <span>Explore Team</span>
+                  <span>{link ? 'Explore Team' : 'Link coming soon'}</span>
                   <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/12 bg-white/5 transition-transform group-hover:translate-x-1 group-hover:bg-blue-600/30 group-hover:border-blue-400/50">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>
                   </div>
                 </div>
-              </a>
-            ))}
+              </Card>
+              );
+            })}
           </div>
         )}
       </div>
