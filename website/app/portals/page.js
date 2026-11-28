@@ -56,7 +56,7 @@ export default function Portals() {
                 className="card card-link group flex flex-col overflow-hidden"
               >
                 {portal.banner && (
-                  <div className="aspect-video w-full overflow-hidden border-b border-white/[0.06]">
+                  <div className="aspect-video w-full overflow-hidden border-b border-violet-300/[0.1]">
                     <img src={portal.banner} alt="" loading="lazy" className="h-full w-full object-cover" />
                   </div>
                 )}
@@ -78,7 +78,7 @@ export default function Portals() {
                     </div>
                   )}
 
-                  <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-white/75 transition-colors group-hover:text-white">
+                  <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-violet-300 transition-colors group-hover:text-violet-200">
                     Open portal
                     <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                   </span>

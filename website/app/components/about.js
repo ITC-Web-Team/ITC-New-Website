@@ -10,7 +10,7 @@ const stats = [
 export default function About() {
   return (
     <section className="relative flex h-full w-full items-center justify-center px-5 py-24 text-white sm:px-8 lg:px-10">
-      <div className="card grid w-full max-w-6xl overflow-hidden bg-[#08080c]/80 lg:grid-cols-[1.15fr_1fr]">
+      <div className="card grid w-full max-w-6xl overflow-hidden bg-[#0d0817]/80 lg:grid-cols-[1.15fr_1fr]">
         <div className="p-7 sm:p-10 lg:p-12">
           <h2 className="text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
             The home of technical activity at IIT Bombay
@@ -28,11 +28,11 @@ export default function About() {
           </div>
         </div>
 
-        <dl className="grid grid-cols-2 border-t border-white/[0.08] lg:border-l lg:border-t-0">
+        <dl className="grid grid-cols-2 border-t border-violet-300/[0.12] lg:border-l lg:border-t-0">
           {stats.map((stat, i) => (
             <div
               key={stat.label}
-              className={`flex flex-col justify-end p-6 sm:p-8 ${i % 2 === 0 ? 'border-r border-white/[0.08]' : ''} ${i < 2 ? 'border-b border-white/[0.08]' : ''}`}
+              className={`flex flex-col justify-end p-6 sm:p-8 ${i % 2 === 0 ? 'border-r border-violet-300/[0.12]' : ''} ${i < 2 ? 'border-b border-violet-300/[0.12]' : ''}`}
             >
               <dd className="font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tight text-white sm:text-5xl">
                 {stat.value}

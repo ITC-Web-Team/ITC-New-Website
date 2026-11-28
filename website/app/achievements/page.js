@@ -68,14 +68,14 @@ export default function Achievements() {
                 id="body-filter"
                 value={selectedBody}
                 onChange={onFilterChange}
-                className="card w-full cursor-pointer appearance-none rounded-full py-2.5 pl-5 pr-11 text-sm text-white/85 outline-none hover:border-white/20 focus-visible:border-white/35"
+                className="card w-full cursor-pointer appearance-none rounded-full py-2.5 pl-5 pr-11 text-sm text-violet-50 outline-none hover:border-violet-400/40 focus-visible:border-violet-400/60"
               >
                 <option value="">All clubs and teams</option>
                 {bodies.map((body) => (
                   <option key={body.id} value={body.name}>{body.name}</option>
                 ))}
               </select>
-              <svg className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
+              <svg className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-violet-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
                 <path d="m6 9 6 6 6-6" />
               </svg>
             </div>
@@ -90,7 +90,7 @@ export default function Achievements() {
           <div className="space-y-20">
             {years.map(([year, achievements]) => (
               <section key={year}>
-                <div className="mb-8 flex items-baseline gap-4 border-b border-white/10 pb-4">
+                <div className="mb-8 flex items-baseline gap-4 border-b border-violet-300/15 pb-4">
                   <h2 className="text-3xl font-semibold tabular-nums tracking-tight text-white sm:text-4xl">{year}</h2>
                   <span className="text-sm text-white/40">
                     {achievements.length} achievement{achievements.length === 1 ? '' : 's'}

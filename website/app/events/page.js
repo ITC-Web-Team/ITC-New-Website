@@ -110,7 +110,7 @@ export default function EventsPage() {
   };
 
   const EventRow = ({ e }) => (
-    <li className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
+    <li className="rounded-xl border border-violet-300/[0.12] bg-violet-500/[0.04] p-4">
       <div className="flex items-start justify-between gap-3">
         <h4 className="font-medium text-white">{e.name}</h4>
         <span className="shrink-0 text-xs text-white/45">{e.date_label}</span>
@@ -154,8 +154,8 @@ export default function EventsPage() {
               onClick={() => { setClub(name); setSelected(null); }}
               className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors ${
                 club === name
-                  ? 'border-white bg-white text-black'
-                  : 'border-white/12 bg-black/50 text-white/70 hover:border-white/30 hover:text-white'
+                  ? 'border-violet-600 bg-violet-600 text-white'
+                  : 'border-violet-300/20 bg-[#0f0a1a]/70 text-violet-100/75 hover:border-violet-400/50 hover:text-white'
               }`}
             >
               {name}
@@ -210,13 +210,13 @@ export default function EventsPage() {
                       onClick={() => setSelected(isSelected ? null : key)}
                       className={`flex aspect-square flex-col items-center justify-between rounded-lg border p-1 text-sm transition-colors sm:items-start sm:p-2 ${
                         isSelected
-                          ? 'border-white/50 bg-white/[0.1]'
+                          ? 'border-violet-400/70 bg-violet-500/20'
                           : list.length
-                            ? 'border-white/[0.12] bg-white/[0.04] hover:border-white/30'
-                            : 'border-white/[0.04] hover:border-white/15'
+                            ? 'border-violet-300/20 bg-violet-500/[0.07] hover:border-violet-400/50'
+                            : 'border-violet-300/[0.06] hover:border-violet-300/25'
                       }`}
                     >
-                      <span className={`text-xs font-medium sm:text-sm ${key === todayKey ? 'rounded-full bg-white px-1.5 text-black' : list.length ? 'text-white/85' : 'text-white/40'}`}>
+                      <span className={`text-xs font-medium sm:text-sm ${key === todayKey ? 'rounded-full bg-violet-600 px-1.5 text-white' : list.length ? 'text-white/85' : 'text-white/40'}`}>
                         {date.getDate()}
                       </span>
                       {list.length > 0 && (

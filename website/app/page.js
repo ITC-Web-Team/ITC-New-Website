@@ -269,7 +269,7 @@ export default function Home() {
               <Link key={item.href} href={item.href} className="card card-link group flex flex-col p-6">
                 <h3 className="text-lg font-semibold text-white">{item.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-white/55">{item.text}</p>
-                <span className="mt-auto inline-flex items-center gap-1.5 pt-8 text-sm font-medium text-white/70 transition-colors group-hover:text-white">
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-8 text-sm font-medium text-violet-300 transition-colors group-hover:text-violet-200">
                   {item.cta}
                   <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
@@ -335,13 +335,13 @@ export default function Home() {
                   className="card card-link group flex flex-col overflow-hidden"
                 >
                   {report.image && (
-                    <div className="aspect-video w-full overflow-hidden border-b border-white/[0.06]">
+                    <div className="aspect-video w-full overflow-hidden border-b border-violet-300/[0.1]">
                       <img src={report.image} alt="" loading="lazy" className="h-full w-full object-cover" />
                     </div>
                   )}
                   <div className="flex flex-1 flex-col p-6">
                     <h3 className="text-lg font-semibold leading-snug text-white">{report.title}</h3>
-                    <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-white/70 transition-colors group-hover:text-white">
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-violet-300 transition-colors group-hover:text-violet-200">
                       Read report
                       <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                     </span>
@@ -373,14 +373,14 @@ function LogoGroup({ title, href, items }) {
         <h3 className="text-base font-medium text-white">
           {title} <span className="ml-1 text-white/35">{items.length}</span>
         </h3>
-        <Link href={href} className="text-sm text-white/55 transition-colors hover:text-white">
+        <Link href={href} className="text-sm text-violet-300 transition-colors hover:text-violet-200">
           View all
         </Link>
       </div>
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
         {items.map((item) => (
           <Link key={item.id} href={href} title={item.name} className="card card-link group flex flex-col items-center p-3">
-            <div className="aspect-square w-full overflow-hidden rounded-lg bg-white/[0.03]">
+            <div className="aspect-square w-full overflow-hidden rounded-lg bg-violet-500/[0.06]">
               {item.logo ? (
                 <img src={item.logo} alt="" loading="lazy" className="h-full w-full object-cover" />
               ) : (

@@ -31,7 +31,7 @@ export function PageHeader({ title, description, children }) {
 
 export function SectionHeader({ title, description, action }) {
   return (
-    <div className="mb-10 flex flex-col gap-4 border-b border-white/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
+    <div className="mb-10 flex flex-col gap-4 border-b border-violet-300/15 pb-6 sm:flex-row sm:items-end sm:justify-between">
       <div className="max-w-2xl">
         <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h2>
         {description && <p className="mt-3 text-sm leading-relaxed text-white/55 sm:text-base">{description}</p>}
@@ -39,7 +39,7 @@ export function SectionHeader({ title, description, action }) {
       {action && (
         <Link
           href={action.href}
-          className="group inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-white/70 transition-colors hover:text-white"
+          className="group inline-flex shrink-0 items-center gap-1.5 text-sm font-medium text-violet-300 transition-colors hover:text-violet-200"
         >
           {action.label}
           <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -101,8 +101,8 @@ function PersonPhoto({ name, image }) {
 
   // No photo uploaded yet, or it failed to load.
   return (
-    <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(160deg,#16161f,#0d0d13)]">
-      <span className="font-[family-name:var(--font-display)] text-4xl font-medium text-white/30">{initials(name)}</span>
+    <div className="flex h-full w-full items-center justify-center bg-[linear-gradient(160deg,#1d1330,#0f0a1a)]">
+      <span className="font-[family-name:var(--font-display)] text-4xl font-medium text-violet-200/40">{initials(name)}</span>
     </div>
   );
 }
@@ -111,7 +111,7 @@ function PersonPhoto({ name, image }) {
 export function PersonCard({ name, role, image, email, phone, linkedin, instagram }) {
   return (
     <article className="card flex flex-col overflow-hidden">
-      <div className="aspect-[4/5] w-full overflow-hidden border-b border-white/[0.06]">
+      <div className="aspect-[4/5] w-full overflow-hidden border-b border-violet-300/[0.1]">
         <PersonPhoto name={name} image={image} />
       </div>
 
@@ -157,7 +157,7 @@ export function BodyCard({ body, link }) {
       className={`card group flex flex-col p-6 ${link ? 'card-link' : ''}`}
     >
       <div className="flex items-center gap-4">
-        <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-white/[0.04]">
+        <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-violet-300/15 bg-violet-500/[0.06]">
           {body.logo && (
             <img src={body.logo} alt="" loading="lazy" className="h-full w-full object-cover" />
           )}
@@ -171,7 +171,7 @@ export function BodyCard({ body, link }) {
 
       <div className="mt-auto pt-6">
         {link ? (
-          <span className="inline-flex items-center gap-1.5 text-sm font-medium text-white/75 transition-colors group-hover:text-white">
+          <span className="inline-flex items-center gap-1.5 text-sm font-medium text-violet-300 transition-colors group-hover:text-violet-200">
             Visit website
             <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </span>
@@ -200,7 +200,7 @@ export function AchievementCard({ achievement }) {
             src={body.logo}
             alt=""
             loading="lazy"
-            className="h-11 w-11 shrink-0 rounded-lg border border-white/10 object-cover"
+            className="h-11 w-11 shrink-0 rounded-lg border border-violet-300/15 object-cover"
           />
         )}
         <div className="min-w-0">
@@ -229,10 +229,10 @@ export function InterIITCard({ meet }) {
   return (
     <article className="card overflow-hidden">
       <div className="grid lg:grid-cols-2">
-        <div className="flex flex-col gap-8 border-b border-white/[0.08] p-6 sm:p-8 lg:border-b-0 lg:border-r">
+        <div className="flex flex-col gap-8 border-b border-violet-300/[0.12] p-6 sm:p-8 lg:border-b-0 lg:border-r">
           <div className="flex items-center gap-5">
             {d.logo && (
-              <img src={d.logo} alt="" className="h-16 w-16 shrink-0 rounded-xl border border-white/10 object-cover sm:h-20 sm:w-20" />
+              <img src={d.logo} alt="" className="h-16 w-16 shrink-0 rounded-xl border border-violet-300/15 object-cover sm:h-20 sm:w-20" />
             )}
             <div>
               <h3 className="text-2xl font-semibold leading-tight text-white sm:text-3xl">{d.title}</h3>
@@ -240,7 +240,7 @@ export function InterIITCard({ meet }) {
             </div>
           </div>
 
-          <dl className="grid grid-cols-3 divide-x divide-white/[0.08] rounded-xl border border-white/[0.08]">
+          <dl className="grid grid-cols-3 divide-x divide-violet-300/[0.12] rounded-xl border border-violet-300/[0.12]">
             {MEDALS.map((medal) => (
               <div key={medal.key} className="px-4 py-5 text-center">
                 <dd className="text-3xl font-semibold tabular-nums text-white sm:text-4xl">{d[medal.key] ?? 0}</dd>
@@ -259,12 +259,12 @@ export function InterIITCard({ meet }) {
           {d.problemstatements?.length > 0 ? (
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-white/10 text-xs text-white/40">
+                <tr className="border-b border-violet-300/15 text-xs text-violet-200/50">
                   <th className="pb-3 font-medium">Problem statement</th>
                   <th className="pb-3 text-right font-medium">Position</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/[0.06]">
+              <tbody className="divide-y divide-violet-300/[0.1]">
                 {d.problemstatements.map((p) => (
                   <tr key={p.id}>
                     <td className="py-3 pr-4 text-white/80">{p.title}</td>
