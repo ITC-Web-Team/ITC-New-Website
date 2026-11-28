@@ -36,17 +36,35 @@ export default function Contact() {
       <SplineScene url="https://prod.spline.design/Wo6UttIK8jjj1QsT/scene.splinecode" interactive={true} />
 
       <PageShell>
-        <PageHeader
-          title="Cabinet"
-          description="The people leading student innovation, technical clubs and engineering teams at IIT Bombay. Reach out to any of us."
-        />
+        {/* Intro fills the first screen so the 3D scene stays visible; members start below the fold */}
+        <div className="flex min-h-[calc(100svh-9rem)] flex-col justify-between pb-10">
+          <PageHeader
+            title="Cabinet"
+            description="The people leading student innovation, technical clubs and engineering teams at IIT Bombay. Reach out to any of us."
+          />
+          <a
+            href="#cabinet-members"
+            onClick={(event) => {
+              const target = document.getElementById('cabinet-members');
+              if (!target) return;
+              event.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }}
+            className="group flex w-fit flex-col items-start gap-3 text-sm text-violet-100/60 transition-colors hover:text-white"
+          >
+            Meet the cabinet
+            <span className="relative h-10 w-px overflow-hidden bg-violet-300/20">
+              <span className="absolute inset-x-0 top-0 h-1/2 animate-[scroll-hint_1.8s_ease-in-out_infinite] bg-violet-300 motion-reduce:animate-none" />
+            </span>
+          </a>
+        </div>
 
         {loading && <LoadingState label="Loading cabinet" />}
         {error && <ErrorState title="Couldn't load the cabinet" message={error} />}
         {!loading && !error && cabinet.length === 0 && <EmptyState>No cabinet members yet.</EmptyState>}
 
         {!loading && !error && cabinet.length > 0 && (
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div id="cabinet-members" className="grid scroll-mt-28 grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {cabinet.map((member) => (
               <PersonCard
                 key={member.id}
