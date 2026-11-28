@@ -268,7 +268,6 @@ export default function Home() {
             <ExploreCard
               className="lg:col-span-3"
               href="/clubs"
-              icon={<UsersIcon className="h-5 w-5" />}
               title="Clubs"
               text="Interest-driven communities, from astronomy and robotics to quant finance and coding."
               cta="Browse clubs"
@@ -278,7 +277,6 @@ export default function Home() {
             <ExploreCard
               className="lg:col-span-2"
               href="/events"
-              icon={<CalendarIcon className="h-5 w-5" />}
               title="Events"
               text="Workshops, sessions and competitions from every club, all in one calendar."
               cta="See the calendar"
@@ -287,7 +285,6 @@ export default function Home() {
             <ExploreCard
               className="lg:col-span-2"
               href="/portals"
-              icon={<GridIcon className="h-5 w-5" />}
               title="Portals"
               text="Tools and web apps built by ITC for the campus."
               cta="Open portals"
@@ -296,7 +293,6 @@ export default function Home() {
             <ExploreCard
               className="lg:col-span-3"
               href="/techteams"
-              icon={<RocketIcon className="h-5 w-5" />}
               title="Tech teams"
               text="Competition teams designing and building racecars, rockets, rovers, satellites and underwater vehicles."
               cta="Meet the teams"
@@ -386,7 +382,7 @@ export default function Home() {
   );
 }
 
-function ExploreCard({ className = '', href, icon, title, text, cta, items, countLabel, preview }) {
+function ExploreCard({ className = '', href, title, text, cta, items, countLabel, preview }) {
   const logos = (items || []).filter((item) => item.logo);
   const shown = logos.slice(0, 7);
   const extra = (items || []).length - shown.length;
@@ -399,10 +395,7 @@ function ExploreCard({ className = '', href, icon, title, text, cta, items, coun
       {/* Soft purple wash that warms up on hover */}
       <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-violet-600/10 blur-3xl transition-opacity duration-500 group-hover:bg-violet-500/20" />
 
-      <div className="relative flex items-start justify-between gap-4">
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/25 bg-violet-500/15 text-violet-200">
-          {icon}
-        </span>
+      <div className="relative flex items-start justify-end gap-4">
         <span className="flex h-10 w-10 items-center justify-center rounded-full border border-violet-300/20 text-violet-200 transition-colors duration-200 group-hover:border-violet-500 group-hover:bg-violet-600 group-hover:text-white">
           <ArrowUpRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
         </span>
@@ -488,47 +481,6 @@ function PortalPreview() {
         </div>
       </div>
     </div>
-  );
-}
-
-const iconProps = { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.75, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true };
-
-function UsersIcon(props) {
-  return (
-    <svg {...iconProps} {...props}>
-      <circle cx="9" cy="8" r="3.5" />
-      <path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M21.5 20a6.5 6.5 0 0 0-4-6" />
-    </svg>
-  );
-}
-
-function RocketIcon(props) {
-  return (
-    <svg {...iconProps} {...props}>
-      <path d="M12 2c3 2 5 6 5 10l-2 4H9l-2-4c0-4 2-8 5-10z" />
-      <circle cx="12" cy="10" r="2" />
-      <path d="M9 16l-3 3v-4M15 16l3 3v-4M10.5 19.5h3" />
-    </svg>
-  );
-}
-
-function CalendarIcon(props) {
-  return (
-    <svg {...iconProps} {...props}>
-      <rect x="3" y="5" width="18" height="16" rx="2" />
-      <path d="M3 10h18M8 3v4M16 3v4" />
-    </svg>
-  );
-}
-
-function GridIcon(props) {
-  return (
-    <svg {...iconProps} {...props}>
-      <rect x="3" y="3" width="7" height="7" rx="1.5" />
-      <rect x="14" y="3" width="7" height="7" rx="1.5" />
-      <rect x="3" y="14" width="7" height="7" rx="1.5" />
-      <rect x="14" y="14" width="7" height="7" rx="1.5" />
-    </svg>
   );
 }
 
