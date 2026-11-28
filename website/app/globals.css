@@ -55,10 +55,6 @@ h1, h2, h3, h4, h5, h6 {
    One restrained card / button / label style used across every page, so the
    site reads as one design instead of a pile of glows and gradients. */
 @layer components {
-  .eyebrow {
-    @apply text-sm font-medium text-violet-300/90;
-  }
-
   .card {
     @apply rounded-2xl border border-white/[0.08] bg-[#0b0b10]/85 backdrop-blur-md transition-colors duration-200;
   }

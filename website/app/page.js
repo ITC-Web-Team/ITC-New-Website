@@ -263,7 +263,7 @@ export default function Home() {
 
         {/* ══ EXPLORE ═════════════════════════════════════════════════════ */}
         <section className="mx-auto max-w-7xl px-5 pb-20 pt-32 sm:px-8 lg:px-10">
-          <SectionHeader eyebrow="Explore" title="Find your place at ITC" />
+          <SectionHeader title="Find your place at ITC" />
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {EXPLORE.map((item) => (
               <Link key={item.href} href={item.href} className="card card-link group flex flex-col p-6">
@@ -282,7 +282,6 @@ export default function Home() {
         {(clubs.length > 0 || techTeams.length > 0) && (
           <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10">
             <SectionHeader
-              eyebrow="Who we are"
               title="Our family"
               description={`${clubs.length} clubs and ${techTeams.length} tech teams under one council.`}
             />
@@ -295,7 +294,6 @@ export default function Home() {
         {achievements.length > 0 && (
           <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10">
             <SectionHeader
-              eyebrow="Milestones"
               title="Recent achievements"
               action={{ href: '/achievements', label: 'All achievements' }}
             />
@@ -311,7 +309,6 @@ export default function Home() {
         {interIITs.length > 0 && (
           <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10">
             <SectionHeader
-              eyebrow="Hall of Fame"
               title="Latest Inter IIT Tech Meet"
               action={{ href: '/halloffame', label: 'Full Hall of Fame' }}
             />
@@ -325,7 +322,6 @@ export default function Home() {
         {workReports.length > 0 && (
           <section className="mx-auto max-w-7xl px-5 pb-28 pt-20 sm:px-8 lg:px-10">
             <SectionHeader
-              eyebrow="Transparency"
               title="Work reports"
               description="What the council set out to do, and what it delivered."
             />

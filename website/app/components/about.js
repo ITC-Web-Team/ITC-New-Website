@@ -12,8 +12,7 @@ export default function About() {
     <section className="relative flex h-full w-full items-center justify-center px-5 py-24 text-white sm:px-8 lg:px-10">
       <div className="card grid w-full max-w-6xl overflow-hidden bg-[#08080c]/80 lg:grid-cols-[1.15fr_1fr]">
         <div className="p-7 sm:p-10 lg:p-12">
-          <p className="eyebrow">About ITC</p>
-          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
+          <h2 className="text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
             The home of technical activity at IIT Bombay
           </h2>
           <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-white/60 sm:text-base">

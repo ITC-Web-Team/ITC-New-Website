@@ -37,7 +37,6 @@ export default function Contact() {
 
       <PageShell>
         <PageHeader
-          eyebrow="Institute Technical Council"
           title="Cabinet"
           description="The people leading student innovation, technical clubs and engineering teams at IIT Bombay. Reach out to any of us."
         />
@@ -65,7 +64,6 @@ export default function Contact() {
 
         <section className="mt-28">
           <SectionHeader
-            eyebrow="Find us"
             title="Student Activity Centre"
             description="ITC works out of the Student Activity Centre (SAC), IIT Bombay, Powai, Mumbai."
           />

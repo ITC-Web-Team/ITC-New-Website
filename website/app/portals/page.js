@@ -37,7 +37,6 @@ export default function Portals() {
 
       <PageShell>
         <PageHeader
-          eyebrow="Built by ITC"
           title="Portals"
           description="Web apps and tools built and maintained by ITC teams for the IIT Bombay community."
         />

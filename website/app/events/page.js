@@ -141,7 +141,6 @@ export default function EventsPage() {
 
       <PageShell>
         <PageHeader
-          eyebrow="This academic year"
           title="Events"
           description="Workshops, sessions, competitions and more from every club, in one calendar."
         />

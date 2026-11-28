@@ -38,7 +38,6 @@ export default function TechTeams() {
 
       <PageShell>
         <PageHeader
-          eyebrow="Competition teams"
           title="Tech Teams"
           description="Student teams building racecars, satellites, rockets, rovers and autonomous vehicles, and taking them to competitions around the world."
         />

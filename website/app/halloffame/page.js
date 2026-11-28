@@ -37,7 +37,6 @@ export default function HallOfFame() {
 
       <PageShell>
         <PageHeader
-          eyebrow="Inter IIT Tech Meet"
           title="Hall of Fame"
           description="IIT Bombay's results at every Inter IIT Tech Meet: medals, problem statements and podium finishes."
         />

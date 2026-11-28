@@ -58,7 +58,6 @@ export default function Achievements() {
 
       <PageShell>
         <PageHeader
-          eyebrow="Recognition"
           title="Achievements"
           description="Competition wins, research milestones and other results from our clubs and teams, year by year."
         >

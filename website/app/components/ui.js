@@ -13,11 +13,10 @@ export function PageShell({ children, className = '' }) {
   );
 }
 
-export function PageHeader({ eyebrow, title, description, children }) {
+export function PageHeader({ title, description, children }) {
   return (
     <header className="mb-14 max-w-3xl sm:mb-16">
-      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-      <h1 className="mt-3 text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
+      <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl">
         {title}
       </h1>
       {description && (
@@ -30,12 +29,11 @@ export function PageHeader({ eyebrow, title, description, children }) {
   );
 }
 
-export function SectionHeader({ eyebrow, title, description, action }) {
+export function SectionHeader({ title, description, action }) {
   return (
     <div className="mb-10 flex flex-col gap-4 border-b border-white/10 pb-6 sm:flex-row sm:items-end sm:justify-between">
       <div className="max-w-2xl">
-        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-        <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h2>
+        <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h2>
         {description && <p className="mt-3 text-sm leading-relaxed text-white/55 sm:text-base">{description}</p>}
       </div>
       {action && (

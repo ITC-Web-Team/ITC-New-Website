@@ -40,7 +40,6 @@ export default function Team() {
 
       <PageShell>
         <PageHeader
-          eyebrow="Managers and nominees"
           title="Team"
           description="The managers and nominees running our clubs and technical teams at IIT Bombay."
         />

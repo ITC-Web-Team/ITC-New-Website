@@ -342,7 +342,6 @@ export default function ClubsPage() {
       <section className="relative z-10 bg-black">
         <div className="mx-auto max-w-7xl px-5 py-24 sm:px-8 lg:px-10">
           <SectionHeader
-            eyebrow="Directory"
             title="All clubs"
             description="Every club under the Institute Technical Council, at a glance."
           />
