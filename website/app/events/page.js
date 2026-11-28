@@ -5,6 +5,7 @@ import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import SplineScene from '@/app/components/SplineScene';
 import { fetchEvents } from '@/lib/api';
+import { PageShell, PageHeader, LoadingState, ClockIcon } from '../components/ui';
 
 // Paste the Spline export link here once it's ready (leave empty for a plain black background).
 const EVENTS_SPLINE_URL = '';
@@ -109,19 +110,20 @@ export default function EventsPage() {
   };
 
   const EventRow = ({ e }) => (
-    <li className="rounded-2xl border border-white/10 bg-white/[0.03] p-4">
+    <li className="rounded-xl border border-white/[0.08] bg-white/[0.02] p-4">
       <div className="flex items-start justify-between gap-3">
-        <h4 className="font-semibold text-white">{e.name}</h4>
-        <span className="shrink-0 text-[10px] font-bold uppercase tracking-[0.2em] text-purple-300">
-          {e.date_label}
-        </span>
+        <h4 className="font-medium text-white">{e.name}</h4>
+        <span className="shrink-0 text-xs text-white/45">{e.date_label}</span>
       </div>
-      <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
-        {e.time && <span>🕒 {e.time}</span>}
-      </div>
-      <div className="mt-3 flex flex-wrap gap-2">
+      {e.time && (
+        <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs text-white/50">
+          <ClockIcon className="h-3.5 w-3.5" />
+          {e.time}
+        </p>
+      )}
+      <div className="mt-3 flex flex-wrap gap-1.5">
         {e.clubs.map((c) => (
-          <span key={c} className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-black/40 px-2.5 py-1 text-[11px] text-slate-300">
+          <span key={c} className="chip">
             <span className={`h-1.5 w-1.5 rounded-full ${colorFor(c)}`} />
             {c}
           </span>
@@ -131,43 +133,30 @@ export default function EventsPage() {
   );
 
   return (
-    <main className="relative min-h-screen overflow-x-hidden bg-black text-white selection:bg-purple-500/30">
+    <main className="relative min-h-screen overflow-x-hidden bg-black text-white">
       <Navbar />
 
       {/* 3D background — add the Spline export link to EVENTS_SPLINE_URL above */}
       {EVENTS_SPLINE_URL && <SplineScene url={EVENTS_SPLINE_URL} interactive={true} />}
 
-      <div className="pointer-events-none fixed inset-0 z-[1] bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.12),transparent_45%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.08),transparent_40%)]" />
-
-      <div className="relative z-10 mx-auto max-w-7xl space-y-12 px-4 pb-28 pt-32 sm:px-6 lg:px-10">
-        {/* Header */}
-        <div className="space-y-4 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/40 px-4 py-1.5 shadow-xl backdrop-blur-md">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-purple-400" />
-            <span className="text-[10px] font-semibold uppercase tracking-[0.35em] text-white/70">
-              Academic Year Timeline
-            </span>
-          </div>
-          <h1 className="bg-gradient-to-r from-white via-purple-100 to-purple-400 bg-clip-text text-5xl font-black tracking-tight text-transparent drop-shadow-[0_10px_35px_rgba(168,85,247,0.3)] sm:text-7xl lg:text-8xl">
-            Events
-          </h1>
-          <p className="mx-auto max-w-2xl pt-1 text-base leading-relaxed text-slate-300/80 sm:text-lg">
-            Workshops, sessions, competitions and more from every club, all in one calendar.
-          </p>
-          <div className="mx-auto h-px w-28 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent" />
-        </div>
+      <PageShell>
+        <PageHeader
+          eyebrow="This academic year"
+          title="Events"
+          description="Workshops, sessions, competitions and more from every club, in one calendar."
+        />
 
         {/* Club filter */}
-        <div className="flex flex-wrap justify-center gap-2">
+        <div className="mb-8 flex flex-wrap gap-2">
           {clubs.map((name) => (
             <button
               key={name}
               type="button"
               onClick={() => { setClub(name); setSelected(null); }}
-              className={`rounded-full border px-4 py-1.5 text-xs font-semibold tracking-wide transition ${
+              className={`rounded-full border px-3.5 py-1.5 text-xs font-medium transition-colors ${
                 club === name
-                  ? 'border-purple-400/60 bg-purple-600/30 text-white'
-                  : 'border-white/12 bg-black/40 text-slate-300 hover:border-white/30'
+                  ? 'border-white bg-white text-black'
+                  : 'border-white/12 bg-black/50 text-white/70 hover:border-white/30 hover:text-white'
               }`}
             >
               {name}
@@ -176,26 +165,23 @@ export default function EventsPage() {
         </div>
 
         {loading ? (
-          <div className="flex flex-col items-center gap-4 py-24">
-            <div className="h-12 w-12 animate-spin rounded-full border-2 border-purple-500/30 border-t-purple-400" />
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-slate-400">Loading Events...</p>
-          </div>
+          <LoadingState label="Loading events" />
         ) : (
-          <div className="grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+          <div className="grid gap-5 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
             {/* Calendar */}
-            <section className="rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(14,18,32,0.7),rgba(10,12,22,0.4))] p-4 shadow-[0_30px_100px_rgba(0,0,0,0.5)] backdrop-blur-2xl sm:p-8">
+            <section className="card p-4 sm:p-7">
               <div className="mb-6 flex items-center justify-between">
                 <button
                   type="button"
                   onClick={() => shiftMonth(-1)}
                   aria-label="Previous month"
-                  className="rounded-full border border-white/15 bg-black/60 p-2.5 transition hover:bg-purple-600"
+                  className="icon-btn"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m15 18-6-6 6-6" /></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m15 18-6-6 6-6" /></svg>
                 </button>
                 <div className="text-center">
-                  <h2 className="text-2xl font-bold sm:text-3xl">{MONTH_NAMES[month]} {year}</h2>
-                  <p className="text-xs uppercase tracking-[0.25em] text-slate-400">
+                  <h2 className="text-xl font-semibold sm:text-2xl">{MONTH_NAMES[month]} {year}</h2>
+                  <p className="mt-0.5 text-xs text-white/45">
                     {monthEventCount + ongoing.length} event{monthEventCount + ongoing.length === 1 ? '' : 's'}
                   </p>
                 </div>
@@ -203,15 +189,15 @@ export default function EventsPage() {
                   type="button"
                   onClick={() => shiftMonth(1)}
                   aria-label="Next month"
-                  className="rounded-full border border-white/15 bg-black/60 p-2.5 transition hover:bg-purple-600"
+                  className="icon-btn"
                 >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m9 18 6-6-6-6" /></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="m9 18 6-6-6-6" /></svg>
                 </button>
               </div>
 
               <div className="grid grid-cols-7 gap-1.5 sm:gap-2">
                 {WEEKDAYS.map((w) => (
-                  <div key={w} className="pb-2 text-center text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">{w}</div>
+                  <div key={w} className="pb-2 text-center text-xs font-medium text-white/40">{w}</div>
                 ))}
                 {cells.map((date, i) => {
                   if (!date) return <div key={`blank-${i}`} />;
@@ -223,15 +209,15 @@ export default function EventsPage() {
                       key={key}
                       type="button"
                       onClick={() => setSelected(isSelected ? null : key)}
-                      className={`flex aspect-square flex-col items-center justify-between rounded-xl border p-1 text-sm transition sm:items-start sm:p-2 ${
+                      className={`flex aspect-square flex-col items-center justify-between rounded-lg border p-1 text-sm transition-colors sm:items-start sm:p-2 ${
                         isSelected
-                          ? 'border-purple-400/70 bg-purple-600/25'
+                          ? 'border-white/50 bg-white/[0.1]'
                           : list.length
-                            ? 'border-white/15 bg-white/[0.05] hover:border-purple-400/40'
-                            : 'border-white/5 bg-black/20 hover:border-white/20'
+                            ? 'border-white/[0.12] bg-white/[0.04] hover:border-white/30'
+                            : 'border-white/[0.04] hover:border-white/15'
                       }`}
                     >
-                      <span className={`text-xs font-semibold sm:text-sm ${key === todayKey ? 'rounded-full bg-purple-500 px-1.5 text-white' : 'text-slate-300'}`}>
+                      <span className={`text-xs font-medium sm:text-sm ${key === todayKey ? 'rounded-full bg-white px-1.5 text-black' : list.length ? 'text-white/85' : 'text-white/40'}`}>
                         {date.getDate()}
                       </span>
                       {list.length > 0 && (
@@ -239,7 +225,7 @@ export default function EventsPage() {
                           {list.slice(0, 4).map((e) => (
                             <span key={e.id} className={`h-1.5 w-1.5 rounded-full ${colorFor(e.clubs[0])}`} />
                           ))}
-                          {list.length > 4 && <span className="text-[9px] text-slate-400">+{list.length - 4}</span>}
+                          {list.length > 4 && <span className="text-[9px] text-white/45">+{list.length - 4}</span>}
                         </span>
                       )}
                     </button>
@@ -249,9 +235,9 @@ export default function EventsPage() {
             </section>
 
             {/* Side panel */}
-            <aside className="space-y-8">
-              <section className="rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(14,18,32,0.7),rgba(10,12,22,0.4))] p-6 shadow-[0_30px_100px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
-                <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-purple-300">
+            <aside className="space-y-5">
+              <section className="card p-6">
+                <h3 className="mb-4 text-sm font-medium text-white">
                   {selected
                     ? parseDate(selected).toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' })
                     : 'Select a day'}
@@ -260,17 +246,17 @@ export default function EventsPage() {
                   selectedEvents.length ? (
                     <ul className="space-y-3">{selectedEvents.map((e) => <EventRow key={e.id} e={e} />)}</ul>
                   ) : (
-                    <p className="text-sm text-slate-400">No events on this day.</p>
+                    <p className="text-sm text-white/45">No events on this day.</p>
                   )
                 ) : (
-                  <p className="text-sm text-slate-400">Pick a highlighted date to see what’s happening.</p>
+                  <p className="text-sm text-white/45">Pick a highlighted date to see what’s on.</p>
                 )}
               </section>
 
               {ongoing.length > 0 && (
-                <section className="rounded-[2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(14,18,32,0.7),rgba(10,12,22,0.4))] p-6 shadow-[0_30px_100px_rgba(0,0,0,0.5)] backdrop-blur-2xl">
-                  <h3 className="mb-4 text-xs font-bold uppercase tracking-[0.3em] text-purple-300">
-                    Ongoing &amp; multi-week
+                <section className="card p-6">
+                  <h3 className="mb-4 text-sm font-medium text-white">
+                    Ongoing and multi-week
                   </h3>
                   <ul className="space-y-3">{ongoing.map((e) => <EventRow key={e.id} e={e} />)}</ul>
                 </section>
@@ -278,7 +264,7 @@ export default function EventsPage() {
             </aside>
           </div>
         )}
-      </div>
+      </PageShell>
       <Footer />
     </main>
   );

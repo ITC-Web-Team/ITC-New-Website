@@ -8,6 +8,13 @@ import About from './components/about';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import {
+  SectionHeader,
+  AchievementCard,
+  InterIITCard,
+  ArrowRightIcon,
+  ArrowUpRightIcon,
+} from './components/ui';
+import {
   fetchBodies,
   fetchAchievements,
   fetchInterIIT,
@@ -211,7 +218,7 @@ export default function Home() {
       <section className="relative z-10 h-screen overflow-hidden">
         {/* Dark bg fades out as About slides in, revealing the fixed Spline */}
         <div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(168,85,247,0.22),transparent_38%),linear-gradient(180deg,#050505_0%,#09040f_55%,#020202_100%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(124,92,246,0.12),transparent_45%),linear-gradient(180deg,#050505_0%,#060509_55%,#020202_100%)]"
           style={{ opacity: Math.max(0, 1 - scrollProgress * 1.8) }}
         />
 
@@ -239,384 +246,157 @@ export default function Home() {
           <About />
         </div>
 
-        {/* Scroll hint with animated chevron */}
-        <div className="pointer-events-none absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="rounded-full border border-white/8 bg-white/[0.03] px-5 py-2 text-[10px] font-medium uppercase tracking-[0.4em] text-white/40 backdrop-blur-xl" style={{ fontFamily: 'var(--font-body)' }}>
-            Scroll
+        {/* Scroll hint */}
+        <div
+          className="pointer-events-none absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 text-xs text-white/45 transition-opacity duration-300"
+          style={{ opacity: Math.max(0, 1 - scrollProgress * 2) }}
+        >
+          Scroll
+          <span className="relative h-10 w-px overflow-hidden bg-white/15">
+            <span className="absolute inset-x-0 top-0 h-1/2 animate-[scroll-hint_1.8s_ease-in-out_infinite] bg-white/70 motion-reduce:animate-none" />
           </span>
-          <svg className="w-4 h-4 text-white/25 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M19 14l-7 7m0 0l-7-7" />
-          </svg>
         </div>
       </section>
 
-      {/* ══ CTA BUTTONS ══════════════════════════════════════════════════ */}
-      <section className="relative z-10 py-24 px-4">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.06),transparent_70%)]" />
-        <div className="relative z-10 max-w-4xl mx-auto flex flex-wrap gap-4 justify-center">
-          <Link
-            href="/clubs"
-            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/10 bg-white/[0.04] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur-2xl transition-all duration-500 hover:scale-[1.03] hover:border-indigo-400/30 hover:bg-indigo-500/10 hover:text-white hover:shadow-[0_0_40px_rgba(99,102,241,0.2)]"
-            style={{ fontFamily: 'var(--font-body)' }}
-          >
-            <span>Explore Clubs</span>
-            <svg className="w-3.5 h-3.5 opacity-50 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+      {/* Everything below the hero sits on a dark scrim so text stays readable over the 3D scene */}
+      <div className="relative z-10 bg-[linear-gradient(180deg,rgba(3,3,5,0)_0%,rgba(3,3,5,0.78)_10rem,rgba(3,3,5,0.9)_100%)]">
 
-          <Link
-            href="/techteams"
-            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/10 bg-white/[0.04] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur-2xl transition-all duration-500 hover:scale-[1.03] hover:border-violet-400/30 hover:bg-violet-500/10 hover:text-white hover:shadow-[0_0_40px_rgba(139,92,246,0.2)]"
-            style={{ fontFamily: 'var(--font-body)' }}
-          >
-            <span>Tech Teams</span>
-            <svg className="w-3.5 h-3.5 opacity-50 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
-
-          <Link
-            href="/portals"
-            className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full border border-white/10 bg-white/[0.04] px-8 py-4 text-[13px] font-semibold uppercase tracking-[0.22em] text-white/90 backdrop-blur-2xl transition-all duration-500 hover:scale-[1.03] hover:border-purple-400/30 hover:bg-purple-500/10 hover:text-white hover:shadow-[0_0_40px_rgba(168,85,247,0.2)]"
-            style={{ fontFamily: 'var(--font-body)' }}
-          >
-            <span>Portal</span>
-            <svg className="w-3.5 h-3.5 opacity-50 transition-all group-hover:opacity-100 group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
-        </div>
-      </section>
-
-      {/* ══ OUR FAMILY (logo collage) ═════════════════════════════════════ */}
-      <section className="relative z-10 py-24 px-4">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.07),transparent_50%),radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.07),transparent_50%)]" />
-
-        <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Section heading */}
-          <div className="text-center mb-20">
-            <span className="inline-block rounded-full border border-white/8 bg-white/[0.03] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white/35 backdrop-blur-xl mb-5" style={{ fontFamily: 'var(--font-body)' }}>Who We Are</span>
-            <h2 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white/95" style={{ fontFamily: 'var(--font-display)' }}>
-              Our Family
-            </h2>
-            <div className="mt-5 h-px w-16 bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto" />
+        {/* ══ EXPLORE ═════════════════════════════════════════════════════ */}
+        <section className="mx-auto max-w-7xl px-5 pb-20 pt-32 sm:px-8 lg:px-10">
+          <SectionHeader eyebrow="Explore" title="Find your place at ITC" />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {EXPLORE.map((item) => (
+              <Link key={item.href} href={item.href} className="card card-link group flex flex-col p-6">
+                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/55">{item.text}</p>
+                <span className="mt-auto inline-flex items-center gap-1.5 pt-8 text-sm font-medium text-white/70 transition-colors group-hover:text-white">
+                  {item.cta}
+                  <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </Link>
+            ))}
           </div>
+        </section>
 
-          {/* Clubs */}
-          {clubs.length > 0 && (
-            <div className="mb-16">
-              <h3 className="text-[13px] font-extrabold uppercase tracking-[0.32em] text-white/80 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-display)' }}>
-                <span className="h-px flex-1 text-3xl bg-white/10" />
-                Clubs
-                <span className="h-px flex-1 bg-white/10" />
-              </h3>
-              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
-                {clubs.map((club) => (
-                  <Link
-                    key={club.id}
-                    href={`/clubs`}
-                    className="group aspect-square rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-blue-500/40 hover:bg-blue-500/10 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]"
-                    title={club.name}
-                  >
-                    {club.logo ? (
-                      <img
-                        src={club.logo}
-                        alt={`${club.name} logo`}
-                        className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-[10px] font-bold text-white/40 text-center leading-tight">
-                        {club.name}
-                      </div>
-                    )}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
+        {/* ══ OUR FAMILY ══════════════════════════════════════════════════ */}
+        {(clubs.length > 0 || techTeams.length > 0) && (
+          <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10">
+            <SectionHeader
+              eyebrow="Who we are"
+              title="Our family"
+              description={`${clubs.length} clubs and ${techTeams.length} tech teams under one council.`}
+            />
+            <LogoGroup title="Clubs" href="/clubs" items={clubs} />
+            <LogoGroup title="Tech teams" href="/techteams" items={techTeams} />
+          </section>
+        )}
 
-          {/* Tech Teams */}
-          {techTeams.length > 0 && (
-            <div className="mb-16">
-              <h3 className="text-[13px] font-extrabold uppercase tracking-[0.32em] text-white/80 mb-8 flex items-center gap-4" style={{ fontFamily: 'var(--font-display)' }}>
-                <span className="h-px flex-1 text-3xl bg-white/10" />
-                Tech Teams
-                <span className="h-px flex-1 bg-white/10" />
-              </h3>
-              <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-4">
-                {techTeams.map((team) => (
-                  <Link
-                    key={team.id}
-                    href={`/techteams`}
-                    className="group aspect-square rounded-2xl border border-white/10 bg-white/5 p-3 backdrop-blur-sm transition-all duration-300 hover:scale-110 hover:border-purple-500/40 hover:bg-purple-500/10 hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
-                    title={team.name}
-                  >
-                    {team.logo ? (
-                      <img
-                        src={team.logo}
-                        alt={`${team.name} logo`}
-                        className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-[10px] font-bold text-white/40 text-center leading-tight">
-                        {team.name}
-                      </div>
-                    )}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          )}
-
-        </div>
-      </section>
-
-      {/* ══ RECENT ACHIEVEMENTS ══════════════════════════════════════════ */}
-      {achievements.length > 0 && (
-        <section className="relative py-24 px-4">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(168,85,247,0.08),transparent_60%)]" />
-
-          <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <span className="inline-block rounded-full border border-white/8 bg-white/[0.03] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white/35 backdrop-blur-xl mb-5" style={{ fontFamily: 'var(--font-body)' }}>Milestones</span>
-              <h2 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white/92" style={{ fontFamily: 'var(--font-display)' }}>
-                Recent Achievements
-              </h2>
-              <div className="mt-5 h-px w-14 bg-gradient-to-r from-transparent via-white/18 to-transparent mx-auto" />
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* ══ RECENT ACHIEVEMENTS ════════════════════════════════════════ */}
+        {achievements.length > 0 && (
+          <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10">
+            <SectionHeader
+              eyebrow="Milestones"
+              title="Recent achievements"
+              action={{ href: '/achievements', label: 'All achievements' }}
+            />
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {achievements.map((ach) => (
-                <article
-                  key={ach.id}
-                  className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(14,18,32,0.7),rgba(10,12,22,0.4))] p-6 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.4)] transition-all duration-500 hover:-translate-y-2 hover:border-purple-400/30 hover:shadow-[0_30px_80px_rgba(168,85,247,0.2)]"
-                >
-                  <div className="pointer-events-none absolute -inset-x-10 -top-10 h-32 bg-gradient-to-r from-purple-600/15 via-pink-600/15 to-blue-600/15 blur-3xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-
-                  <div className="relative flex items-start gap-5">
-                    {/* Body logo */}
-                    {ach.body?.logo && (
-                      <Link href={`/clubs`} className="flex-shrink-0">
-                        <div className="w-14 h-14 rounded-xl overflow-hidden border border-white/15 bg-black/50 group-hover:border-purple-400/40 transition-all duration-300 group-hover:scale-105">
-                          <img
-                            src={ach.body.logo}
-                            alt={`${ach.body.name} logo`}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      </Link>
-                    )}
-
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-lg font-bold text-white group-hover:text-purple-200 transition-colors leading-snug mb-2">
-                        {ach.title}
-                      </h3>
-                      <p className="text-sm text-slate-300/80 leading-relaxed line-clamp-3">
-                        {ach.description}
-                      </p>
-                      {ach.date && (
-                        <p className="mt-3 text-xs font-semibold text-purple-400 uppercase tracking-wider">
-                          {new Date(ach.date).toLocaleDateString('en-US', {
-                            month: 'long',
-                            day: '2-digit',
-                            year: 'numeric',
-                          })}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </article>
+                <AchievementCard key={ach.id} achievement={ach} />
               ))}
             </div>
+          </section>
+        )}
 
-            {/* View all button */}
-            <div className="mt-14 text-center">
-              <Link
-                href="/achievements"
-                className="group inline-flex items-center gap-3 rounded-2xl border border-purple-500/30 bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white shadow-[0_5px_30px_rgba(168,85,247,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_40px_rgba(168,85,247,0.5)]"
-              >
-                View All Achievements
-                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </section>
-      )}
+        {/* ══ LATEST INTER-IIT TECH MEET ═════════════════════════════════ */}
+        {interIITs.length > 0 && (
+          <section className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10">
+            <SectionHeader
+              eyebrow="Hall of Fame"
+              title="Latest Inter IIT Tech Meet"
+              action={{ href: '/halloffame', label: 'Full Hall of Fame' }}
+            />
+            {interIITs.map((meet) => (
+              <InterIITCard key={meet.id} meet={meet} />
+            ))}
+          </section>
+        )}
 
-      {/* ══ LATEST INTER-IIT TECH MEET ════════════════════════════════════ */}
-      {interIITs.length > 0 && interIITs.map((d) => (
-        <section key={d.id} className="relative py-24 px-4">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(234,179,8,0.08),transparent_55%),radial-gradient(circle_at_bottom,rgba(59,130,246,0.06),transparent_55%)]" />
-
-          <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <span className="inline-block rounded-full border border-white/8 bg-white/[0.03] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white/35 backdrop-blur-xl mb-5" style={{ fontFamily: 'var(--font-body)' }}>Hall of Fame</span>
-              <h2 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white/92" style={{ fontFamily: 'var(--font-display)' }}>
-                Latest Inter IIT Tech Meet
-              </h2>
-              <div className="mt-5 h-px w-14 bg-gradient-to-r from-transparent via-white/18 to-transparent mx-auto" />
-            </div>
-
-            {/* Card */}
-            <div className="group relative overflow-hidden rounded-[2.2rem] border border-white/12 bg-[linear-gradient(180deg,rgba(16,18,30,0.75),rgba(10,12,22,0.45))] shadow-[0_40px_120px_rgba(0,0,0,0.6)] backdrop-blur-2xl transition-all duration-500 hover:border-amber-400/30 hover:shadow-[0_40px_120px_rgba(245,158,11,0.15)]">
-              {/* Background banner */}
-              {d.img && (
-                <div
-                  className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${d.img})` }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-b from-black/88 via-black/82 to-black/96 backdrop-blur-sm" />
-                </div>
-              )}
-
-              <div className="relative flex flex-col lg:flex-row">
-                {/* Left — header + medals */}
-                <div className="w-full lg:w-1/2 p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-between space-y-8">
-                  <div className="flex items-center gap-6">
-                    {d.logo && (
-                      <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-3xl overflow-hidden border-2 border-white/15 bg-black/60 shadow-2xl flex-shrink-0">
-                        <img className="w-full h-full object-cover" src={d.logo} alt="IIT Logo" />
-                      </div>
-                    )}
-                    <div>
-                      <h3 className="text-2xl sm:text-3xl font-black text-white leading-tight mb-1">
-                        {d.title}
-                      </h3>
-                      <p className="text-base font-extrabold text-amber-400 tracking-wide">
-                        {d.subtitle}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Medals */}
-                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/10">
-                    {[
-                      { count: d.bronze, label: 'Bronze', gradient: 'from-amber-700 to-yellow-600', color: 'text-amber-700', icon: '🥉' },
-                      { count: d.gold,   label: 'Gold',   gradient: 'from-yellow-300 via-amber-400 to-yellow-500', color: 'text-amber-400', icon: '🥇' },
-                      { count: d.silver, label: 'Silver', gradient: 'from-slate-100 to-slate-400', color: 'text-slate-300', icon: '🥈' },
-                    ].map(({ count, label, gradient, color, icon }) => (
-                      <div key={label} className="text-center group/medal">
-                        <div className="text-3xl mb-2">{icon}</div>
-                        <p className={`text-3xl sm:text-5xl font-black bg-gradient-to-r ${gradient} text-transparent bg-clip-text`}>
-                          {count}
-                        </p>
-                        <span className={`text-[10px] font-bold uppercase tracking-[0.25em] ${color} opacity-80`}>
-                          {label}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right — description + problem statements */}
-                <div className="w-full lg:w-1/2 p-8 sm:p-10 flex flex-col justify-between space-y-8">
-                  <p className="text-slate-300/90 text-base leading-relaxed">
-                    {d.description}
-                  </p>
-
-                  {d.problemstatements && d.problemstatements.length > 0 && (
-                    <div className="overflow-hidden rounded-2xl border border-white/12 bg-black/40 backdrop-blur-md">
-                      <table className="w-full text-left border-collapse">
-                        <thead className="bg-white/5 border-b border-white/10">
-                          <tr>
-                            <th className="px-5 py-3.5 text-xs font-bold text-slate-300 uppercase tracking-wider">Company / Event</th>
-                            <th className="px-5 py-3.5 text-xs font-bold text-slate-300 uppercase tracking-wider">Position</th>
-                          </tr>
-                        </thead>
-                        <tbody className="divide-y divide-white/5 text-sm">
-                          {d.problemstatements.map((p) => (
-                            <tr key={p.id} className="hover:bg-white/5 transition-colors">
-                              <td className="px-5 py-3.5 text-slate-200 font-medium">{p.title}</td>
-                              <td className="px-5 py-3.5 font-bold text-amber-400">{p.position}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            {/* View full Hall of Fame */}
-            <div className="mt-14 text-center">
-              <Link
-                href="/halloffame"
-                className="group inline-flex items-center gap-3 rounded-2xl border border-blue-500/30 bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-sm font-bold uppercase tracking-[0.2em] text-white shadow-[0_5px_30px_rgba(59,130,246,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_8px_40px_rgba(59,130,246,0.5)]"
-              >
-                View Full Hall of Fame
-                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </Link>
-            </div>
-          </div>
-        </section>
-      ))}
-
-      {/* ══ WORK REPORTS ══════════════════════════════════════════════════ */}
-      {workReports.length > 0 && (
-        <section className="relative py-24 px-4">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.07),transparent_60%)]" />
-
-          <div className="relative z-10 max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <span className="inline-block rounded-full border border-white/8 bg-white/[0.03] px-4 py-1.5 text-[10px] font-medium uppercase tracking-[0.4em] text-white/35 backdrop-blur-xl mb-5" style={{ fontFamily: 'var(--font-body)' }}>Transparency</span>
-              <h2 className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white/92" style={{ fontFamily: 'var(--font-display)' }}>
-                Work Reports
-              </h2>
-              <div className="mt-5 h-px w-14 bg-gradient-to-r from-transparent via-white/18 to-transparent mx-auto" />
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* ══ WORK REPORTS ═══════════════════════════════════════════════ */}
+        {workReports.length > 0 && (
+          <section className="mx-auto max-w-7xl px-5 pb-28 pt-20 sm:px-8 lg:px-10">
+            <SectionHeader
+              eyebrow="Transparency"
+              title="Work reports"
+              description="What the council set out to do, and what it delivered."
+            />
+            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {workReports.map((report) => (
                 <a
                   key={report.id}
                   href={report.url || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(14,18,32,0.7),rgba(10,12,22,0.4))] shadow-[0_20px_60px_rgba(0,0,0,0.4)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-2 hover:border-purple-400/30 hover:shadow-[0_30px_80px_rgba(168,85,247,0.2)] flex flex-col"
+                  className="card card-link group flex flex-col overflow-hidden"
                 >
-                  <div className="pointer-events-none absolute -inset-x-10 -top-10 h-32 bg-gradient-to-r from-purple-600/15 via-pink-600/15 to-blue-600/15 blur-3xl opacity-0 transition-opacity duration-700 group-hover:opacity-100" />
-
-                  {/* Thumbnail */}
                   {report.image && (
-                    <div className="relative w-full overflow-hidden" style={{ paddingBottom: '56.25%' }}>
-                      <img
-                        src={report.image}
-                        alt={report.title}
-                        className="absolute inset-0 w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110 opacity-75 group-hover:opacity-90"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
+                    <div className="aspect-video w-full overflow-hidden border-b border-white/[0.06]">
+                      <img src={report.image} alt="" loading="lazy" className="h-full w-full object-cover" />
                     </div>
                   )}
-
-                  <div className="relative p-6 flex-1 flex flex-col justify-between">
-                    <h3 className="text-xl font-bold text-white group-hover:text-purple-200 transition-colors leading-snug mb-4">
-                      {report.title}
-                    </h3>
-                    <div className="flex items-center justify-between text-xs font-bold uppercase tracking-[0.25em] text-purple-400 group-hover:text-purple-300 transition-colors">
-                      <span>View Report</span>
-                      <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/12 bg-white/5 transition-transform group-hover:translate-x-1 group-hover:bg-purple-600/30 group-hover:border-purple-400/50">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                      </div>
-                    </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="text-lg font-semibold leading-snug text-white">{report.title}</h3>
+                    <span className="mt-auto inline-flex items-center gap-1.5 pt-6 text-sm font-medium text-white/70 transition-colors group-hover:text-white">
+                      Read report
+                      <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    </span>
                   </div>
                 </a>
               ))}
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )}
+      </div>
 
       <Footer />
     </main>
+  );
+}
+
+const EXPLORE = [
+  { href: '/clubs', title: 'Clubs', text: 'Interest-driven communities, from astronomy to quant finance.', cta: 'Browse clubs' },
+  { href: '/techteams', title: 'Tech teams', text: 'Competition teams building racecars, rockets, rovers and satellites.', cta: 'Meet the teams' },
+  { href: '/events', title: 'Events', text: 'Workshops, sessions and competitions across the year.', cta: 'See the calendar' },
+  { href: '/portals', title: 'Portals', text: 'Tools and web apps built by ITC for the campus.', cta: 'Open portals' },
+];
+
+function LogoGroup({ title, href, items }) {
+  if (!items.length) return null;
+  return (
+    <div className="mb-16 last:mb-0">
+      <div className="mb-5 flex items-baseline justify-between">
+        <h3 className="text-base font-medium text-white">
+          {title} <span className="ml-1 text-white/35">{items.length}</span>
+        </h3>
+        <Link href={href} className="text-sm text-white/55 transition-colors hover:text-white">
+          View all
+        </Link>
+      </div>
+      <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
+        {items.map((item) => (
+          <Link key={item.id} href={href} title={item.name} className="card card-link group flex flex-col items-center p-3">
+            <div className="aspect-square w-full overflow-hidden rounded-lg bg-white/[0.03]">
+              {item.logo ? (
+                <img src={item.logo} alt="" loading="lazy" className="h-full w-full object-cover" />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center text-xs text-white/40">{item.name}</div>
+              )}
+            </div>
+            <p className="mt-2.5 w-full truncate text-center text-xs text-white/55 transition-colors group-hover:text-white/85">
+              {item.name}
+            </p>
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 }

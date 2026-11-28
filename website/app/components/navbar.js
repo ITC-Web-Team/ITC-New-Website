@@ -8,13 +8,13 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const links = [
-    { label: "CLUBS", href: "/clubs" },
-    { label: "TECH TEAMS", href: "/techteams" },
-    { label: "EVENTS", href: "/events" },
-    { label: "TEAM", href: "/team" },
-    { label: "PORTALS", href: "/portals" },
-    { label: "ACHIEVEMENTS", href: "/achievements" },
-    { label: "HALL OF FAME", href: "/halloffame" },
+    { label: "Clubs", href: "/clubs" },
+    { label: "Tech Teams", href: "/techteams" },
+    { label: "Events", href: "/events" },
+    { label: "Team", href: "/team" },
+    { label: "Portals", href: "/portals" },
+    { label: "Achievements", href: "/achievements" },
+    { label: "Hall of Fame", href: "/halloffame" },
   ];
 
   return (
@@ -39,10 +39,7 @@ export default function Navbar() {
             Collapsed → rounded pill, just shows the menu icon
             Expanded  → wide bar, shows all links + CONTACT, icon fades out
           */}
-          <div className={`relative flex h-16 w-16 items-center justify-end overflow-hidden rounded-full border border-white/10 bg-black/80 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,0.6)] transition-[width,border-radius,box-shadow] duration-500 ease-[cubic-bezier(.4,0,.2,1)] group-hover:w-[min(94vw,64rem)] group-hover:rounded-2xl group-hover:shadow-[0_10px_50px_rgba(139,92,246,0.18)] ${isOpen ? "w-[min(94vw,64rem)] rounded-2xl shadow-[0_10px_50px_rgba(139,92,246,0.18)]" : ""}`}>
-
-            {/* Inner glow — activates on expand */}
-            <div className={`pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-r from-violet-600/15 via-transparent to-blue-600/15 opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${isOpen ? "opacity-100" : ""}`} />
+          <div className={`relative flex h-16 w-16 items-center justify-end overflow-hidden rounded-full border border-white/10 bg-black/75 backdrop-blur-xl shadow-[0_8px_30px_rgba(0,0,0,0.5)] transition-[width,border-radius,box-shadow] duration-500 ease-[cubic-bezier(.4,0,.2,1)] group-hover:w-[min(94vw,64rem)] group-hover:rounded-2xl  ${isOpen ? "w-[min(94vw,64rem)] rounded-2xl" : ""}`}>
 
             {/* Links — slide in with slight delay */}
             <div id="primary-navigation-links" className={`flex h-full w-full items-center gap-1 pl-5 pr-[4.5rem] opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-hover:delay-100 ${isOpen ? "opacity-100 delay-100" : ""}`}>
@@ -51,7 +48,7 @@ export default function Navbar() {
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="whitespace-nowrap rounded-xl px-4 py-2.5 text-xs font-bold tracking-[0.22em] text-white/70 transition-colors duration-150 hover:bg-white/10 hover:text-white"
+                  className="whitespace-nowrap rounded-lg px-3.5 py-2 text-[13px] font-medium text-white/65 transition-colors duration-150 hover:bg-white/[0.08] hover:text-white"
                 >
                   {link.label}
                 </Link>
@@ -63,9 +60,9 @@ export default function Navbar() {
               <Link
                 href="/contact"
                 onClick={() => setIsOpen(false)}
-                className="shrink-0 whitespace-nowrap rounded-xl bg-gradient-to-r from-violet-600 to-violet-500 px-6 py-2.5 text-xs font-black tracking-[0.22em] text-white shadow-[0_0_18px_rgba(139,92,246,0.55)] transition-all duration-150 hover:brightness-110 hover:shadow-[0_0_28px_rgba(139,92,246,0.75)]"
+                className="shrink-0 whitespace-nowrap rounded-full bg-white px-5 py-2 text-[13px] font-medium text-black transition-colors duration-150 hover:bg-white/85"
               >
-                CONTACT
+                Contact
               </Link>
             </div>
 
