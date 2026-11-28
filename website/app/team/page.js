@@ -7,7 +7,7 @@ import { fetchTeam } from '@/lib/api';
 import Footer from '../components/footer';
 
 // Paste the Spline export link here once it's ready (empty = plain black background).
-const TEAM_SPLINE_URL = '';
+const TEAM_SPLINE_URL = 'https://my.spline.design/abstractbackground-PJwtnUhQsQIznRYtLuqzt4bT/';
 
 function Avatar({ member }) {
   const [failed, setFailed] = useState(false);
