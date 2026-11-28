@@ -10,12 +10,12 @@ const stats = [
 export default function About() {
   return (
     <section className="relative flex h-full w-full items-center justify-center px-5 py-24 text-white sm:px-8 lg:px-10">
-      <div className="card grid w-full max-w-6xl overflow-hidden bg-[#0d0817]/80 lg:grid-cols-[1.15fr_1fr]">
+      <div className="card grid w-full max-w-6xl overflow-hidden lg:grid-cols-[1.15fr_1fr]">
         <div className="p-7 sm:p-10 lg:p-12">
           <h2 className="text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl lg:text-[2.75rem]">
             The home of technical activity at IIT Bombay
           </h2>
-          <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-white/60 sm:text-base">
+          <div className="mt-6 space-y-4 text-[15px] leading-relaxed text-violet-100/65 sm:text-base">
             <p>
               The Institute Technical Council supports student innovation, technical skills and
               leadership. We give students the resources and guidance to bring their ideas to life
@@ -37,7 +37,7 @@ export default function About() {
               <dd className="font-[family-name:var(--font-display)] text-4xl font-semibold tracking-tight text-white sm:text-5xl">
                 {stat.value}
               </dd>
-              <dt className="mt-2 text-sm text-white/50">{stat.label}</dt>
+              <dt className="mt-2 text-sm text-violet-200/60">{stat.label}</dt>
             </div>
           ))}
         </dl>

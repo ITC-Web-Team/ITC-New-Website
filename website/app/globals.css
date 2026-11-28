@@ -56,11 +56,11 @@ h1, h2, h3, h4, h5, h6 {
    site reads as one design instead of a pile of glows and gradients. */
 @layer components {
   .card {
-    @apply rounded-2xl border border-violet-300/[0.12] bg-[#0f0a1a]/85 backdrop-blur-md transition-colors duration-200;
+    @apply rounded-2xl border border-violet-400/20 bg-[linear-gradient(155deg,rgba(76,29,149,0.34)_0%,rgba(24,12,44,0.88)_45%,rgba(14,8,26,0.92)_100%)] backdrop-blur-md shadow-[inset_0_1px_0_rgba(196,181,253,0.06)] transition-colors duration-200;
   }
 
   .card-link {
-    @apply hover:border-violet-400/35 hover:bg-[#150e24]/90;
+    @apply hover:border-violet-400/50 hover:shadow-[inset_0_1px_0_rgba(196,181,253,0.12),0_12px_40px_-12px_rgba(91,33,182,0.45)];
   }
 
   .btn-primary {

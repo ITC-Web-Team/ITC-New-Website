@@ -20,7 +20,7 @@ export function PageHeader({ title, description, children }) {
         {title}
       </h1>
       {description && (
-        <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/60 sm:text-lg">
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-violet-100/65 sm:text-lg">
           {description}
         </p>
       )}
@@ -34,7 +34,7 @@ export function SectionHeader({ title, description, action }) {
     <div className="mb-10 flex flex-col gap-4 border-b border-violet-300/15 pb-6 sm:flex-row sm:items-end sm:justify-between">
       <div className="max-w-2xl">
         <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">{title}</h2>
-        {description && <p className="mt-3 text-sm leading-relaxed text-white/55 sm:text-base">{description}</p>}
+        {description && <p className="mt-3 text-sm leading-relaxed text-violet-100/60 sm:text-base">{description}</p>}
       </div>
       {action && (
         <Link
@@ -53,7 +53,7 @@ export function SectionHeader({ title, description, action }) {
 
 export function LoadingState({ label = 'Loading' }) {
   return (
-    <div className="flex items-center justify-center gap-3 py-24 text-sm text-white/50" role="status">
+    <div className="flex items-center justify-center gap-3 py-24 text-sm text-violet-200/60" role="status">
       <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/15 border-t-white/70" />
       {label}
     </div>
@@ -64,13 +64,13 @@ export function ErrorState({ title, message }) {
   return (
     <div className="card mx-auto max-w-lg px-6 py-10 text-center">
       <p className="font-medium text-white">{title}</p>
-      {message && <p className="mt-1 text-sm text-white/50">{message}</p>}
+      {message && <p className="mt-1 text-sm text-violet-200/60">{message}</p>}
     </div>
   );
 }
 
 export function EmptyState({ children }) {
-  return <p className="card mx-auto max-w-lg px-6 py-10 text-center text-sm text-white/50">{children}</p>;
+  return <p className="card mx-auto max-w-lg px-6 py-10 text-center text-sm text-violet-200/60">{children}</p>;
 }
 
 // ─── Cards ─────────────────────────────────────────────────────────────────
@@ -117,7 +117,7 @@ export function PersonCard({ name, role, image, email, phone, linkedin, instagra
 
       <div className="flex flex-1 flex-col p-5">
         {name && <h2 className="text-lg font-semibold leading-snug text-white">{name}</h2>}
-        {role && <p className="mt-1 text-sm text-white/55">{role}</p>}
+        {role && <p className="mt-1 text-sm text-violet-100/60">{role}</p>}
 
         {(email || phone || linkedin || instagram) && (
           <div className="mt-auto flex items-center gap-2 pt-5">
@@ -166,7 +166,7 @@ export function BodyCard({ body, link }) {
       </div>
 
       {body.short_description && (
-        <p className="mt-5 line-clamp-3 text-sm leading-relaxed text-white/55">{body.short_description}</p>
+        <p className="mt-5 line-clamp-3 text-sm leading-relaxed text-violet-100/60">{body.short_description}</p>
       )}
 
       <div className="mt-auto pt-6">
@@ -205,11 +205,11 @@ export function AchievementCard({ achievement }) {
         )}
         <div className="min-w-0">
           <h3 className="text-base font-semibold leading-snug text-white sm:text-lg">{title}</h3>
-          {description && <p className="mt-2 text-sm leading-relaxed text-white/55">{description}</p>}
+          {description && <p className="mt-2 text-sm leading-relaxed text-violet-100/60">{description}</p>}
         </div>
       </div>
       {(date || body?.name) && (
-        <p className="mt-auto pt-5 text-xs text-white/40">
+        <p className="mt-auto pt-5 text-xs text-violet-200/50">
           {[formatDate(date), body?.name].filter(Boolean).join('  ·  ')}
         </p>
       )}
@@ -236,7 +236,7 @@ export function InterIITCard({ meet }) {
             )}
             <div>
               <h3 className="text-2xl font-semibold leading-tight text-white sm:text-3xl">{d.title}</h3>
-              {d.subtitle && <p className="mt-1 text-sm text-white/55 sm:text-base">{d.subtitle}</p>}
+              {d.subtitle && <p className="mt-1 text-sm text-violet-100/60 sm:text-base">{d.subtitle}</p>}
             </div>
           </div>
 
@@ -244,7 +244,7 @@ export function InterIITCard({ meet }) {
             {MEDALS.map((medal) => (
               <div key={medal.key} className="px-4 py-5 text-center">
                 <dd className="text-3xl font-semibold tabular-nums text-white sm:text-4xl">{d[medal.key] ?? 0}</dd>
-                <dt className="mt-1.5 inline-flex items-center gap-1.5 text-xs text-white/50">
+                <dt className="mt-1.5 inline-flex items-center gap-1.5 text-xs text-violet-200/60">
                   <span className="h-2 w-2 rounded-full" style={{ backgroundColor: medal.color }} />
                   {medal.label}
                 </dt>
@@ -252,7 +252,7 @@ export function InterIITCard({ meet }) {
             ))}
           </dl>
 
-          {d.description && <p className="text-sm leading-relaxed text-white/60 sm:text-base">{d.description}</p>}
+          {d.description && <p className="text-sm leading-relaxed text-violet-100/65 sm:text-base">{d.description}</p>}
         </div>
 
         <div className="p-6 sm:p-8">
@@ -267,14 +267,14 @@ export function InterIITCard({ meet }) {
               <tbody className="divide-y divide-violet-300/[0.1]">
                 {d.problemstatements.map((p) => (
                   <tr key={p.id}>
-                    <td className="py-3 pr-4 text-white/80">{p.title}</td>
+                    <td className="py-3 pr-4 text-violet-50/85">{p.title}</td>
                     <td className="py-3 text-right font-medium text-white">{p.position}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           ) : (
-            <p className="text-sm text-white/40">Results will be added soon.</p>
+            <p className="text-sm text-violet-200/50">Results will be added soon.</p>
           )}
         </div>
       </div>

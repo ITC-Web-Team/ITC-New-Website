@@ -259,7 +259,7 @@ export default function Home() {
       </section>
 
       {/* Everything below the hero sits on a dark scrim so text stays readable over the 3D scene */}
-      <div className="relative z-10 bg-[linear-gradient(180deg,rgba(3,3,5,0)_0%,rgba(3,3,5,0.78)_10rem,rgba(3,3,5,0.9)_100%)]">
+      <div className="relative z-10 bg-[linear-gradient(180deg,rgba(10,5,20,0)_0%,rgba(10,5,20,0.8)_10rem,rgba(8,4,16,0.92)_100%)]">
 
         {/* ══ EXPLORE ═════════════════════════════════════════════════════ */}
         <section className="mx-auto max-w-7xl px-5 pb-20 pt-32 sm:px-8 lg:px-10">
@@ -392,8 +392,8 @@ function ExploreCard({ className = '', href, title, text, cta, items, countLabel
       href={href}
       className={`card card-link group relative flex flex-col overflow-hidden p-7 sm:p-8 ${className}`}
     >
-      {/* Soft purple wash that warms up on hover */}
-      <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-violet-600/10 blur-3xl transition-opacity duration-500 group-hover:bg-violet-500/20" />
+      {/* Soft purple glow in the corner that warms up on hover */}
+      <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-violet-500/10 blur-3xl transition-colors duration-500 group-hover:bg-violet-500/20" />
 
       <div className="relative flex flex-1 flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div className="max-w-sm">
@@ -405,7 +405,7 @@ function ExploreCard({ className = '', href, title, text, cta, items, countLabel
               </span>
             )}
           </h3>
-          <p className="mt-2 text-sm leading-relaxed text-white/55">{text}</p>
+          <p className="mt-2 text-sm leading-relaxed text-violet-100/60">{text}</p>
           <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-violet-300 transition-colors group-hover:text-violet-200">
             {cta}
             <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -421,11 +421,11 @@ function ExploreCard({ className = '', href, title, text, cta, items, countLabel
                 alt=""
                 loading="lazy"
                 style={{ zIndex: shown.length - i }}
-                className="-ml-3 h-12 w-12 rounded-full border-2 border-[#0f0a1a] object-cover transition-transform duration-300 first:ml-0 group-hover:-translate-y-1"
+                className="-ml-3 h-12 w-12 rounded-full border-2 border-[#1c1033] object-cover transition-transform duration-300 first:ml-0 group-hover:-translate-y-1"
               />
             ))}
             {extra > 0 && (
-              <span className="-ml-3 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#0f0a1a] bg-violet-600 text-xs font-semibold text-white">
+              <span className="-ml-3 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#1c1033] bg-violet-600 text-xs font-semibold text-white">
                 +{extra}
               </span>
             )}
@@ -484,7 +484,7 @@ function LogoGroup({ title, href, items }) {
     <div className="mb-16 last:mb-0">
       <div className="mb-5 flex items-baseline justify-between">
         <h3 className="text-base font-medium text-white">
-          {title} <span className="ml-1 text-white/35">{items.length}</span>
+          {title} <span className="ml-1 text-violet-200/45">{items.length}</span>
         </h3>
         <Link href={href} className="text-sm text-violet-300 transition-colors hover:text-violet-200">
           View all
@@ -493,14 +493,14 @@ function LogoGroup({ title, href, items }) {
       <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
         {items.map((item) => (
           <Link key={item.id} href={href} title={item.name} className="card card-link group flex flex-col items-center p-3">
-            <div className="aspect-square w-full overflow-hidden rounded-lg bg-violet-500/[0.06]">
+            <div className="aspect-square w-full overflow-hidden rounded-lg bg-violet-500/10">
               {item.logo ? (
                 <img src={item.logo} alt="" loading="lazy" className="h-full w-full object-cover" />
               ) : (
-                <div className="flex h-full w-full items-center justify-center text-xs text-white/40">{item.name}</div>
+                <div className="flex h-full w-full items-center justify-center text-xs text-violet-200/50">{item.name}</div>
               )}
             </div>
-            <p className="mt-2.5 w-full truncate text-center text-xs text-white/55 transition-colors group-hover:text-white/85">
+            <p className="mt-2.5 w-full truncate text-center text-xs text-violet-100/60 transition-colors group-hover:text-white/85">
               {item.name}
             </p>
           </Link>
