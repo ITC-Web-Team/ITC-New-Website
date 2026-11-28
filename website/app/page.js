@@ -264,17 +264,45 @@ export default function Home() {
         {/* ══ EXPLORE ═════════════════════════════════════════════════════ */}
         <section className="mx-auto max-w-7xl px-5 pb-20 pt-32 sm:px-8 lg:px-10">
           <SectionHeader title="Find your place at ITC" />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {EXPLORE.map((item) => (
-              <Link key={item.href} href={item.href} className="card card-link group flex flex-col p-6">
-                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-white/55">{item.text}</p>
-                <span className="mt-auto inline-flex items-center gap-1.5 pt-8 text-sm font-medium text-violet-300 transition-colors group-hover:text-violet-200">
-                  {item.cta}
-                  <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </span>
-              </Link>
-            ))}
+          <div className="grid gap-5 lg:grid-cols-5">
+            <ExploreCard
+              className="lg:col-span-3"
+              href="/clubs"
+              icon={<UsersIcon className="h-5 w-5" />}
+              title="Clubs"
+              text="Interest-driven communities, from astronomy and robotics to quant finance and coding."
+              cta="Browse clubs"
+              items={clubs}
+              countLabel="clubs"
+            />
+            <ExploreCard
+              className="lg:col-span-2"
+              href="/events"
+              icon={<CalendarIcon className="h-5 w-5" />}
+              title="Events"
+              text="Workshops, sessions and competitions from every club, all in one calendar."
+              cta="See the calendar"
+              preview={<CalendarPreview />}
+            />
+            <ExploreCard
+              className="lg:col-span-2"
+              href="/portals"
+              icon={<GridIcon className="h-5 w-5" />}
+              title="Portals"
+              text="Tools and web apps built by ITC for the campus."
+              cta="Open portals"
+              preview={<PortalPreview />}
+            />
+            <ExploreCard
+              className="lg:col-span-3"
+              href="/techteams"
+              icon={<RocketIcon className="h-5 w-5" />}
+              title="Tech teams"
+              text="Competition teams designing and building racecars, rockets, rovers, satellites and underwater vehicles."
+              cta="Meet the teams"
+              items={techTeams}
+              countLabel="teams"
+            />
           </div>
         </section>
 
@@ -358,12 +386,151 @@ export default function Home() {
   );
 }
 
-const EXPLORE = [
-  { href: '/clubs', title: 'Clubs', text: 'Interest-driven communities, from astronomy to quant finance.', cta: 'Browse clubs' },
-  { href: '/techteams', title: 'Tech teams', text: 'Competition teams building racecars, rockets, rovers and satellites.', cta: 'Meet the teams' },
-  { href: '/events', title: 'Events', text: 'Workshops, sessions and competitions across the year.', cta: 'See the calendar' },
-  { href: '/portals', title: 'Portals', text: 'Tools and web apps built by ITC for the campus.', cta: 'Open portals' },
-];
+function ExploreCard({ className = '', href, icon, title, text, cta, items, countLabel, preview }) {
+  const logos = (items || []).filter((item) => item.logo);
+  const shown = logos.slice(0, 7);
+  const extra = (items || []).length - shown.length;
+
+  return (
+    <Link
+      href={href}
+      className={`card card-link group relative flex min-h-[17rem] flex-col overflow-hidden p-7 ${className}`}
+    >
+      {/* Soft purple wash that warms up on hover */}
+      <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-violet-600/10 blur-3xl transition-opacity duration-500 group-hover:bg-violet-500/20" />
+
+      <div className="relative flex items-start justify-between gap-4">
+        <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-violet-400/25 bg-violet-500/15 text-violet-200">
+          {icon}
+        </span>
+        <span className="flex h-10 w-10 items-center justify-center rounded-full border border-violet-300/20 text-violet-200 transition-colors duration-200 group-hover:border-violet-500 group-hover:bg-violet-600 group-hover:text-white">
+          <ArrowUpRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+        </span>
+      </div>
+
+      <div className="relative mt-6 flex flex-1 flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="max-w-sm">
+          <h3 className="text-2xl font-semibold tracking-tight text-white">
+            {title}
+            {items?.length > 0 && (
+              <span className="ml-2 align-middle text-base font-medium tabular-nums text-violet-300">
+                {items.length} {countLabel}
+              </span>
+            )}
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-white/55">{text}</p>
+          <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-violet-300 transition-colors group-hover:text-violet-200">
+            {cta}
+            <ArrowRightIcon className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </span>
+        </div>
+
+        {shown.length > 0 && (
+          <div className="flex shrink-0 items-center">
+            {shown.map((item, i) => (
+              <img
+                key={item.id}
+                src={item.logo}
+                alt=""
+                loading="lazy"
+                style={{ zIndex: shown.length - i }}
+                className="-ml-3 h-12 w-12 rounded-full border-2 border-[#0f0a1a] object-cover transition-transform duration-300 first:ml-0 group-hover:-translate-y-1"
+              />
+            ))}
+            {extra > 0 && (
+              <span className="-ml-3 flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#0f0a1a] bg-violet-600 text-xs font-semibold text-white">
+                +{extra}
+              </span>
+            )}
+          </div>
+        )}
+
+        {preview && <div className="relative shrink-0">{preview}</div>}
+      </div>
+    </Link>
+  );
+}
+
+/** Small decorative month grid for the Events card. */
+function CalendarPreview() {
+  const marked = new Set([3, 8, 9, 15, 19, 24]);
+  return (
+    <div aria-hidden="true" className="grid grid-cols-7 gap-1 rounded-xl border border-violet-300/15 bg-black/30 p-2.5">
+      {Array.from({ length: 28 }, (_, i) => (
+        <span
+          key={i}
+          className={`h-3.5 w-3.5 rounded-[4px] ${
+            marked.has(i) ? 'bg-violet-500 transition-colors group-hover:bg-violet-400' : 'bg-violet-300/10'
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
+
+/** Small decorative browser window for the Portals card. */
+function PortalPreview() {
+  return (
+    <div aria-hidden="true" className="w-36 overflow-hidden rounded-xl border border-violet-300/15 bg-black/30">
+      <div className="flex gap-1 border-b border-violet-300/10 px-2.5 py-2">
+        <span className="h-1.5 w-1.5 rounded-full bg-violet-300/30" />
+        <span className="h-1.5 w-1.5 rounded-full bg-violet-300/30" />
+        <span className="h-1.5 w-1.5 rounded-full bg-violet-300/30" />
+      </div>
+      <div className="space-y-1.5 p-2.5">
+        <span className="block h-2 w-3/4 rounded bg-violet-500/70" />
+        <span className="block h-1.5 w-full rounded bg-violet-300/15" />
+        <span className="block h-1.5 w-5/6 rounded bg-violet-300/15" />
+        <div className="grid grid-cols-3 gap-1 pt-1">
+          <span className="h-5 rounded bg-violet-300/10" />
+          <span className="h-5 rounded bg-violet-300/10" />
+          <span className="h-5 rounded bg-violet-500/40" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const iconProps = { viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.75, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true };
+
+function UsersIcon(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <circle cx="9" cy="8" r="3.5" />
+      <path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.6a3.5 3.5 0 0 1 0 6.8M21.5 20a6.5 6.5 0 0 0-4-6" />
+    </svg>
+  );
+}
+
+function RocketIcon(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <path d="M12 2c3 2 5 6 5 10l-2 4H9l-2-4c0-4 2-8 5-10z" />
+      <circle cx="12" cy="10" r="2" />
+      <path d="M9 16l-3 3v-4M15 16l3 3v-4M10.5 19.5h3" />
+    </svg>
+  );
+}
+
+function CalendarIcon(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <rect x="3" y="5" width="18" height="16" rx="2" />
+      <path d="M3 10h18M8 3v4M16 3v4" />
+    </svg>
+  );
+}
+
+function GridIcon(props) {
+  return (
+    <svg {...iconProps} {...props}>
+      <rect x="3" y="3" width="7" height="7" rx="1.5" />
+      <rect x="14" y="3" width="7" height="7" rx="1.5" />
+      <rect x="3" y="14" width="7" height="7" rx="1.5" />
+      <rect x="14" y="14" width="7" height="7" rx="1.5" />
+    </svg>
+  );
+}
 
 function LogoGroup({ title, href, items }) {
   if (!items.length) return null;
