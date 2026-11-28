@@ -281,7 +281,7 @@ export default function ClubsPage() {
           onClick={previousClub}
           disabled={activeIndex === 0}
           aria-label="Previous club"
-          className="absolute left-3 top-1/2 z-40 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-3 text-white backdrop-blur-md transition hover:bg-purple-600 disabled:cursor-not-allowed disabled:opacity-30 sm:left-6"
+          className="absolute left-3 top-1/2 z-40 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-3 text-white backdrop-blur-md opacity-0 transition hover:bg-purple-600 hover:opacity-100 focus-visible:opacity-100 disabled:cursor-not-allowed disabled:hover:opacity-30 [@media(hover:none)]:opacity-100 [@media(hover:none)]:disabled:opacity-30 sm:left-6"
         >
           <svg
             width="24"
@@ -301,7 +301,7 @@ export default function ClubsPage() {
           onClick={nextClub}
           disabled={activeIndex === totalClubs - 1}
           aria-label="Next club"
-          className="absolute right-3 top-1/2 z-40 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-3 text-white backdrop-blur-md transition hover:bg-purple-600 disabled:cursor-not-allowed disabled:opacity-30 sm:right-6"
+          className="absolute right-3 top-1/2 z-40 -translate-y-1/2 rounded-full border border-white/20 bg-black/60 p-3 text-white backdrop-blur-md opacity-0 transition hover:bg-purple-600 hover:opacity-100 focus-visible:opacity-100 disabled:cursor-not-allowed disabled:hover:opacity-30 [@media(hover:none)]:opacity-100 [@media(hover:none)]:disabled:opacity-30 sm:right-6"
         >
           <svg
             width="24"
