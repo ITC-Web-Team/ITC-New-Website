@@ -390,18 +390,12 @@ function ExploreCard({ className = '', href, title, text, cta, items, countLabel
   return (
     <Link
       href={href}
-      className={`card card-link group relative flex min-h-[17rem] flex-col overflow-hidden p-7 ${className}`}
+      className={`card card-link group relative flex flex-col overflow-hidden p-7 sm:p-8 ${className}`}
     >
       {/* Soft purple wash that warms up on hover */}
       <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-violet-600/10 blur-3xl transition-opacity duration-500 group-hover:bg-violet-500/20" />
 
-      <div className="relative flex items-start justify-end gap-4">
-        <span className="flex h-10 w-10 items-center justify-center rounded-full border border-violet-300/20 text-violet-200 transition-colors duration-200 group-hover:border-violet-500 group-hover:bg-violet-600 group-hover:text-white">
-          <ArrowUpRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-        </span>
-      </div>
-
-      <div className="relative mt-6 flex flex-1 flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+      <div className="relative flex flex-1 flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
         <div className="max-w-sm">
           <h3 className="text-2xl font-semibold tracking-tight text-white">
             {title}
