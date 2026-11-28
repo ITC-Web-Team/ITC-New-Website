@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from 'react';
 import Spline from '@/app/components/OptimizedSpline';
+import SplineViewerFrame from '@/app/components/SplineViewerFrame';
+import { isSplineViewerUrl } from '@/lib/splinePreload';
 
 /**
  * SplineScene — interactive, preloaded 3D background.
@@ -60,10 +62,14 @@ export default function SplineScene({ url, scene, className = '', interactive = 
 
       {/* Spline canvas — renders immediately, fades in on load */}
       <div className="relative w-full h-full pointer-events-auto">
-        <Spline
-          scene={finalUrl}
-          style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}
-        />
+        {isSplineViewerUrl(finalUrl) ? (
+          <SplineViewerFrame url={finalUrl} style={{ pointerEvents: 'auto' }} />
+        ) : (
+          <Spline
+            scene={finalUrl}
+            style={{ width: '100%', height: '100%', pointerEvents: 'auto' }}
+          />
+        )}
       </div>
 
       {/* Ultra-light bottom vignette — just enough to ground content, not hide Spline */}

@@ -2,6 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Spline from '@/app/components/OptimizedSpline';
+import SplineViewerFrame from '@/app/components/SplineViewerFrame';
+import { isSplineViewerUrl } from '@/lib/splinePreload';
 
 export default function SplineScene({ scene, isVisible }) {
   const containerRef = useRef(null);
@@ -46,11 +48,19 @@ export default function SplineScene({ scene, isVisible }) {
   return (
     <div ref={containerRef} className="relative h-full w-full overflow-hidden pointer-events-auto">
       <div className={`absolute inset-0 transition-opacity duration-1000 ease-out ${isVisible && loaded ? 'opacity-100' : 'opacity-0'}`}>
-        <Spline
-          scene={scene}
-          onLoad={handleLoad}
-          style={{ width: '100%', height: '100%', transform: 'scale(1.02)', transformOrigin: '50% 50%', pointerEvents: 'auto' }}
-        />
+        {isSplineViewerUrl(scene) ? (
+          <SplineViewerFrame
+            url={scene}
+            onLoad={handleLoad}
+            style={{ transform: 'scale(1.02)', transformOrigin: '50% 50%', pointerEvents: 'auto' }}
+          />
+        ) : (
+          <Spline
+            scene={scene}
+            onLoad={handleLoad}
+            style={{ width: '100%', height: '100%', transform: 'scale(1.02)', transformOrigin: '50% 50%', pointerEvents: 'auto' }}
+          />
+        )}
       </div>
 
       {/* Subtle loader while the 3D scene downloads */}
