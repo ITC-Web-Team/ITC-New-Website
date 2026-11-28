@@ -8,7 +8,7 @@ const defaultProps = {
     websiteUrl: 'https://tech-iitb.org/clubs/',
     instagramHandle: 'tech.iitb',
     linkedinUrl: 'https://www.linkedin.com/company/iitb-tech/',
-    splineScene: 'https://my.spline.design/gradientblob-y4hkQRL4y8QnHXyrEKnBbh2Z/',
+    splineScene: 'https://prod.spline.design/xmriJwzNGyh9YIXi/scene.splinecode',
 };
 
 export default function Mnp(props) {
