@@ -64,7 +64,7 @@ export default function Portals() {
                 <div className="flex flex-1 flex-col p-6">
                   <h2 className="text-lg font-semibold leading-snug text-white">{portal.name}</h2>
                   {portal.description && (
-                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-white/55">{portal.description}</p>
+                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-violet-100/60">{portal.description}</p>
                   )}
 
                   {portal.techstacks?.length > 0 && (

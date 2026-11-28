@@ -248,7 +248,7 @@ export default function Home() {
 
         {/* Scroll hint */}
         <div
-          className="pointer-events-none absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 text-xs text-white/45 transition-opacity duration-300"
+          className="pointer-events-none absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-3 text-xs text-violet-200/55 transition-opacity duration-300"
           style={{ opacity: Math.max(0, 1 - scrollProgress * 2) }}
         >
           Scroll
@@ -500,7 +500,7 @@ function LogoGroup({ title, href, items }) {
                 <div className="flex h-full w-full items-center justify-center text-xs text-violet-200/50">{item.name}</div>
               )}
             </div>
-            <p className="mt-2.5 w-full truncate text-center text-xs text-violet-100/60 transition-colors group-hover:text-white/85">
+            <p className="mt-2.5 w-full truncate text-center text-xs text-violet-100/60 transition-colors group-hover:text-violet-50">
               {item.name}
             </p>
           </Link>

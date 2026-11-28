@@ -176,7 +176,7 @@ export function BodyCard({ body, link }) {
             <ArrowUpRightIcon className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </span>
         ) : (
-          <span className="text-sm text-white/30">Link coming soon</span>
+          <span className="text-sm text-violet-200/40">Link coming soon</span>
         )}
       </div>
     </Tag>

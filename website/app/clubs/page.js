@@ -333,7 +333,7 @@ export default function ClubsPage() {
         </div>
 
         {/* Current slide name and position */}
-        <div className="absolute right-5 top-5 z-40 rounded-full border border-white/10 bg-black/60 px-3 py-1.5 text-xs tabular-nums text-white/70 backdrop-blur-md">
+        <div className="absolute right-5 top-5 z-40 rounded-full border border-white/10 bg-black/60 px-3 py-1.5 text-xs tabular-nums text-violet-100/75 backdrop-blur-md">
           {activeIndex + 1} / {totalClubs}
         </div>
       </section>

@@ -69,7 +69,7 @@ export default function ClubSection({
           <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-white/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex items-center gap-3 text-sm font-medium text-white/70">
+            <div className="flex items-center gap-3 text-sm font-medium text-violet-100/75">
               <span>{clubName}</span>
             </div>
 
@@ -79,7 +79,7 @@ export default function ClubSection({
                   href={normalizedWebsiteUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white/85 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.06] hover:text-white"
+                  className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-violet-50/90 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.06] hover:text-white"
                 >
                   Visit website
                 </a>

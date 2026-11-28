@@ -92,7 +92,7 @@ export default function Achievements() {
               <section key={year}>
                 <div className="mb-8 flex items-baseline gap-4 border-b border-violet-300/15 pb-4">
                   <h2 className="text-3xl font-semibold tabular-nums tracking-tight text-white sm:text-4xl">{year}</h2>
-                  <span className="text-sm text-white/40">
+                  <span className="text-sm text-violet-200/50">
                     {achievements.length} achievement{achievements.length === 1 ? '' : 's'}
                   </span>
                 </div>

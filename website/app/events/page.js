@@ -113,10 +113,10 @@ export default function EventsPage() {
     <li className="rounded-xl border border-violet-300/[0.12] bg-violet-500/[0.04] p-4">
       <div className="flex items-start justify-between gap-3">
         <h4 className="font-medium text-white">{e.name}</h4>
-        <span className="shrink-0 text-xs text-white/45">{e.date_label}</span>
+        <span className="shrink-0 text-xs text-violet-200/55">{e.date_label}</span>
       </div>
       {e.time && (
-        <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs text-white/50">
+        <p className="mt-1.5 inline-flex items-center gap-1.5 text-xs text-violet-200/60">
           <ClockIcon className="h-3.5 w-3.5" />
           {e.time}
         </p>
@@ -180,7 +180,7 @@ export default function EventsPage() {
                 </button>
                 <div className="text-center">
                   <h2 className="text-xl font-semibold sm:text-2xl">{MONTH_NAMES[month]} {year}</h2>
-                  <p className="mt-0.5 text-xs text-white/45">
+                  <p className="mt-0.5 text-xs text-violet-200/55">
                     {monthEventCount + ongoing.length} event{monthEventCount + ongoing.length === 1 ? '' : 's'}
                   </p>
                 </div>
@@ -196,7 +196,7 @@ export default function EventsPage() {
 
               <div className="grid grid-cols-7 gap-1.5 sm:gap-2">
                 {WEEKDAYS.map((w) => (
-                  <div key={w} className="pb-2 text-center text-xs font-medium text-white/40">{w}</div>
+                  <div key={w} className="pb-2 text-center text-xs font-medium text-violet-200/50">{w}</div>
                 ))}
                 {cells.map((date, i) => {
                   if (!date) return <div key={`blank-${i}`} />;
@@ -216,7 +216,7 @@ export default function EventsPage() {
                             : 'border-violet-300/[0.06] hover:border-violet-300/25'
                       }`}
                     >
-                      <span className={`text-xs font-medium sm:text-sm ${key === todayKey ? 'rounded-full bg-violet-600 px-1.5 text-white' : list.length ? 'text-white/85' : 'text-white/40'}`}>
+                      <span className={`text-xs font-medium sm:text-sm ${key === todayKey ? 'rounded-full bg-violet-600 px-1.5 text-white' : list.length ? 'text-violet-50/90' : 'text-violet-200/50'}`}>
                         {date.getDate()}
                       </span>
                       {list.length > 0 && (
@@ -224,7 +224,7 @@ export default function EventsPage() {
                           {list.slice(0, 4).map((e) => (
                             <span key={e.id} className={`h-1.5 w-1.5 rounded-full ${colorFor(e.clubs[0])}`} />
                           ))}
-                          {list.length > 4 && <span className="text-[9px] text-white/45">+{list.length - 4}</span>}
+                          {list.length > 4 && <span className="text-[9px] text-violet-200/55">+{list.length - 4}</span>}
                         </span>
                       )}
                     </button>
@@ -245,10 +245,10 @@ export default function EventsPage() {
                   selectedEvents.length ? (
                     <ul className="space-y-3">{selectedEvents.map((e) => <EventRow key={e.id} e={e} />)}</ul>
                   ) : (
-                    <p className="text-sm text-white/45">No events on this day.</p>
+                    <p className="text-sm text-violet-200/55">No events on this day.</p>
                   )
                 ) : (
-                  <p className="text-sm text-white/45">Pick a highlighted date to see what’s on.</p>
+                  <p className="text-sm text-violet-200/55">Pick a highlighted date to see what’s on.</p>
                 )}
               </section>
 

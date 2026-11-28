@@ -75,7 +75,7 @@ export default function SplineScene({ scene, isVisible }) {
           <div className="absolute inset-0 rounded-full border border-white/10" />
           <div className="absolute inset-0 rounded-full border border-transparent border-t-white/70 animate-spin [animation-duration:1.1s] motion-reduce:animate-none" />
         </div>
-        <span className="text-xs text-white/45">Loading scene</span>
+        <span className="text-xs text-violet-200/55">Loading scene</span>
       </div>
 
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.02),rgba(0,0,0,0.25))]" />
